@@ -1,0 +1,46 @@
+# Row-by-row audit of every gene set considered for panels B, C and D.
+# Four checks: canonical fraction, drivers of each significant cell, survival on
+# direct annotation, pairwise redundancy.
+# canonical_fraction is computed on the DIRECT set against a hand-written core marker
+# list. It is ADVISORY, not a threshold: the list choice moves it. Synaptic
+# transmission scores 0.59 against a list matching GO:0007268's own definition
+# (release AND reception) but 0.17 against a release-only list, because
+# Snap25/Syt1/Stx1a/Vamp2/Rab3a/Rims1/Unc13a are annotated to the CHILD term
+# ONE row was removed on canonical fraction alone: Neurotransmitter secretion
+# (0.44, cleared the 15-gene floor at 21 tested). It is flagged in its reason field.
+# Every OTHER removal cites grounds independent of the core list - a driver check,
+# a biologically impossible cell class, an effect size, a gene count, redundancy,
+# or zero significant cells.
+gene_set,go_id,n_direct,canonical_fraction,sig_cells,driver_check,verdict,reason
+Axon guidance,GO:0007411,191,0.87,3/9,3-5 of 8 core,KEPT,
+Semaphorin-plexin signaling,GO:0071526,43,1.0,1/9,5 of 8 core,KEPT,
+Cell adhesion,GO:0007155,444,0.58,0/9,n/a,KEPT,"clean null, within-panel control"
+Synaptic transmission,GO:0007268,161,0.59,3/9,checked,KEPT,0.17 on a release-only list; machinery is in child term GO:0007269
+Ionotropic glutamate receptor sig,GO:0035235,22,1.0,3/9,3-4 of 8 core,KEPT,
+Neuronal action potential,GO:0019228,53,0.62,3/9,2-4 of 8 core,KEPT,
+Cell cycle (S and G2/M),curated,94,1.0,1/9,8 of 8 core,KEPT,"cycling RG only, as expected"
+DNA replication,GO:0006260,78,0.32,1/9,checked,KEPT,"direct set is largely replication-regulatory, not replisome"
+DNA repair,GO:0006281,253,0.62,0/9,n/a,KEPT,clean null
+Response to oxidative stress,GO:0006979,144,0.87,0/9,n/a,KEPT,clean null
+Apoptotic process,GO:0006915,533,0.72,0/9,n/a,KEPT,clean null
+Cytoplasmic translation,GO:0002181,96,0.54,5/9,checked,KEPT,technical floor row
+Axonogenesis,GO:0007409,121,0.21,1/9,0 of 8 core,REMOVED,"only significant cell is Cycling RG, progenitors with no axons; 0 of 8 drivers core; set contains Actb, App, Bcl2"
+Neuron projection extension,GO:1990138,41,0.08,2/9,0-1 of 8 core,REMOVED,"drivers are guidance ligands already in axon guidance; set contains Aurka, Csf1r, Kdm1a"
+Ephrin receptor signaling,GO:0048013,39,1.0,3/9,1-5 of 8 core,REMOVED,"2 of 3 significant cells driven by adaptors (Nck2, Diaph2, Ss18), not receptors or ligands"
+Growth cone,GO:0030426,191,0.41,0/9,n/a,REMOVED,"0 of 9 significant, contributes nothing"
+Cell division,GO:0051301,641,0.03,4/9 on GOALL,0 of 8 core,REMOVED,only 18 of 641 canonical mitotic; read as elevated cell division in post-mitotic classes
+Neural precursor proliferation,GO:0061351,230,0.0,4/9 on GOALL,0 of 8 core,REMOVED,1 of 230 canonical mitotic; driven by Nfia/Nfib/Pou3f2/Insm1
+Neuron fate specification,GO:0048665,26,0.26,3/9,NFI-dependent,REMOVED,"9 genes tested, 3 are NFI paralogues; removing them leaves 6, below the floor"
+Neuron migration,GO:0001764,147,0.61,1/9,2 of 8 core,REMOVED,"mean log2FC +0.009, essentially zero"
+Neurotransmitter secretion,GO:0007269,28,0.44,2/9,n/a,REMOVED,canonical fraction 0.44 ONLY - it cleared the 15-gene floor at 21 tested. Retained as a documented exception to the 'no removal on canonical alone' rule; the set is 28 genes and largely overlaps synaptic transmission
+Synaptic vesicle exocytosis,GO:0016079,24,0.73,3/9,n/a,REMOVED,"10 genes tested in the smallest class, below the 15-gene floor"
+Regulation of postsynaptic membrane potential,GO:0060078,40,0.54,3/9,1-2 of 8 core,REMOVED,"passed the screen but failed the driver check: significant cells carried by Gabrg1, Rgs7, Nr3c2 rather than postsynaptic-potential core; also J=0.11 with ionotropic glutamate receptor signalling"
+Neurotransmitter receptor activity,GO:0030594,33,0.25,0/9,n/a,REMOVED,"untestable, 0 of 9 classes reach the 15-gene floor"
+Presynaptic active zone,GO:0048786,55,0.50,2/9,0-1 of 8 core,REMOVED,"passed the screen but failed the driver check: significant cells carried by Grm7, Adcy8, Gucy1b1, Vps11 rather than active-zone core (Rims, Unc13a, Bsn, Pclo)"
+Oxidative phosphorylation,GO:0006119,13,0.93,n/a,n/a,REMOVED,"13 direct genes, untestable in every class"
+Excitatory postsynaptic potential,GO:0098815,12,0.5,n/a,n/a,REMOVED,"12 direct genes, testable in only 8 of 9 classes"
+Synaptic membrane adhesion,GO:0099560,0,0.0,0/9,n/a,REMOVED,0 of 9 significant
+Activity-dependent transcription,GO:0071277,0,0.0,0/9,n/a,REMOVED,0 of 9 significant
+Response to heat,GO:0009408,0,0.0,2/9,n/a,REMOVED,redundant stress control
+Response to unfolded protein,GO:0006986,0,0.0,0/9,n/a,REMOVED,redundant stress control
+Response to hypoxia,GO:0001666,0,0.0,1/9,n/a,REMOVED,redundant stress control

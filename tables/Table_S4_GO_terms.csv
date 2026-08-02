@@ -1,0 +1,27 @@
+# 2026-08-02: the 'Suppl S3A' rows are RETIRED. That panel (GO enrichment on genes
+# changing in >=4 fine cell types) was removed when Figure 3B superseded it, and the
+# supplementary numbering shifted so S3 is now the Figure 4 support figure. The rows
+# are kept as a record of the analysis, not as a reference to any installed panel.
+# term_shown carries the exact label drawn in the panel, including two shortened
+#   for width: 'ionotropic glutamate receptor signalling' and 'regulation of neural
+#   precursor proliferation'. term_full has the unmodified GO name.
+figure,direction,term_shown,fold_enrichment,p_adjust,gene_count,n_terms_merged_into_row,merged_terms
+Figure 3A,UP,neuron fate commitment,5.35,5.923e-05,13,3,cell fate commitment; neuron fate specification
+Figure 3A,UP,axon guidance,2.489,1.543e-04,32,4,axonogenesis; neuron projection guidance; axon development
+Figure 3A,UP,neuron migration,2.352,5.534e-04,30,1,
+Figure 3A,UP,synaptic membrane adhesion,3.567,1.930e-03,13,2,cell-cell adhesion via plasma-membrane adhesion molecules
+Figure 3A,UP,regulation of neural precursor proliferation,2.881,8.730e-03,14,2,neural precursor cell proliferation
+Figure 3A,DOWN,chemical synaptic transmission,1.79,1.582e-07,108,6,anterograde trans-synaptic signaling; trans-synaptic signaling; synaptic signaling; modulation of chemical synaptic transmission; regulation of trans-synaptic signaling
+Figure 3A,DOWN,ionotropic glutamate receptor signalling,3.583,1.421e-02,11,3,ligand-gated ion channel signaling pathway; glutamate receptor signaling pathway
+Figure 3A,DOWN,regulation of membrane potential,1.881,3.997e-04,57,1,
+Figure 3A,DOWN,modulation of excitatory postsynaptic potential,2.689,3.090e-02,14,2,excitatory postsynaptic potential
+Figure 3A,DOWN,transmission of nerve impulse,2.664,1.861e-02,16,1,
+retired (was Suppl S3A),UP,negative chemotaxis,21.708,7.719e-03,4,1,
+retired (was Suppl S3A),UP,synaptic membrane adhesion,21.179,7.719e-03,4,2,cell-cell adhesion via plasma-membrane adhesion molecules
+retired (was Suppl S3A),UP,synapse assembly,6.466,8.588e-03,7,2,cell junction assembly
+retired (was Suppl S3A),UP,cell-cell adhesion,4.685,8.588e-03,9,1,
+retired (was Suppl S3A),UP,regulation of neuron projection development,5.132,6.174e-03,10,6,regulation of axonogenesis; regulation of neurogenesis; axon development; axonogenesis; positive regulation of cell projection organization
+retired (was Suppl S3A),DOWN,regulation of neuronal synaptic plasticity,19.249,2.650e-03,5,3,regulation of long-term neuronal synaptic plasticity; regulation of synaptic plasticity
+retired (was Suppl S3A),DOWN,glutamate receptor signaling pathway,18.607,6.931e-03,4,1,
+retired (was Suppl S3A),DOWN,modulation of chemical synaptic transmission,5.018,2.650e-03,10,2,regulation of trans-synaptic signaling
+retired (was Suppl S3A),DOWN,transmission of nerve impulse,15.399,1.255e-02,4,3,neuronal action potential; sodium ion transmembrane transport

@@ -1,0 +1,129 @@
+analysis,direction,representative_term,merged_term,is_representative,rep_fold_enrichment,rep_p_adjust,rep_gene_count
+global,UP,developmental growth,developmental growth,True,1.937,4.342e-05,71
+global,UP,developmental growth,growth,False,1.937,4.342e-05,71
+global,UP,regulation of neuron projection development,regulation of neuron projection development,True,1.935,5.923e-05,66
+global,UP,regulation of neuron projection development,regulation of plasma membrane bounded cell projection organization,False,1.935,5.923e-05,66
+global,UP,brain development,brain development,True,1.857,5.923e-05,72
+global,UP,brain development,head development,False,1.857,5.923e-05,72
+global,UP,animal organ morphogenesis,animal organ morphogenesis,True,1.912,5.923e-05,66
+global,UP,neuron fate commitment,neuron fate commitment,True,5.35,5.923e-05,13
+global,UP,regulation of cell development,regulation of cell development,True,1.873,9.343e-05,66
+global,UP,regulation of cell development,regulation of neurogenesis,False,1.873,9.343e-05,66
+global,UP,regulation of cell development,regulation of nervous system development,False,1.873,9.343e-05,66
+global,UP,sensory organ development,sensory organ development,True,2.123,1.082e-04,46
+global,UP,sensory organ development,sensory system development,False,2.123,1.082e-04,46
+global,UP,cell morphogenesis involved in neuron differentiation,cell morphogenesis involved in neuron differentiation,True,1.775,1.296e-04,71
+global,UP,cell morphogenesis involved in neuron differentiation,cell projection morphogenesis,False,1.775,1.296e-04,71
+global,UP,negative regulation of DNA-templated transcription,negative regulation of DNA-templated transcription,True,1.701,1.569e-04,78
+global,UP,cell adhesion,cell adhesion,True,1.677,1.594e-04,81
+global,UP,negative regulation of developmental process,negative regulation of developmental process,True,1.766,2.953e-04,64
+global,UP,neuron migration,neuron migration,True,2.352,5.534e-04,30
+global,UP,pattern specification process,pattern specification process,True,2.242,7.301e-04,32
+global,UP,cell fate commitment,cell fate commitment,True,2.642,7.688e-04,23
+global,UP,epithelium development,epithelium development,True,1.685,7.688e-04,66
+global,UP,positive regulation of transcription by RNA polymerase II,positive regulation of transcription by RNA polymerase II,True,1.608,7.688e-04,77
+global,UP,developmental growth involved in morphogenesis,developmental growth involved in morphogenesis,True,2.112,1.233e-03,34
+global,UP,developmental growth involved in morphogenesis,developmental cell growth,False,2.112,1.233e-03,34
+global,UP,developmental growth involved in morphogenesis,cell growth,False,2.112,1.233e-03,34
+global,UP,synaptic membrane adhesion,synaptic membrane adhesion,True,3.567,1.930e-03,13
+global,UP,regulation of developmental growth,regulation of developmental growth,True,1.986,1.950e-03,37
+global,UP,mesenchyme development,mesenchyme development,True,2.314,2.033e-03,26
+global,UP,regulation of anatomical structure morphogenesis,regulation of anatomical structure morphogenesis,True,1.621,3.087e-03,63
+global,UP,regulation of locomotion,regulation of locomotion,True,1.598,3.087e-03,66
+global,UP,regulation of locomotion,locomotion,False,1.598,3.087e-03,66
+global,UP,regulation of neuron differentiation,regulation of neuron differentiation,True,2.272,5.833e-03,23
+global,UP,regulation of extent of cell growth,regulation of extent of cell growth,True,2.469,6.883e-03,19
+global,UP,regulation of extent of cell growth,regulation of cell size,False,2.469,6.883e-03,19
+global,UP,behavior,behavior,True,1.572,8.711e-03,60
+global,UP,regulation of neural precursor cell proliferation,regulation of neural precursor cell proliferation,True,2.881,8.730e-03,14
+global,UP,regulation of neural precursor cell proliferation,neural precursor cell proliferation,False,2.881,8.730e-03,14
+global,UP,negative regulation of multicellular organismal process,negative regulation of multicellular organismal process,True,1.586,9.160e-03,57
+global,UP,renal system development,renal system development,True,2.093,1.002e-02,25
+global,UP,regulation of actin filament-based process,regulation of actin filament-based process,True,1.914,1.023e-02,31
+global,UP,tissue morphogenesis,tissue morphogenesis,True,1.741,1.134e-02,40
+global,UP,positive regulation of cell population proliferation,positive regulation of cell population proliferation,True,1.641,1.196e-02,48
+global,UP,synapse organization,synapse organization,True,1.492,1.505e-02,66
+global,UP,rhythmic process,rhythmic process,True,1.961,1.505e-02,27
+global,UP,actin filament-based process,actin filament-based process,True,1.563,1.816e-02,53
+global,UP,digestive tract morphogenesis,digestive tract morphogenesis,True,4.322,1.856e-02,7
+global,UP,substrate-dependent cell migration,substrate-dependent cell migration,True,4.939,1.965e-02,6
+global,UP,cell maturation,cell maturation,True,2.332,2.183e-02,17
+global,UP,cell maturation,anatomical structure maturation,False,2.332,2.183e-02,17
+global,UP,regulation of chemotaxis,regulation of chemotaxis,True,2.469,2.258e-02,15
+global,UP,response to wounding,response to wounding,True,1.825,2.776e-02,29
+global,UP,synapse assembly,synapse assembly,True,1.713,3.207e-02,34
+global,UP,Rho protein signal transduction,Rho protein signal transduction,True,2.352,3.549e-02,15
+global,UP,regulation of anatomical structure size,regulation of anatomical structure size,True,1.654,3.617e-02,37
+global,UP,cardiac muscle tissue growth,cardiac muscle tissue growth,True,2.518,3.617e-02,13
+global,UP,cardiac muscle tissue growth,heart growth,False,2.518,3.617e-02,13
+global,UP,postsynaptic density assembly,postsynaptic density assembly,True,3.436,3.617e-02,8
+global,UP,postsynaptic density assembly,postsynaptic density organization,False,3.436,3.617e-02,8
+global,UP,gliogenesis,gliogenesis,True,1.827,3.622e-02,27
+global,UP,epithelial cell differentiation,epithelial cell differentiation,True,1.707,3.693e-02,33
+global,UP,positive regulation of intracellular signal transduction,positive regulation of intracellular signal transduction,True,1.465,3.902e-02,58
+global,DOWN,chemical synaptic transmission,chemical synaptic transmission,True,1.79,1.582e-07,108
+global,DOWN,chemical synaptic transmission,anterograde trans-synaptic signaling,False,1.79,1.582e-07,108
+global,DOWN,chemical synaptic transmission,trans-synaptic signaling,False,1.79,1.582e-07,108
+global,DOWN,chemical synaptic transmission,modulation of chemical synaptic transmission,False,1.79,1.582e-07,108
+global,DOWN,chemical synaptic transmission,regulation of trans-synaptic signaling,False,1.79,1.582e-07,108
+global,DOWN,regulation of membrane potential,regulation of membrane potential,True,1.881,3.997e-04,57
+global,DOWN,monoatomic ion transport,monoatomic ion transport,True,1.591,9.420e-04,89
+global,DOWN,monoatomic ion transport,monoatomic ion transmembrane transport,False,1.591,9.420e-04,89
+global,DOWN,adenylate cyclase-modulating G protein-coupled receptor signaling pathway,adenylate cyclase-modulating G protein-coupled receptor signaling pathway,True,2.735,1.023e-03,23
+global,DOWN,nervous system process,nervous system process,True,1.571,1.024e-03,91
+global,DOWN,ionotropic glutamate receptor signaling pathway,ionotropic glutamate receptor signaling pathway,True,3.583,1.421e-02,11
+global,DOWN,memory,memory,True,2.14,1.738e-02,26
+global,DOWN,sodium ion transmembrane transport,sodium ion transmembrane transport,True,2.289,1.861e-02,22
+global,DOWN,inorganic ion homeostasis,inorganic ion homeostasis,True,1.735,1.861e-02,44
+global,DOWN,transmission of nerve impulse,transmission of nerve impulse,True,2.664,1.861e-02,16
+global,DOWN,behavior,behavior,True,1.49,2.086e-02,75
+global,DOWN,cyclic nucleotide metabolic process,cyclic nucleotide metabolic process,True,3.746,2.345e-02,9
+global,DOWN,cyclic nucleotide metabolic process,cyclic purine nucleotide metabolic process,False,3.746,2.345e-02,9
+global,DOWN,modulation of excitatory postsynaptic potential,modulation of excitatory postsynaptic potential,True,2.689,3.090e-02,14
+global,DOWN,sodium ion homeostasis,sodium ion homeostasis,True,3.746,4.148e-02,8
+recurrent,UP,chemotaxis,chemotaxis,True,8.733,6.174e-03,7
+recurrent,UP,chemotaxis,taxis,False,8.733,6.174e-03,7
+recurrent,UP,regulation of neuron projection development,regulation of neuron projection development,True,5.132,6.174e-03,10
+recurrent,UP,regulation of neuron projection development,regulation of axonogenesis,False,5.132,6.174e-03,10
+recurrent,UP,regulation of neuron projection development,regulation of neurogenesis,False,5.132,6.174e-03,10
+recurrent,UP,regulation of neuron projection development,axon development,False,5.132,6.174e-03,10
+recurrent,UP,regulation of neuron projection development,axonogenesis,False,5.132,6.174e-03,10
+recurrent,UP,regulation of neuron projection development,positive regulation of cell projection organization,False,5.132,6.174e-03,10
+recurrent,UP,negative chemotaxis,negative chemotaxis,True,21.708,7.719e-03,4
+recurrent,UP,synaptic membrane adhesion,synaptic membrane adhesion,True,21.179,7.719e-03,4
+recurrent,UP,synaptic membrane adhesion,cell-cell adhesion via plasma-membrane adhesion molecules,False,21.179,7.719e-03,4
+recurrent,UP,regulation of nervous system development,regulation of nervous system development,True,5.141,7.719e-03,9
+recurrent,UP,regulation of nervous system development,regulation of cell development,False,5.141,7.719e-03,9
+recurrent,UP,regulation of nervous system development,positive regulation of neurogenesis,False,5.141,7.719e-03,9
+recurrent,UP,regulation of nervous system development,positive regulation of nervous system development,False,5.141,7.719e-03,9
+recurrent,UP,regulation of synapse organization,regulation of synapse organization,True,5.548,8.588e-03,8
+recurrent,UP,regulation of synapse organization,regulation of synapse structure or activity,False,5.548,8.588e-03,8
+recurrent,UP,synapse assembly,synapse assembly,True,6.466,8.588e-03,7
+recurrent,UP,synapse assembly,cell junction assembly,False,6.466,8.588e-03,7
+recurrent,UP,cell-cell adhesion,cell-cell adhesion,True,4.685,8.588e-03,9
+recurrent,UP,negative regulation of locomotion,negative regulation of locomotion,True,7.041,1.562e-02,6
+recurrent,UP,negative regulation of locomotion,negative regulation of cell migration,False,7.041,1.562e-02,6
+recurrent,UP,negative regulation of locomotion,negative regulation of cell motility,False,7.041,1.562e-02,6
+recurrent,UP,cell morphogenesis involved in neuron differentiation,cell morphogenesis involved in neuron differentiation,True,3.931,2.241e-02,9
+recurrent,UP,positive regulation of nervous system process,positive regulation of nervous system process,True,21.708,2.241e-02,3
+recurrent,UP,regulation of system process,regulation of system process,True,4.918,2.593e-02,7
+recurrent,UP,cellular response to vascular endothelial growth factor stimulus,cellular response to vascular endothelial growth factor stimulus,True,19.735,2.593e-02,3
+recurrent,UP,regulation of cell size,regulation of cell size,True,7.285,2.953e-02,5
+recurrent,UP,regulation of cell size,regulation of extent of cell growth,False,7.285,2.953e-02,5
+recurrent,UP,ephrin receptor signaling pathway,ephrin receptor signaling pathway,True,18.09,2.974e-02,3
+recurrent,UP,cell surface receptor protein tyrosine kinase signaling pathway,cell surface receptor protein tyrosine kinase signaling pathway,True,4.392,3.978e-02,7
+recurrent,UP,postsynapse organization,postsynapse organization,True,5.148,4.167e-02,6
+recurrent,UP,axon guidance,axon guidance,True,6.098,4.833e-02,5
+recurrent,UP,axon guidance,neuron projection guidance,False,6.098,4.833e-02,5
+recurrent,UP,glial cell differentiation,glial cell differentiation,True,6.064,4.833e-02,5
+recurrent,UP,postsynapse to nucleus signaling pathway,postsynapse to nucleus signaling pathway,True,36.181,4.920e-02,2
+recurrent,DOWN,regulation of neuronal synaptic plasticity,regulation of neuronal synaptic plasticity,True,19.249,2.650e-03,5
+recurrent,DOWN,regulation of neuronal synaptic plasticity,regulation of long-term neuronal synaptic plasticity,False,19.249,2.650e-03,5
+recurrent,DOWN,regulation of neuronal synaptic plasticity,regulation of synaptic plasticity,False,19.249,2.650e-03,5
+recurrent,DOWN,modulation of chemical synaptic transmission,modulation of chemical synaptic transmission,True,5.018,2.650e-03,10
+recurrent,DOWN,modulation of chemical synaptic transmission,regulation of trans-synaptic signaling,False,5.018,2.650e-03,10
+recurrent,DOWN,glutamate receptor signaling pathway,glutamate receptor signaling pathway,True,18.607,6.931e-03,4
+recurrent,DOWN,transmission of nerve impulse,transmission of nerve impulse,True,15.399,1.255e-02,4
+recurrent,DOWN,transmission of nerve impulse,neuronal action potential,False,15.399,1.255e-02,4
+recurrent,DOWN,transmission of nerve impulse,sodium ion transmembrane transport,False,15.399,1.255e-02,4
+recurrent,DOWN,determination of adult lifespan,determination of adult lifespan,True,23.923,2.275e-02,3

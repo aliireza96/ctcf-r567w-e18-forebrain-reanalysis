@@ -1,0 +1,8 @@
+test,n_genes,mean_log2FC,z_vs_random,perm_p
+Cycling RG full set,27,-0.2596,-2.979,0.0047
+Cycling RG minus both,26,-0.039,0.04,0.9773
+Imm. astrocytes full set,24,-0.4279,-5.143,0.0013
+Imm. astrocytes minus both,22,-0.0571,-0.597,0.4987
+Deep-layer EN full set (control),21,-0.048,-0.533,0.5727
+MGE interneurons full set (control),18,-0.0633,-0.027,0.9593
+SPN-D1 full set (control),21,-0.065,-0.001,0.9973

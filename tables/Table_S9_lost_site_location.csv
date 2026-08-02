@@ -1,0 +1,21 @@
+# Panel C source. Genomic-position composition of CTCF sites across ALL TEN deciles of
+"# normalised occupancy change. decile_rank 1 = most binding lost, 10 = binding gained."
+"# Uses every one of the 40,312 peaks with a callable CTCF core motif; no group is selected."
+"# Percentages sum to 100 within each decile (linear axis, deliberately)."
+# Rebuilt 2026-08-01. Two earlier versions are superseded: a log odds-ratio forest plot
+"# (three failed axis attempts), and a two-group bar chart comparing decile 1 against"
+# decile 10 only. The two-group version discarded 80% of the data and labelled decile 10
+"# 'retained' when 100% of its peaks GAINED signal (median +0.48 log2 = 1.40-fold up),"
+# which also inflated the promoter contrast to 15.5 vs 59.9 percent; against all other
+# sites the honest contrast is 15.5 vs 35.2 percent.
+decile_rank,median_log2FC_norm,n_peaks,pct_promoter,pct_intron,pct_distal,pct_other
+1,-2.3045,4032,15.5,31.9,45.0,7.6
+2,-1.622,4031,18.6,34.3,38.8,8.3
+3,-1.2485,4031,22.1,34.5,35.7,7.7
+4,-0.9788,4031,25.5,33.4,33.8,7.3
+5,-0.7389,4032,28.9,31.4,32.2,7.5
+6,-0.5281,4031,30.6,31.4,30.4,7.6
+7,-0.3298,4030,35.9,27.3,28.1,8.6
+8,-0.1364,4031,41.8,25.8,25.9,6.5
+9,0.0826,4033,53.5,21.2,20.3,5.0
+10,0.484,4030,59.9,19.5,15.7,5.0

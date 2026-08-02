@@ -1,0 +1,51 @@
+# Figure 1D source. Cell-type composition, mutant vs wild type.
+#
+# TEST: two-sided Fisher exact per cell type on nucleus counts (cell type vs all
+#   other cells, mutant vs wild type), Benjamini-Hochberg across the 12 cell types.
+#
+# SYMBOL RULE. The panel carries NO significance markers - no stars, no asterisks.
+#   Direction and magnitude are read from the position of the point; reliability is
+#   read from whether the point is filled. A point is FILLED only if it passes BOTH:
+#     (a) FDR: Benjamini-Hochberg q < 0.05 across the 12 cell types, and
+#     (b) resampling: |delta| >= 1 percentage point AND sign consistency >= 0.95.
+#   The filled_in_panel column is authoritative. 10 rows reach q < 0.05 but only 8
+#   are filled: Cajal-Retzius (q = 8.8e-05, delta +0.53 pp) and SPN-D2 (q = 1.1e-02,
+#   delta +0.85 pp, consistency 0.941) clear the FDR threshold but fail the
+#   resampling criterion, so they are drawn OPEN. q < 0.05 alone is NOT sufficient.
+#
+# UNIT OF ANALYSIS. Nuclei are treated as independent observations. The study has
+#   one library per genotype (ZJ6 wild type, ZJ9 mutant), so nuclei are
+#   pseudoreplicates: they share one animal, one dissection and one capture. The
+#   P-values therefore describe how reliably these two libraries differ, not how
+#   reliably the genotypes differ, and they are anti-conservative for the latter.
+#
+# SENSITIVITY. design_effect_to_nullify is the variance-inflation factor D at which
+#   a cell type stops reaching q<0.05 when the chi-square is divided by D. Nuclei
+#   clustered within an animal typically carry D of roughly 20-50, so the column
+#   orders the results by how much clustering they could absorb. LGE-IN precursors
+#   (D=25) and extended amygdala GABA (D=18) are the most robust; the two rows that
+#   fail the resampling criterion are also the least robust here (D=4 and D=2), so
+#   the two criteria agree about which results are fragile.
+#
+# TECHNICAL YARDSTICK. Off-target regions excluded from the analysis scope bound
+#   non-genotype differences between these libraries: cerebellum -8.73 pp (wild
+#   type only) and thalamus +6.28 pp (mutant only), opposite directions, i.e.
+#   dissection variability. The largest cell-type difference here is 5.39 pp.
+#   exceeds_technical records whether a difference exceeds that bound; none does.
+#
+# ci_low/high_pct are an equal-N resampling interval bounding sampling-depth
+#   instability. They are NOT confidence intervals for a genotype effect.
+
+celltype,mut_nuclei,wt_nuclei,mut_pct,wt_pct,delta_pct_points,ci_low_pct,ci_high_pct,sign_consistency,fisher_p,q_value_BH,design_effect_to_nullify,exceeds_technical_yardstick,passes_resampling,filled_in_panel
+Deep layer EN,2245,2206,20.687,26.125,-5.39,-7.4,-3.08,0.998,7.94e-19,2.38e-18,14,no,yes,yes
+Upper layer EN,1932,1784,17.803,21.127,-3.35,-5.4,-1.4,0.995,7.45e-09,1.28e-08,8,no,yes,yes
+Immature Astrocytes,1111,1129,10.238,13.37,-3.09,-4.7,-1.47,0.995,1.92e-11,3.83e-11,10,no,yes,yes
+OPC,138,228,1.272,2.7,-1.42,-2.29,-0.6,0.993,8.40e-13,2.02e-12,10,no,yes,yes
+MGE-IN,767,647,7.068,7.662,-0.62,-2.0,0.79,0.896,1.19e-01,1.30e-01,1,no,no,no
+Migrating CGE-derived IN,683,527,6.294,6.241,0.07,-1.15,1.48,0.551,9.05e-01,9.05e-01,1,no,no,no
+Cajal-Retzius,113,44,1.041,0.521,0.53,0.08,1.04,0.975,6.62e-05,8.83e-05,4,no,no,no
+SPN-D2,663,442,6.109,5.234,0.85,-0.4,1.92,0.941,9.54e-03,1.14e-02,2,no,no,no
+ExtendedAmygdala_GABA,275,42,2.534,0.497,2.03,1.4,2.66,1.0,4.39e-32,2.63e-31,18,no,yes,yes
+SPN-D1,1306,811,12.035,9.604,2.39,0.7,3.92,0.992,7.99e-08,1.20e-07,7,no,yes,yes
+Cycling RG,804,343,7.409,4.062,3.34,2.1,4.6,0.999,3.70e-23,1.48e-22,16,no,yes,yes
+LGE-IN prec,815,241,7.51,2.854,4.68,3.6,5.88,1.0,3.96e-48,4.76e-47,25,no,yes,yes

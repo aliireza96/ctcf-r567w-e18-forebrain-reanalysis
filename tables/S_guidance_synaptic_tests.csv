@@ -1,0 +1,19 @@
+# Why guidance is UP and synaptic function is DOWN in the same cells.
+"# Four tests, run on the rooted_v2 dorsal mapped object (11,554 cells)."
+
+test,result,interpretation
+1. Are the two panels' gene sets disjoint?,"209 guidance genes vs 215 synaptic; 3 shared (Ank3, Cdk5r1, Met); Jaccard 0.007",The opposition is not definitional - two near-disjoint gene populations move opposite ways
+   same-cell contrast (deep-layer EN),"guidance mean log2FC +0.048, synaptic -0.082, Mann-Whitney p=7.9e-3",Opposite directions within one cell class
+"2. In WILD TYPE, do the two modules order along the trajectory?","guidance rho +0.378; synaptic rho +0.544 (both p<1e-180, n=5,462 WT cells)","Both rise with maturation, but synaptic rises FASTER"
+3. Does the guidance-minus-synaptic BALANCE shift with maturation in WT?,"rho -0.316, p=1.5e-126; declines monotonically from -0.007 (earliest decile) to -0.065 (latest)",The balance is a genuine maturation coordinate: early cells are relatively guidance-weighted
+4. Is the mutant balance shifted toward the early value?,Cycling RG +0.0162 (p=1.5e-07); Immature astrocytes +0.0168 (p=6.7e-16); Deep-layer EN +0.0103 (p=8.3e-08); Upper-layer EN +0.0197 (p=2.7e-25),Mutant sits at a more guidance-weighted balance in every dorsal class
+5. DOES IT SURVIVE MATCHING ON PSEUDOTIME?,"Balance difference shrinks across pseudotime quintiles: bin1 +0.0073 (p=0.003), bin2 +0.0089 (p=0.014), bin3 +0.0052 (p=0.10), bin4 +0.0019 (p=0.90), bin5 +0.0014 (p=0.59)",3 of 5 bins non-significant - most of the effect is explained by WHERE the cell sits
+"   linear model, balance ~ pseudotime + genotype","pt coefficient -0.00630 (p<1e-300); genotype +0.00533 (p=6.0e-05); R2 pt alone 0.175, genotype alone 0.014, both 0.176",Position carries the balance; genotype adds ~0.1% of variance on top
+   residual genotype effect in pseudotime units,"0.85 units, vs measured shifts of -1.54 (deep-layer EN) and -2.22 (upper-layer EN)",Position accounts for roughly half to two-thirds of the balance shift
+
+# CONCLUSION: the opposite directions are consistent with mutant cells sitting
+"# earlier on the maturation trajectory, where the guidance-to-synaptic balance is"
+"# naturally higher. That is a POSITION effect, largely reproduced by comparing WT"
+# cells at different pseudotime. A small residual genotype term survives matching
+"# (0.85 pseudotime units, R2 +0.001), so a position-independent component cannot be"
+"# excluded, but it is not what the panels are showing."

@@ -1,0 +1,178 @@
+# Panels B, C and D source. GO gene sets scored WITHIN each cell class against a
+# permutation null of size-matched random sets from the same cells (4,000 draws).
+# z_vs_random is the shift in SD of that null; perm_p two-sided; boxed cell = P<0.05.
+#
+# ANNOTATION: DIRECT GO (keytype='GO'), never the inherited closure (GOALL).
+#
+# FOUR CHECKS, applied to EVERY row including the ones added last:
+#   1 canonical fraction - what share of a hand-listed core marker list the set contains
+#   2 drivers            - are the top movers in each significant cell core genes
+#   3 direct annotation  - does the cell survive without inherited members
+#   4 redundancy         - pairwise Jaccard against every other row
+# The canonical_fraction column records check 1, recomputed on the DIRECT set.
+# It ranges 0.32 to 1.00 and is ADVISORY, not a pass/fail threshold, because it
+# depends on a hand-written core marker list. Two rows show that dependence:
+#   Synaptic transmission GO:0007268 scores 0.59 against a list matching this
+#     term's own definition (release AND reception), but only 0.17 against a
+#     release-only list, because Snap25/Syt1/Stx1a/Vamp2/Rab3a/Rims1/Unc13a are
+#     annotated to the CHILD term GO:0007269, not to this one.
+#   DNA replication GO:0006260 scores 0.32 against a replisome-core list; the
+#     direct set is largely replication-regulatory rather than replisome.
+# ONE removal rests on canonical fraction alone: Neurotransmitter secretion
+# GO:0007269 (0.44; it cleared the 15-gene floor at 21 tested). Every OTHER
+# removal cites list-independent grounds - a driver check, a biologically
+# impossible cell class, an effect size, a gene count, redundancy, or zero
+# significant cells. See figure3_rowaudit.csv for the per-row record.
+#
+# REMOVED, with the check each failed:
+#   Axonogenesis GO:0007409          canonical 0.21; its ONE significant cell is
+#     Cycling RG - progenitors with no axons - and 0 of 8 top drivers are core.
+#   Neuron projection extension GO:1990138  canonical 0.08; drivers are guidance
+#     ligands (Slit2, Sema5a, Nrn1, Flrt3) already covered by axon guidance.
+#   Ephrin receptor signaling GO:0048013    canonical 1.00 but 2 of 3 significant
+#     cells driven by adaptors (Nck2, Diaph2, Ss18), not receptors or ligands.
+#   Growth cone GO:0030426           0 of 9 significant, contributes nothing.
+#   Cell division GO:0051301         641 GOALL genes, 18 canonical mitotic; drove an
+#     impossible elevated-cell-division reading in post-mitotic classes. Replaced by
+#     a curated mitotic set (Tirosh 2016 S+G2/M).
+#   Neural precursor proliferation GO:0061351   1 of 230 genes canonical mitotic.
+#   Neuron fate specification GO:0048665        9 genes tested, 3 of them NFI
+#     paralogues; removing them leaves 6, below the floor. No broader fate set passes.
+#   Neuron migration GO:0001764      1 of 9 significant at mean log2FC +0.009.
+#   Oxidative phosphorylation, Excitatory postsynaptic potential   too few direct genes.
+#   Synaptic membrane adhesion, Activity-dependent transcription   0 of 9 significant.
+#   Response to heat / unfolded protein / hypoxia   redundant stress controls.
+#
+# MATURATION CAVEAT: within wild-type deep-layer EN no set tracks the pseudotime axis
+#   (median Spearman rho -0.012..+0.026). These panels report WHAT changed, not that
+#   it reflects timing. See figure3_maturation_axis_test.csv.
+#
+# 2026-08-02 REVISION. Two panel-D rows removed and FDR added:
+#   DNA replication - its only significant cell (CGE interneurons, P 0.036) had 0 of 8
+#     core replisome drivers and points DOWN in a post-mitotic class.
+#     It was q = 0.198 under the pre-removal 108-test correction; the row is not in
+#     the shipped 90 so no q for it exists in this file. Dropped as a false positive.
+#   Cytoplasmic translation - 86 of its 96 genes are ribosomal proteins, and the
+#     module correlates with per-cell ribosomal content at rho 0.77-0.82 in every
+#     class, matching the direction of the panel result in each. In single-NUCLEUS
+#     data, ribosomal-protein mRNA reflects cytoplasmic carryover and ambient RNA,
+#     not nuclear transcription. Dropped as a technical artefact.
+# FDR ACCOUNTING, corrected 2026-08-02.
+#   Two gene sets were removed from the battery after the FDR was first computed
+#   (DNA replication, and cytoplasmic translation, the latter traced to ribosomal-
+#   protein content in single-nucleus data rather than a translational programme).
+#   The q column previously shipped values computed over the pre-removal battery of
+#   108 tests. Only 90 rows ship, so q_value_BH_90tests is Benjamini-Hochberg over
+#   those 90 and is the only q in this file.
+#
+#   NOTHING REACHES SIGNIFICANCE. Lowest q = 0.135; no cell is below q = 0.10, and
+#   significant_FDR_q05 is False for all 90 rows. The strongest cells by q are:
+#     panel C  Synaptic transmission / Upper-layer EN        P = 0.004  q = 0.135
+#     panel C  Synaptic transmission / Cycling RG            P = 0.003  q = 0.135
+#     panel C  Ionotropic glutamate receptor / Deep-layer EN P = 0.005  q = 0.135
+#     panel B  Axon guidance / Immature astrocytes           P = 0.010  q = 0.135
+#
+#   The battery is reported on the strength of its nominal hits being collectively
+#   far more numerous than chance allows (14 of 90 against 4.5 expected, binomial
+#   P = 1.5e-4) and direction-coherent within panels, not on any single cell.
+#   NO cell reaches q < 0.05, before or after the removals.
+#
+# PRESENTATION: panels B, C and D carry NO significance markers. The battery shows
+#   direction and magnitude across cell classes; the inferential result is the GO
+#   enrichment in panel A. Nominal P and BH q are given per cell in this table.
+# The 'significant' column is the UNCORRECTED permutation P < 0.05 and is retained
+#   only for traceability. Use q_value_BH_108tests for any claim: no cell in the
+#   battery reaches q < 0.05, and panel D's panels carry no significance markers.
+#
+
+panel,gene_set,category,go_id,annotation,canonical_fraction,cell_type,group,n_genes_in_set,n_genes_tested,mean_log2FC,z_vs_random,perm_p,significant,significant_FDR_q05,q_value_BH_90tests
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,Cycling RG,Dorsal,191,97,0.0596,2.573,0.0135,True,False,0.1350
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,Immature astrocytes,Dorsal,191,100,0.103,2.693,0.01,True,False,0.1350
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,Deep-layer EN,Dorsal,191,99,0.0526,2.411,0.022,True,False,0.1650
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,Upper-layer EN,Dorsal,191,92,-0.006,0.99,0.2954,False,False,0.5652
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,SPN-D1,LGE-derived,191,94,-0.0328,1.086,0.2687,False,False,0.5652
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,SPN-D2,LGE-derived,191,91,-0.1233,-0.759,0.4434,False,False,0.6980
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,LGE-IN precursors,LGE-derived,191,92,0.015,1.44,0.1537,False,False,0.5533
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,MGE interneurons,Cortical IN,191,87,-0.0585,0.029,0.9778,False,False,0.9833
+B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,CGE interneurons,Cortical IN,191,100,0.0027,1.12,0.2472,False,False,0.5652
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Cycling RG,Dorsal,43,21,-0.0042,0.448,0.6258,False,False,0.8146
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Immature astrocytes,Dorsal,43,21,0.1002,1.162,0.2117,False,False,0.5534
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Deep-layer EN,Dorsal,43,29,0.0967,2.091,0.0367,True,False,0.2359
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Upper-layer EN,Dorsal,43,27,0.0579,1.494,0.116,False,False,0.4745
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,SPN-D1,LGE-derived,43,26,-0.0437,0.365,0.7056,False,False,0.8467
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,SPN-D2,LGE-derived,43,22,-0.1745,-1.006,0.2934,False,False,0.5652
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,LGE-IN precursors,LGE-derived,43,23,0.0139,0.713,0.4576,False,False,0.6980
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,MGE interneurons,Cortical IN,43,21,-0.0611,0.023,0.9833,False,False,0.9833
+B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,CGE interneurons,Cortical IN,43,26,0.0154,0.795,0.3954,False,False,0.6355
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Cycling RG,Dorsal,444,111,0.0011,1.203,0.2152,False,False,0.5534
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Immature astrocytes,Dorsal,444,119,-0.0244,-0.557,0.5639,False,False,0.7930
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Deep-layer EN,Dorsal,444,101,-0.0435,-0.988,0.3077,False,False,0.5652
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Upper-layer EN,Dorsal,444,93,-0.0994,-1.588,0.103,False,False,0.4414
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,SPN-D1,LGE-derived,444,93,-0.0589,0.201,0.8515,False,False,0.9239
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,SPN-D2,LGE-derived,444,91,-0.1301,-0.914,0.3517,False,False,0.5923
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,LGE-IN precursors,LGE-derived,444,91,-0.0046,0.962,0.3314,False,False,0.5848
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,MGE interneurons,Cortical IN,444,87,-0.075,-0.405,0.6873,False,False,0.8467
+B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,CGE interneurons,Cortical IN,444,100,0.0021,1.13,0.2542,False,False,0.5652
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Cycling RG,Dorsal,161,72,-0.2057,-3.527,0.0027,True,False,0.1350
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Immature astrocytes,Dorsal,161,73,-0.0676,-1.409,0.1482,False,False,0.5533
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Deep-layer EN,Dorsal,161,87,-0.0498,-1.101,0.2439,False,False,0.5652
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Upper-layer EN,Dorsal,161,80,-0.1983,-4.01,0.0035,True,False,0.1350
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,SPN-D1,LGE-derived,161,83,-0.1006,-1.102,0.2609,False,False,0.5652
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,SPN-D2,LGE-derived,161,82,-0.1306,-0.868,0.3777,False,False,0.6181
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,LGE-IN precursors,LGE-derived,161,74,0.0013,1.015,0.3054,False,False,0.5652
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,MGE interneurons,Cortical IN,161,80,-0.1641,-2.554,0.012,True,False,0.1350
+C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,CGE interneurons,Cortical IN,161,92,-0.0476,-0.493,0.6218,False,False,0.8146
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Cycling RG,Dorsal,22,15,0.0177,0.6,0.5274,False,False,0.7534
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Immature astrocytes,Dorsal,22,15,-0.2623,-2.44,0.0212,True,False,0.1650
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Deep-layer EN,Dorsal,22,18,-0.261,-3.497,0.0052,True,False,0.1350
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Upper-layer EN,Dorsal,22,15,-0.1838,-1.589,0.087,False,False,0.3915
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,SPN-D1,LGE-derived,22,15,-0.1581,-1.209,0.2117,False,False,0.5534
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,SPN-D2,LGE-derived,22,16,-0.1885,-1.069,0.2667,False,False,0.5652
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,LGE-IN precursors,LGE-derived,22,16,-0.0376,0.08,0.9325,False,False,0.9759
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,MGE interneurons,Cortical IN,22,18,-0.2525,-2.252,0.0245,True,False,0.1696
+C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,CGE interneurons,Cortical IN,22,18,-0.099,-0.926,0.3379,False,False,0.5848
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Cycling RG,Dorsal,53,17,-0.2206,-1.893,0.0507,False,False,0.3042
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Immature astrocytes,Dorsal,53,20,-0.3016,-3.336,0.0092,True,False,0.1350
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Deep-layer EN,Dorsal,53,24,-0.0797,-1.079,0.2444,False,False,0.5652
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Upper-layer EN,Dorsal,53,24,-0.2393,-2.815,0.007,True,False,0.1350
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,SPN-D1,LGE-derived,53,24,-0.1409,-1.265,0.1897,False,False,0.5534
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,SPN-D2,LGE-derived,53,22,-0.2411,-1.873,0.0607,False,False,0.3414
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,LGE-IN precursors,LGE-derived,53,21,-0.0435,0.035,0.9688,False,False,0.9833
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,MGE interneurons,Cortical IN,53,22,-0.2664,-2.657,0.011,True,False,0.1350
+C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,CGE interneurons,Cortical IN,53,24,-0.0909,-0.911,0.3344,False,False,0.5848
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Cycling RG,Dorsal,94,81,0.0541,2.335,0.0217,True,False,0.1650
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Immature astrocytes,Dorsal,94,24,-0.1039,-1.171,0.2022,False,False,0.5534
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Deep-layer EN,Dorsal,94,13,-0.0251,-0.111,0.899,False,False,0.9519
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Upper-layer EN,Dorsal,94,11,-0.0012,0.402,0.6428,False,False,0.8148
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,SPN-D1,LGE-derived,94,14,-0.0306,0.46,0.6336,False,False,0.8146
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,SPN-D2,LGE-derived,94,12,-0.1569,-0.599,0.5146,False,False,0.7514
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,LGE-IN precursors,LGE-derived,94,14,-0.1263,-0.706,0.4564,False,False,0.6980
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,MGE interneurons,Cortical IN,94,13,-0.0377,0.203,0.8353,False,False,0.9239
+D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,CGE interneurons,Cortical IN,94,13,-0.1723,-1.608,0.0867,False,False,0.3915
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,Cycling RG,Dorsal,253,155,-0.0263,0.537,0.5894,False,False,0.8037
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,Immature astrocytes,Dorsal,253,116,0.045,1.291,0.1887,False,False,0.5534
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,Deep-layer EN,Dorsal,253,102,-0.0216,-0.175,0.852,False,False,0.9239
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,Upper-layer EN,Dorsal,253,94,0.0015,1.218,0.2007,False,False,0.5534
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,SPN-D1,LGE-derived,253,96,-0.0348,1.042,0.2859,False,False,0.5652
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,SPN-D2,LGE-derived,253,94,-0.1055,-0.27,0.7888,False,False,0.8986
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,LGE-IN precursors,LGE-derived,253,94,-0.0536,-0.151,0.8828,False,False,0.9459
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,MGE interneurons,Cortical IN,253,96,-0.0494,0.294,0.7621,False,False,0.8793
+D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,CGE interneurons,Cortical IN,253,106,-0.0759,-1.484,0.1332,False,False,0.5212
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Cycling RG,Dorsal,144,54,-0.1091,-1.287,0.1957,False,False,0.5534
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Immature astrocytes,Dorsal,144,45,0.0318,0.608,0.5176,False,False,0.7514
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Deep-layer EN,Dorsal,144,46,0.0002,0.352,0.6968,False,False,0.8467
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Upper-layer EN,Dorsal,144,37,0.0051,0.847,0.3554,False,False,0.5923
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,SPN-D1,LGE-derived,144,45,-0.0576,0.221,0.822,False,False,0.9239
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,SPN-D2,LGE-derived,144,38,-0.0332,1.049,0.2759,False,False,0.5652
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,LGE-IN precursors,LGE-derived,144,39,-0.0761,-0.394,0.6788,False,False,0.8467
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,MGE interneurons,Cortical IN,144,40,-0.0304,0.54,0.5784,False,False,0.8009
+D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,CGE interneurons,Cortical IN,144,47,-0.0295,0.06,0.956,False,False,0.9833
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Cycling RG,Dorsal,533,201,-0.0299,0.502,0.6163,False,False,0.8146
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Immature astrocytes,Dorsal,533,180,0.0067,0.364,0.7258,False,False,0.8528
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Deep-layer EN,Dorsal,533,175,-0.0083,0.329,0.7296,False,False,0.8528
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Upper-layer EN,Dorsal,533,159,-0.0144,1.012,0.2944,False,False,0.5652
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,SPN-D1,LGE-derived,533,176,-0.0366,1.357,0.1665,False,False,0.5534
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,SPN-D2,LGE-derived,533,161,-0.0578,1.239,0.2072,False,False,0.5534
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,LGE-IN precursors,LGE-derived,533,153,0.0103,1.765,0.079,False,False,0.3915
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,MGE interneurons,Cortical IN,533,157,-0.0095,1.774,0.0782,False,False,0.3915
+D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,CGE interneurons,Cortical IN,533,166,-0.0469,-0.648,0.5046,False,False,0.7514

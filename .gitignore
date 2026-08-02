@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+results/
+figures/
+data/
+*.rds
+*.bw
+*.bam
