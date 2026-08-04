@@ -22,12 +22,14 @@ tables/             supplementary tables S1-S10 and supporting result tables
 docs/               methods text and a table of which script produces which output
 ```
 
-42 scripts. The pipeline stages run in numerical order within each directory.
+The repository preserves the analysis scripts and source tables used for the installed
+manuscript package. Numerical prefixes record the analysis order; not every historical stage is
+currently wired into a single portable runner.
 
-## Reproducing the figures
+## Regenerating package-level panels
 
-The figure scripts read only from `tables/` and regenerate the published panels
-without rerunning the analysis pipeline:
+The following scripts read packaged source tables and regenerate the indicated computational
+panels without rerunning upstream analyses:
 
 ```bash
 python scripts/05_figures/plot_figure1D.py  . figures/
@@ -36,11 +38,18 @@ python scripts/05_figures/plot_figure3.py   . figures/
 python scripts/05_figures/make_figure4.py   . figures/
 ```
 
-Each was verified to reproduce its installed panel exactly.
+`plot_figure1D.py` and `plot_figure2D.py` regenerate the statistical summary panels D of their
+respective figures; `plot_figure3.py` regenerates Figure 3A-D; and `make_figure4.py` regenerates
+the table-driven Figure 4 panels. Other installed panels retain exact source-file provenance in
+the corresponding figure-folder README. This repository has not yet passed a clean-room,
+end-to-end execution test.
 
-## Reproducing the analysis
+## Upstream analysis configuration
 
-Set the project root and reference locations, then run each stage in order:
+The upstream scripts expect the deposited matrices, tracks, peak calls and external references
+to be available under a configured project root. Historical absolute paths and a small number of
+stage-specific setup files still require consolidation before the complete pipeline can be run
+portably. The intended inputs are:
 
 ```bash
 export PROJECT_ROOT=/path/to/analysis
@@ -48,19 +57,11 @@ export REF_MAYER=/path/to/GSE103983_dropseq.csv.gz
 export REF_DIBELLA=/path/to/DiBella_GSE153164
 ```
 
-```r
-source("scripts/01_snrnaseq/00_setup.R")
-source("scripts/01_snrnaseq/01_load_qc_filter_doublets.R")
-# ... in numerical order
-```
-
-The trajectory stage is driven by `02_trajectories/09_run_pipeline_rooted_v2.R`,
-which reads its configuration from `09_config_projection_rooted_v2.R`. The
-ChIP-seq stage is driven by the numbered scripts in `03_chipseq/` in order.
-
-Running the full pipeline from raw counts takes several hours and requires the
-deposited FASTQ-derived matrices, bigWig tracks and peak calls, plus an mm10
-genome FASTA for the motif analysis.
+The trajectory scripts use the Mayer and Di Bella reference atlases; ChIP-seq scripts require
+the deposited normalised bigWigs and peak calls plus mm10 sequence for the motif proxy. Consult
+`docs/SCRIPT_INDEX.csv` for script-to-output provenance. A future archival release should replace
+the remaining absolute paths with one configuration file and record a machine-readable session
+environment before claiming full end-to-end reproducibility.
 
 ## Requirements
 
@@ -77,21 +78,31 @@ does not require HOMER.
 
 ## Statistical conventions
 
-Every genotype comparison rests on one library per genotype, so cells and nuclei
-are pseudoreplicates and the P values describe how reliably the two libraries
-differ. Effect sizes accompany every test, resampling checks accompany the
-composition and maturation results, and `tables/Table_S1_composition_FDR.csv`
-reports the variance-inflation factor at which each composition result would
-stop passing correction.
+The replication structure differs by assay. The single-nucleus and CTCF ChIP-seq comparisons
+each use one library per genotype, so nucleus- or site-level P values do not estimate
+between-animal variation. Bulk RNA-seq and 4C have biological replication. The deposited Hi-C
+maps pool two brain libraries per genotype and are used descriptively. Effect sizes accompany
+tests, resampling checks accompany the composition and developmental-position summaries, and
+`tables/Table_S1_composition_FDR.csv` reports the variance-inflation factor at which each
+composition result would stop passing correction.
 
-Multiple-testing correction is applied within each analysis family: across the
-twelve cell classes for composition, the nine classes for maturation, all 90
-combinations for the gene-programme battery, and within each enrichment run for
-gene ontology.
+Multiple-testing correction is applied within the prespecified composition, developmental-axis
+and Gene Ontology families. The 90 displayed gene-programme combinations were selected after an
+observed-data audit; their permutation P and q values are retained as descriptive diagnostics,
+not as an independent confirmatory family.
 
 ## Citation
 
 Please cite the original data publication:
 
-Zhang, Y. et al. Disruption of CTCF boundary-dependent gene regulation by a
-neurodevelopmental disorder-associated variant. *Nat. Commun.* **15**, 5524 (2024).
+Zhang, J. et al. CTCF mutation at R567 causes developmental disorders via 3D genome
+rearrangement and abnormal neurodevelopment. *Nat. Commun.* **15**, 5524 (2024).
+
+## Changelog
+
+**2026-08-04.** Added the D2 spiny-projection-neuron subclustering analysis
+(`12_d2_subclustering.R`, `plot_figure2FGH.py`, `Table_S12_D2_subclustering.csv`) and the
+library sex verification (`13_sex_verification.R`, `S1_sex_markers.csv`). Supplementary
+table filenames were realigned to the current figure numbering: the four `S4_*` and
+`S_guidance_synaptic_tests.csv` files moved to `tables/_superseded/` and their current
+equivalents are the `S3_*` names. 47 scripts, 29 tables.

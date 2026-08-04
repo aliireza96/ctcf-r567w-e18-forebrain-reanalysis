@@ -1,0 +1,29 @@
+# Does Figure 3D's nominal cell-cycle score covary with transferred position?
+"# Exploratory same-transcriptome diagnostic within the class carrying the nominal cell."
+# Adjustment does not attenuate the score difference, but this is not independent
+# validation: both quantities use the query transcriptomes, the cell-cycle cell does
+# not survive BH correction, and there is one library per genotype.
+
+quantity,value,note
+class tested,Cycling RG,the class where Figure 3D reports the detection
+cells,"1147 (343 WT, 804 mutant)",
+pseudotime median WT,33.2,
+pseudotime median mutant,33.5,
+pseudotime shift,+0.32 units,compare -1.90 units in dorsal excitatory neurons
+raw mutant-WT module difference,+0.00791,
+after conditioning on pseudotime,+0.00785,99% of the raw effect survives
+pseudotime coefficient,-0.00691 (P = 2.9e-44),the module covaries with transferred position within this same transcriptome
+Figure 3D permutation call,"z = +2.257, P = 0.0295, BH q = 0.1899",nominal only; does not survive BH correction
+
+"# The class differs by only +0.32 transferred-position units, and adjustment leaves"
+# the score difference nearly unchanged. This shows lack of attenuation in the fitted
+# model; it does not establish a position-independent biological effect.
+
+"# RETIRED ROW: DNA replication in CGE interneurons carried no dorsal position"
+# coordinate and could not be tested this way. Its single downward nominal cell had
+# 0 of 8 core replisome drivers, and the row was removed from active Figure 3D.
+
+# RETIRED SUPPORTING CHECK in dorsal excitatory neurons (where Figure 3D shows these
+# rows flat): stratified subsampling on transferred position
+"# (6,790 cells, residual median shift -0.035 units) moves the cell-cycle difference"
+"# from +0.00200 to -0.00004. Neither value is significant, so no call changes."

@@ -1,0 +1,22 @@
+# Does a promoter CTCF peak change predict expression direction?
+# Baseline: all 1243 DE genes with any CTCF peak link are 57.0% down in mutant.
+"# Comparisons are against THAT baseline, not against each other."
+group,n_down,n_up,pct_down,odds_ratio_vs_baseline,fisher_p
+all DE genes with peak link,709,534,57.0,1.00 (reference),
+LOST promoter peak,153,69,68.9,1.854,7.1354e-05
+GAINED promoter peak,341,245,58.2,1.093,4.5582e-01
+
+# Also tested and NULL: peak class using nearest-gene / 50kb links (not promoter-restricted)
+group,n_down,n_up,pct_down
+any LOST peak,356,277,56.2
+any GAINED peak,479,362,57.0
+
+"# Gene-programme tests: within each programme's DE genes, does a lost promoter peak shift direction?"
+# 17 tests total; NONE survive Bonferroni. Reported for completeness only.
+gene_set,n_DE_in_set,n_with_lost_promoter,pct_down_with,pct_down_without,fisher_p,bonferroni_p
+Apoptotic process,150,17,52.9,53.4,1.0000,1.000
+Axon guidance,53,11,27.3,42.9,0.4938,1.000
+Cell division,52,11,45.5,39.0,0.7395,1.000
+Neuron migration,52,6,16.7,45.7,0.2256,1.000
+Response to oxidative stress,25,5,80.0,55.0,0.6146,1.000
+Synaptic transmission,152,24,87.5,64.8,0.0316,0.536

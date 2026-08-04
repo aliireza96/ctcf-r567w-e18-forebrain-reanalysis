@@ -1,0 +1,59 @@
+# Leave-out robustness for every significant cell in the Figure 3 battery.
+"# Test: drop the top 10% of each set's genes by |log2FC| in that cell type, refit"
+"#   the permutation test. Proportional, so small and large sets are treated alike."
+#   Result: 6 of 20 cells survive (30%).
+#
+"# HOW TO READ THAT NUMBER - two calibrations, and only one of them licenses a claim."
+#
+# POWER (the relevant one). 81 sets built with GENUINE signal - true shifted genes
+#   spiked into a random background at three doses - that reached P<0.05 were put
+#   through the same trim. Only 16 (20%) survived. So the trim removes most real
+"#   signals too: it has LOW POWER, and failing it is weakly informative."
+#   The battery's 6 of 20 (30%) is statistically indistinguishable from that
+"#   true-signal rate (Fisher OR 1.74, P = 0.37)."
+#
+"# SPECIFICITY (reported for completeness, does NOT license the above). 35 random"
+#   null sets that reached P<0.05 by chance survived at 2 of 35 (6%). This measures
+"#   how often the trim clears a set with no signal, not how often it clears a real"
+"#   one, and the difference from true-signal sets is not significant (P = 0.09)."
+#
+"# P-MATCHED, because chance-significant sets cluster at the 0.05 boundary while"
+#   battery cells reach 0.001. Survival by starting-p bin:
+#     start p        null      true-signal     battery
+"#     [0,0.005)      0% (4)      31% (16)      50% (6)"
+"#     [0.005,0.015)  17% (6)     12% (26)      43% (7)"
+"#     [0.015,0.05)   4% (25)     21% (39)       0% (7)"
+#   Bin counts are small; treat these as descriptive.
+#
+# CONCLUSION: the trim cannot be used to classify individual cells as true or
+# false. Passing it is reassuring; failing it says the cell depends on its
+"# largest-effect genes, which is true of most real signals at this effect size."
+"# Report the caveat per cell, do not use the 14-of-20 count as a verdict."
+
+gene_set,cell_type,n_genes,n_dropped,p_full,p_trimmed,survives
+Axon guidance,Cycling RG,97,10,0.0105,0.0012,yes
+Axon guidance,Immature astrocytes,100,10,0.0125,0.1377,no
+Axon guidance,Deep-layer EN,99,10,0.0277,0.1575,no
+Semaphorin-plexin signaling,Deep-layer EN,29,3,0.037,0.2407,no
+Synaptic transmission,Cycling RG,72,7,0.0015,0.112,no
+Synaptic transmission,Upper-layer EN,80,8,0.0015,0.1087,no
+Synaptic transmission,MGE interneurons,80,8,0.0107,0.1622,no
+Ionotropic glutamate receptor sig,Immature astrocytes,15,2,0.017,0.5629,no
+Ionotropic glutamate receptor sig,Deep-layer EN,18,2,0.0045,0.0572,no
+Ionotropic glutamate receptor sig,MGE interneurons,18,2,0.0282,0.1285,no
+Neuronal action potential,Immature astrocytes,20,2,0.0102,0.0112,yes
+Neuronal action potential,Upper-layer EN,24,2,0.008,0.0087,yes
+Neuronal action potential,MGE interneurons,22,2,0.0085,0.1505,no
+Cell cycle (S and G2/M),Cycling RG,81,8,0.025,0.1642,no
+DNA replication,CGE interneurons,27,3,0.0372,0.4126,no
+Cytoplasmic translation,Cycling RG,56,6,0.0115,0.1245,no
+Cytoplasmic translation,Immature astrocytes,42,4,0.0022,0.0062,yes
+Cytoplasmic translation,Deep-layer EN,53,5,0.0017,0.0062,yes
+Cytoplasmic translation,SPN-D1,59,6,0.003,0.0172,yes
+Cytoplasmic translation,CGE interneurons,37,4,0.0217,0.1015,no
+
+# The cell-cycle call in Cycling RG fails the trim AND is the most concentrated
+"# cell in the battery: top 5 of 81 genes carry 79.7% of the set mean (Slbp, Cdc20,"
+"# Rpa2, Tipin, Aurka; all padj = 1.00), and removing just those five takes P from"
+"# 0.028 to 0.211. The concentration statistic, not the trim, is the reason the"
+# Results text reports it as an observation at the limit of detection.

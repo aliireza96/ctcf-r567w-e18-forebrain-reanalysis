@@ -1,0 +1,7 @@
+# Sex verification of the two E18.5 libraries.
+# X-inactivation transcript: Xist. Y-linked genes: Ddx3y, Uty, Eif2s3y, Kdm5d.
+# pct_Y_pos is the percentage of nuclei detecting ANY of the Y genes.
+# A female call requires Xist in most nuclei and Y detection under 5%.
+"library","n_nuclei","mean_Xist","pct_Xist_positive","mean_Y","pct_Y_positive","sex_call"
+"wild type",13139,3.475,98.9,"0.00081",0.28,"female"
+"R567W homozygous",15663,3.488,99.1,"0.00060",0.22,"female"

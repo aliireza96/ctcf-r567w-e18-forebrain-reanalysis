@@ -12,7 +12,11 @@ Input CSVs (in FIG3_DIR/tables/, default "../tables"):
   Table_S4_GO_terms.csv          panel A: curated GO terms with fold enrichment and q
   Table_S3_gene_set_battery.csv  panels B-D: 10 gene sets x 9 classes, mean log2FC,
                                  z vs random, nominal perm P, and BH q across the
-                                 original 108 tests. DIRECT GO annotation, not the
+                                 83 testable combinations. Seven below-floor
+                                 cell-cycle cells remain in the 10 x 9 display as
+                                 explicit NA. The heatmaps are
+                                 descriptive because rows were retained after an
+                                 observed-data audit. DIRECT GO annotation, not the
                                  GOALL closure - see the CSV header.
 
 Output: panel_A_GO_merged.pdf, panel_B_guidance_adhesion.pdf,
@@ -107,37 +111,36 @@ LONG_NAME = {"Ionotropic glutamate receptor sig": "Ionotropic glutamate receptor
 def panels_BCD():
     """Panels B, C and D: gene-set shifts within each cell class.
 
-    Panels B and C carry a small white dot on cells reaching the NOMINAL
-    permutation threshold P < 0.05. Panel D carries no markers: it has one
-    nominal cell against 1.8 expected by chance across its 36 tests, fewer
-    than chance, so marking it would imply a signal the data do not support.
-    No cell in the battery survives FDR correction (lowest q = 0.076); the
-    dots mark where the panel A enrichment localises, not independent claims.
+    All panels are marker-free descriptive heatmaps. Below-floor cells are grey
+    and labelled NA rather than being assigned a permutation result.
+    No cell in the battery survives FDR correction (lowest q = 0.1106).
+    No nominal-significance markers are drawn.
     """
     rows = [r for r in read_csv(BATTERY) if not r["panel"].startswith("#")]
     classes = list(dict.fromkeys(r["cell_type"] for r in rows))
     ci = {c: k for k, c in enumerate(classes)}
     groups = [("Dorsal", 0, 3), ("LGE-derived", 4, 6), ("Cortical IN", 7, 8)]
 
-    for pid, figh, mark in [("B", 2.1, True), ("C", 2.1, True), ("D", 2.4, False)]:
+    for pid, figh in [("B", 2.1), ("C", 2.1), ("D", 2.4)]:
         sets_ = list(dict.fromkeys(r["gene_set"] for r in rows if r["panel"] == pid))
         gi = {s: k for k, s in enumerate(sets_)}
         Z = np.full((len(sets_), len(classes)), np.nan)
-        P = np.full_like(Z, np.nan)
         for r in rows:
             if r["panel"] != pid:
                 continue
-            Z[gi[r["gene_set"]], ci[r["cell_type"]]] = float(r["z_vs_random"])
-            P[gi[r["gene_set"]], ci[r["cell_type"]]] = float(r["perm_p"])
+            value = r["z_vs_random"].strip()
+            if value and value.upper() != "NA":
+                Z[gi[r["gene_set"]], ci[r["cell_type"]]] = float(value)
 
         fig, ax = plt.subplots(figsize=(5.4, figh))
         # fixed colour scale, shared by all three panels so they are comparable
-        im = ax.imshow(Z, cmap="RdBu_r", vmin=-4.3, vmax=4.3, aspect="auto")
-        if mark:
-            for a in range(Z.shape[0]):
-                for b in range(Z.shape[1]):
-                    if P[a, b] < 0.05:
-                        ax.plot(b, a, "o", ms=2.2, mfc="white", mec="none", zorder=3)
+        cmap = mpl.colormaps["RdBu_r"].copy()
+        cmap.set_bad("#E6E6E6")
+        im = ax.imshow(np.ma.masked_invalid(Z), cmap=cmap, vmin=-4.3, vmax=4.3,
+                       aspect="auto")
+        for row_index, col_index in np.argwhere(np.isnan(Z)):
+            ax.text(col_index, row_index, "NA", ha="center", va="center",
+                    fontsize=4.7, color="0.35")
         ax.set_xticks(range(len(classes)))
         ax.set_xticklabels(classes, rotation=40, ha="right", fontsize=6.0)
         ax.set_yticks(range(len(sets_)))
@@ -151,6 +154,9 @@ def panels_BCD():
         cb = fig.colorbar(im, ax=ax, fraction=0.028, pad=0.02)
         cb.set_label("Shift vs random gene sets (z)", fontsize=6.6)
         cb.ax.tick_params(labelsize=6)
+        if np.isnan(Z).any():
+            ax.text(1.0, 1.02, "NA: <15 tested genes", transform=ax.transAxes,
+                    ha="right", va="bottom", fontsize=5.7, color="0.35")
         fig.savefig(os.path.join(OUT, PANEL_FILE[pid]), bbox_inches="tight")
         plt.close(fig)
 

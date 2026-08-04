@@ -1,0 +1,36 @@
+"# What Figure 3D supports, and what it rules out. Every number verified."
+#
+# WHAT THE PANEL STATISTIC IS. Each cell is a gene set scored on WITHIN-CELL-TYPE
+"# mutant-vs-WT log2FC (e.g. mutant Cycling RG vs WT Cycling RG, 6,140 genes tested),"
+# against a permutation null of size-matched random sets drawn from the SAME cell
+# type. It is composition-independent BY CONSTRUCTION: a change in how many cells
+# of a class exist cannot alter a fold-change computed within that class.
+
+observation,value,what it means
+Apoptosis nominal cells,0 of 9,no coherent contemporaneous cell-death programme among retained nuclei
+Oxidative stress nominal cells,0 of 9,no coherent contemporaneous oxidative-stress programme among retained nuclei
+DNA repair nominal cells,0 of 9,no coherent contemporaneous DNA-repair programme among retained nuclei
+Cell cycle nominal cells,"1 of 2 testable cells (Cycling RG, z +2.257, P 0.0295, q 0.1899); 7 of 9 display cells are NA below the 15-gene floor",does not survive BH correction and is reported as null
+RETIRED - DNA replication,"1 of 9 nominal in the former row (CGE IN, z -2.10, P 0.036)","removed from active panel D: downward, 0 of 8 core drivers"
+RETIRED - Cytoplasmic translation,"5 of 9 nominal in the former row, mixed sign (-2.68 to +4.26)","removed from active panel D: tracked ribosomal-content variation in single-nucleus data"
+
+"# HOW BIG AN EFFECT COULD THE ZERO ROWS HAVE CAUGHT?"
+"# Simulation with resampling: bootstrap the set's genes, add a uniform shift, refit"
+"#   the permutation test, and find the shift giving 80% rejection over 200 replicates."
+"#     Apoptosis          +0.10 in deep EN (0.99), upper EN (0.99), cycling RG (0.97)"
+"#     DNA repair         +0.05 upper EN (0.84); +0.10 deep EN (0.99), cycling RG (1.00)"
+"#     Oxidative stress   +0.10 deep EN (0.81), upper EN (0.89); +0.30 cycling RG (1.00)"
+"#"
+"# WHAT THAT DOES AND DOES NOT LICENSE."
+"#   The zero rows can rule out a moderate effect: +0.10 is above the median effect"
+"#   size in the battery (0.056) and the panel's own translation cell reaches +0.155."
+"#   They can NOT rule out a subtle one - the panel's cell-cycle effect is +0.054,"
+"#   below the detection threshold, so an apoptotic shift of that size would have"
+"#   been missed. Oxidative stress in cycling RG is weakest of all (+0.30)."
+"#   State the negative as: no moderate or large death, stress or damage response."
+"#"
+"# CORRECTION 2026-08-02: an earlier version of this block reported thresholds of"
+"#   +0.05 and called them 80% power. That simulation never resampled - the observed"
+"#   set mean was held fixed across replicates - so it measured the alpha-crossing"
+"#   point, which is smaller than a power threshold. The numbers above replace it."
+"#"

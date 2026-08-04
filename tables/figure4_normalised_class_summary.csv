@@ -1,0 +1,5 @@
+# Per-class summary of the 45,021 reduced non-overlapping union components.
+peak_class,n_components,median_wt_norm,median_mut_norm,median_log2FC,pct_components_lower_in_mutant
+MAINTAINED,28964,18.052764,10.205123,-0.606676,85.5579
+LOST,6666,11.490201,3.228259,-1.877896,99.9400
+GAINED,9391,4.886581,5.043225,0.109562,42.0509

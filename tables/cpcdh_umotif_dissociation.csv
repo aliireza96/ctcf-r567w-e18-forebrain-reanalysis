@@ -1,0 +1,10 @@
+# CTCF occupancy and U-motif status at the clustered protocadherin locus
+# Subfamily annotation intervals are NESTED (Pcdha 910kb contains Pcdhb 260kb and overlaps Pcdhg 180kb).
+# Rows below use a DISJOINT assignment: Pcdhb and Pcdhg take precedence, Pcdha row is the remainder.
+# Signal is per-peak mean from the GEO spike-in normalised bigwigs (GSM6614265 wt / GSM6614266 homo).
+region,n_peaks,n_lost,n_maintained,n_gained,n_with_core_motif,n_umotif_pos,pct_umotif,median_log2FC_norm,note
+"Pcdha (excl. b,g)",12,1,4,7,12,0,0.0,-0.049,Pcdha annotation interval MINUS the nested Pcdhb and Pcdhg intervals
+Pcdhb,1,1,0,0,1,0,0.0,-3.666,"single peak, class LOST; near-total occupancy loss but NOT a U-motif site (0/1)"
+Pcdhg,21,2,14,5,5,1,20.0,-0.401,
+"cPcdh locus (union, disjoint sum)",34,4,18,12,18,1,5.6,-0.231,"chr18:36,930,184-37,841,873; median dominated by the 33 peaks outside Pcdhb"
+genome-wide,47052,6688,30648,9716,40312,4709,11.7,-0.618,reference background

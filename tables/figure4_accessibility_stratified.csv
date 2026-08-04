@@ -1,0 +1,6 @@
+"# Accessibility of most-lost vs retained decile, stratified by genomic position."
+# Excluded from panel C due to effect modification (strata disagree in direction).
+stratum,most_lost_open,most_lost_n,most_lost_pct,retained_open,retained_n,retained_pct,odds_ratio,p_value
+Promoter,534,624,85.6,2166,2415,89.7,0.682,5.29e-03
+Non-promoter,2735,3408,80.3,820,1618,50.7,3.955,3.43e-99
+Pooled,3269,4032,81.1,2986,4033,74.0,1.502,3.87e-14

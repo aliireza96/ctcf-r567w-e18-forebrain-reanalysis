@@ -17,8 +17,13 @@ Usage:  python make_figure4.py [FIGURE4_DIR] [OUT_DIR]
 
 Requires: matplotlib, numpy.  No seaborn, no project code.
 
-PROVENANCE OF THE SIGNAL VALUES
--------------------------------
+PROVENANCE OF THE GENOMIC UNIT AND SIGNAL VALUES
+------------------------------------------------
+Panels A-C use 45,021 disjoint components obtained after collapsing exact-
+coordinate MACS2 multi-summit records and reducing all overlapping WT and
+mutant intervals. They do not treat the 47,052 source records as independent
+sites.
+
 All signal in this figure comes from the GEO spike-in NORMALISED bigwigs
 (GSM6614265 wild type, GSM6614266 homozygous), NOT from the narrowPeak
 signalValue column. The paper applies its HEK293T spike-in scale factor when
@@ -63,10 +68,10 @@ def read_csv_skip_comments(path):
 def panel_A():
     """Per-peak signal change, grouped by MACS2 peak class.
 
-    LOST is partly definitional (a peak leaves the mutant set largely because its
-    signal fell). MAINTAINED is the informative bar: nothing in "called in both"
-    constrains the signal change, yet it is -0.67. GAINED contradicts its own
-    definition, changing by only +0.12.
+    LOST is partly definitional (a component is WT-only largely because signal
+    fell). MAINTAINED is the informative group: nothing in "called in both"
+    constrains the signal change, yet its median is -0.61. GAINED changes only
+    modestly (+0.11 median).
     """
     rows = read_csv_skip_comments(os.path.join(FIG4, "tables/Table_S7_CTCF_peak_signal.csv"))
     lf = {}
@@ -110,11 +115,11 @@ def panel_B():
     """
     d = read_csv_skip_comments(os.path.join(FIG4, "tables/Table_S8_umotif_by_loss_decile.csv"))
     rank = np.array([int(r["decile_rank"]) for r in d])
-    pct = np.array([float(r["pct_umotif"]) for r in d])
+    pct = np.array([float(r["pct_proxy_positive"]) for r in d])
     lo = np.array([float(r["ci_lo"]) for r in d])
     hi = np.array([float(r["ci_hi"]) for r in d])
-    n_tot = sum(int(r["n_peaks"]) for r in d)
-    n_pos = sum(int(r["n_umotif_pos"]) for r in d)
+    n_tot = sum(int(r["n_components"]) for r in d)
+    n_pos = sum(int(r["n_proxy_positive"]) for r in d)
     overall = 100.0 * n_pos / n_tot
 
     fig, ax = plt.subplots(figsize=(4.5, 2.9))
@@ -129,9 +134,9 @@ def panel_B():
     ax.annotate(f"{pct[-1]:.1f}%", xy=(10, pct[-1]), xytext=(9.85, pct[-1] - 2.4),
                 fontsize=6.8, weight="bold", color="#B03A2E", ha="right")
     ax.set_xticks(rank); ax.set_xticklabels([str(i) for i in rank], fontsize=6.4)
-    ax.set_xlabel("CTCF sites ranked by occupancy change, decile\n"
+    ax.set_xlabel("CTCF union components ranked by occupancy change, decile\n"
                   "(1 = most binding lost   \u2192   10 = binding gained)", fontsize=7.2)
-    ax.set_ylabel("Sites with an upstream (U) motif (%)", fontsize=7.2)
+    ax.set_ylabel("Components with TGCAG-containing\nupstream-20-mer proxy (%)", fontsize=7.2)
     ax.set_ylim(0, 23); ax.set_xlim(0.4, 10.6)
     ax.spines[["top", "right"]].set_visible(False)
     fig.savefig(os.path.join(OUT, "panel_B_umotif_gradient.pdf"), bbox_inches="tight")
@@ -162,9 +167,9 @@ def panel_C():
         ax.text(0.72, v[0], f"{v[0]:.0f}%", fontsize=6.3,
                 color=POS_COL[pos], va="center", ha="right", weight="bold")
     ax.set_xticks(rank); ax.set_xticklabels([str(i) for i in rank], fontsize=6.4)
-    ax.set_xlabel("CTCF sites ranked by occupancy change, decile\n"
+    ax.set_xlabel("CTCF union components ranked by occupancy change, decile\n"
                   "(1 = most binding lost   \u2192   10 = binding gained)", fontsize=7.2)
-    ax.set_ylabel("Share of sites in each decile (%)", fontsize=7.2)
+    ax.set_ylabel("Share of components in each decile (%)", fontsize=7.2)
     ax.set_xlim(0.1, 11.0); ax.set_ylim(0, 66)
     ax.legend(frameon=False, fontsize=6.3, loc="upper center", bbox_to_anchor=(0.5, 1.16),
               ncol=4, handlelength=1.1, columnspacing=1.3)

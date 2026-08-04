@@ -1,214 +1,257 @@
 #!/usr/bin/env python3
+"""Recompute the authoritative Figure 3B-D gene-set battery.
+
+The analysis uses the frozen membership in Table_S11_gene_set_membership.csv,
+4,000 size-matched permutation draws within each cell-class DE universe, and a
+15-tested-gene floor.  It writes the complete 10-set x 9-class display to
+Table_S3_gene_set_battery.csv.  Cells below the floor remain in the rectangular
+display but are explicitly NA and are excluded from Benjamini-Hochberg correction.
+
+Positional arguments are optional and, in order, are DE_DIR, MEMBERSHIP_CSV and
+OUTPUT_CSV.  Defaults are resolved from the script location, not the working
+directory.  Requires numpy.
 """
-Figure 3 - compute the analysis-output tables that plot_figure3.py turns into panels.
 
-This documents, in runnable form, how the four intermediate CSVs were produced from the
-raw single-cell differential-expression and GO-enrichment tables. plot_figure3.py reads
-the CSVs and does only drawing; this script is the analysis of record for the numbers.
+from __future__ import annotations
 
-Raw inputs (E18p5_clean/results/tables/):
-  05b_cortstr_plus_hypoglut_DE_celltype_broad_<CLASS>_mut_vs_wt.csv   per-class DE (broad)
-  05b_cortstr_plus_hypoglut_DE_celltype_fine_<SPN...>_mut_vs_wt.csv   per-class DE (SPN subtypes)
-  05b_cortstr_plus_hypoglut_global_allcells_LR_celltypeadjusted_{UP,DOWN}_in_mut_GO_BP.csv
-  05b_cortstr_plus_hypoglut_global_consistent_fine_{UP,DOWN}_nge4_GO_BP.csv  (recurrent, Supp S3A)
-Gene-set membership (saved alongside, produced in R from org.Mm.eg.db).
+import argparse
+import csv
+import hashlib
+import math
+from collections import OrderedDict
+from pathlib import Path
 
-NOTE 2026-08-02: the battery now uses DIRECT GO annotation (keytype='GO'), not the
-inherited closure (keytype='GOALL'). The JSON files below still hold the GOALL sets
-that earlier versions used; the shipped battery CSV records which annotation each
-row was scored on in its `annotation` column.
-  go_gene_sets.json, go_gene_sets_extra.json, go_ra_sets.json
-
-This script RECOMPUTES the permutation battery and the retinoic-acid drop-out test from the
-raw DE tables and VERIFIES each against its shipped canonical CSV (figure3_gene_set_battery.csv
-and figure3_RA_set_tests.csv respectively), printing a max/mean |dz| comparison for both. It
-does not overwrite them - the shipped CSVs additionally carry editorial columns (battery:
-category and GO-id; RA: the non-glial control classes) and are the versions used for the figure.
-The battery here tests the 19 shipped gene sets; a 20th set, "Forebrain regionalisation", is in
-the gene-set JSON but was excluded from the panel (too few genes detected per class, see Methods)
-and is skipped so the computed rows match the shipped CSV one-to-one. figure3_restricted_genes.csv
-and figure3_GO_terms_shown.csv are deterministic selections/curations documented in the
-manuscript Methods and the Figure_3 README.
-
-This script is READ-ONLY: it opens the raw tables and the shipped CSVs for reading and writes
-NOTHING to disk. It prints a comparison of recomputed vs shipped battery z-scores. To rebuild the
-figure from the shipped CSVs, use plot_figure3.py.
-
-Shipped canonical CSVs it reads and checks against (in ../, the Figure_3 folder):
-  figure3_gene_set_battery.csv    19 gene sets x 9 classes: z vs random, perm P, significance
-  figure3_restricted_genes.csv    panels C/D per-gene per-class fold change, detection, significance
-  figure3_RA_set_tests.csv        retinoic-acid set-level drop-out tests
-  figure3_GO_terms_shown.csv      curated GO terms shown in panel A / Supp S3A
-
-METHODS NOTES
-  Battery z-score: for each gene set and cell class, the set's mean log2FC is compared to
-  2000 size-matched random gene sets drawn without replacement from the genes TESTED in that
-  class; z = (observed - null mean)/null sd, two-sided permutation P. Scoring uses the
-  per-cell-class DE tables because cell-type-restricted genes fail the pooled expression filter.
-  Restricted-gene criterion (panel C): detected in >=6 of 9 classes, significant (adj P<0.05,
-  |log2FC|>=0.8) in exactly one class, and effect in that class >= 2x the largest elsewhere.
-  Gene-set membership is the DIRECT org.Mm.eg.db annotation (keytype='GO'). The
-  inherited closure (GOALL) was abandoned because it inflates broad umbrella terms:
-  'synaptic transmission' is 973 genes under GOALL versus 161 direct, and its
-  significant cells were driven by genes that only inherit the label. Four of six
-  fell below P<0.05 when rescored on the direct set;
-  the choice of the 19 terms and their 6 category labels is editorial, stated as such.
-
-Usage: python compute_figure3_tables.py [TABLES_DIR] [GENESET_DIR] [OUT_DIR]
-Requires numpy only. Deterministic given seed=RNG_SEED.
-"""
-import os, sys, csv, json
 import numpy as np
 
-TAB  = sys.argv[1] if len(sys.argv) > 1 else "../../../../E18p5_clean/results/tables"
-GSD  = sys.argv[2] if len(sys.argv) > 2 else ".."
-OUT  = sys.argv[3] if len(sys.argv) > 3 else ".."
-RNG_SEED = 3
-N_PERM = 2000
 
-PREF = "05b_cortstr_plus_hypoglut_"
-# (class key in output, DE table stem, display name, group)
+N_DRAWS = 4000
+RNG_SEED = 3
+MIN_TESTED_GENES = 15
+PREFIX = "05b_cortstr_plus_hypoglut_"
+
 CLASSES = [
-    ("Cycling RG",          "DE_celltype_broad_Cycling_RG",          "Cycling RG",          "Dorsal"),
-    ("Immature astrocytes", "DE_celltype_broad_Immature_Astrocytes", "Immature astrocytes", "Dorsal"),
-    ("Deep-layer EN",       "DE_celltype_broad_Deep_layer_EN",       "Deep-layer EN",       "Dorsal"),
-    ("Upper-layer EN",      "DE_celltype_broad_Upper_layer_EN",      "Upper-layer EN",      "Dorsal"),
-    ("SPN-D1",              "DE_celltype_fine_Striatal_SPN_D1_striosome_like_", "SPN-D1",   "LGE-derived"),
-    ("SPN-D2",              "DE_celltype_fine_Striatal_SPN_D2_indirect_pathway_", "SPN-D2", "LGE-derived"),
-    ("LGE-IN precursors",   "DE_celltype_broad_LGE_IN_prec",         "LGE-IN precursors",   "LGE-derived"),
-    ("MGE interneurons",    "DE_celltype_broad_MGE_IN",              "MGE interneurons",    "Cortical IN"),
-    ("CGE interneurons",    "DE_celltype_broad_Migrating_CGE_derived_IN", "CGE interneurons", "Cortical IN"),
+    ("Cycling RG", "DE_celltype_broad_Cycling_RG", "Dorsal"),
+    ("Immature astrocytes", "DE_celltype_broad_Immature_Astrocytes", "Dorsal"),
+    ("Deep-layer EN", "DE_celltype_broad_Deep_layer_EN", "Dorsal"),
+    ("Upper-layer EN", "DE_celltype_broad_Upper_layer_EN", "Dorsal"),
+    ("SPN-D1", "DE_celltype_fine_Striatal_SPN_D1_striosome_like_", "LGE-derived"),
+    ("SPN-D2", "DE_celltype_fine_Striatal_SPN_D2_indirect_pathway_", "LGE-derived"),
+    ("LGE-IN precursors", "DE_celltype_broad_LGE_IN_prec", "LGE-derived"),
+    ("MGE interneurons", "DE_celltype_broad_MGE_IN", "Cortical IN"),
+    ("CGE interneurons", "DE_celltype_broad_Migrating_CGE_derived_IN", "Cortical IN"),
 ]
 
-def load_de(stem):
-    """Return {gene: (log2FC, p_adj)} for one per-class DE table."""
-    path = os.path.join(TAB, f"{PREF}{stem}_mut_vs_wt.csv")
-    out = {}
-    with open(path) as f:
-        for r in csv.DictReader(f):
-            try:
-                out[r["gene"]] = (float(r["avg_log2FC"]), float(r["p_val_adj"]))
-            except (ValueError, KeyError):
-                pass
+EXPECTED_SET_SIZES = OrderedDict([
+    ("Axon guidance", 191),
+    ("Semaphorin-plexin signaling", 43),
+    ("Cell adhesion", 444),
+    ("Synaptic transmission", 161),
+    ("Ionotropic glutamate receptor sig", 22),
+    ("Neuronal action potential", 53),
+    ("Cell cycle (S and G2/M)", 94),
+    ("DNA repair", 253),
+    ("Response to oxidative stress", 144),
+    ("Apoptotic process", 533),
+])
+
+
+def comment_aware_rows(path: Path):
+    """Read a CSV while ignoring blank and comment-prefixed records."""
+    with path.open(newline="") as handle:
+        lines = [line for line in handle if line.strip() and not line.lstrip().startswith("#")]
+    return list(csv.DictReader(lines))
+
+
+def locate_defaults(script: Path):
+    table_candidates = [script.parent.parent / "tables", script.parents[2] / "tables"]
+    tables = next((p for p in table_candidates if (p / "Table_S11_gene_set_membership.csv").exists()),
+                  table_candidates[0])
+    project = next((p for p in script.parents
+                    if (p / "E18p5_clean" / "results" / "tables").is_dir()), None)
+    if project is None:
+        raise FileNotFoundError("Could not locate E18p5_clean/results/tables from the script path")
+    return project / "E18p5_clean" / "results" / "tables", tables
+
+
+def load_membership(path: Path):
+    rows = comment_aware_rows(path)
+    required = {"panel", "gene_set", "category", "go_id", "annotation",
+                "canonical_fraction", "gene"}
+    if not rows or not required.issubset(rows[0]):
+        raise ValueError(f"{path} lacks required membership columns: {sorted(required)}")
+
+    sets = OrderedDict()
+    for row in rows:
+        name = row["gene_set"]
+        meta = tuple(row[k] for k in
+                     ("panel", "category", "go_id", "annotation", "canonical_fraction"))
+        if name not in sets:
+            sets[name] = {"meta": meta, "genes": []}
+        elif sets[name]["meta"] != meta:
+            raise ValueError(f"Inconsistent metadata for {name}")
+        sets[name]["genes"].append(row["gene"])
+
+    if list(sets) != list(EXPECTED_SET_SIZES):
+        raise ValueError("Membership set names/order do not match the authoritative 10-set battery")
+    for name, expected in EXPECTED_SET_SIZES.items():
+        genes = sets[name]["genes"]
+        if len(genes) != len(set(genes)):
+            raise ValueError(f"Duplicate genes in {name}")
+        if len(genes) != expected:
+            raise ValueError(f"{name}: expected {expected} genes, found {len(genes)}")
+    return sets
+
+
+def load_de(path: Path):
+    rows = comment_aware_rows(path)
+    out = OrderedDict()
+    for row in rows:
+        try:
+            out[row["gene"]] = float(row["avg_log2FC"])
+        except (KeyError, TypeError, ValueError):
+            continue
+    if not out:
+        raise ValueError(f"No gene/avg_log2FC values read from {path}")
     return out
 
-def perm_z(values_all, member_genes, rng, n_perm=N_PERM):
-    """z of the member mean vs random same-size subsets of the tested genes."""
-    members = [g for g in member_genes if g in values_all]
-    if len(members) < 4:
-        return None
-    allv = np.array(list(values_all.values()))
-    obs = np.mean([values_all[g] for g in members])
+
+def test_rng(master_seed: int, gene_set: str, cell_type: str):
+    digest = hashlib.sha256(f"{master_seed}|{gene_set}|{cell_type}".encode()).digest()
+    return np.random.default_rng(int.from_bytes(digest[:8], "little"))
+
+
+def permutation_test(values, member_genes, rng, draws):
+    members = [g for g in member_genes if g in values]
     k = len(members)
-    null = np.array([rng.choice(allv, k, replace=False).mean() for _ in range(n_perm)])
-    sd = null.std()
-    z = (obs - null.mean()) / sd if sd > 0 else 0.0
-    p = (np.sum(np.abs(null - null.mean()) >= abs(obs - null.mean())) + 1) / (n_perm + 1)
-    return obs, z, p, k
+    all_values = np.asarray(list(values.values()), dtype=float)
+    observed = float(np.mean([values[g] for g in members]))
+    null = np.empty(draws, dtype=float)
+    for index in range(draws):
+        null[index] = rng.choice(all_values, size=k, replace=False).mean()
+    centre = float(null.mean())
+    spread = float(null.std(ddof=0))
+    z_score = (observed - centre) / spread if spread else 0.0
+    p_value = (int(np.count_nonzero(np.abs(null - centre) >= abs(observed - centre))) + 1) / (draws + 1)
+    return observed, z_score, p_value, k
+
+
+def bh_adjust(p_values):
+    p = np.asarray(p_values, dtype=float)
+    order = np.argsort(p)
+    ranked = p[order]
+    adjusted = ranked * len(p) / np.arange(1, len(p) + 1)
+    adjusted = np.minimum.accumulate(adjusted[::-1])[::-1]
+    out = np.empty_like(adjusted)
+    out[order] = np.minimum(adjusted, 1.0)
+    return out.tolist()
+
+
+def binomial_tail(successes, trials, probability=0.05):
+    return sum(math.comb(trials, k) * probability**k * (1 - probability)**(trials - k)
+               for k in range(successes, trials + 1))
+
+
+def fmt(value, digits):
+    return f"{value:.{digits}f}".rstrip("0").rstrip(".")
+
+
+def compute(de_dir: Path, membership_path: Path, draws: int, seed: int, floor: int):
+    sets = load_membership(membership_path)
+    de = {}
+    for cell_type, stem, _group in CLASSES:
+        de[cell_type] = load_de(de_dir / f"{PREFIX}{stem}_mut_vs_wt.csv")
+
+    rows, tested_indices, p_values = [], [], []
+    for gene_set, payload in sets.items():
+        panel, category, go_id, annotation, canonical_fraction = payload["meta"]
+        genes = payload["genes"]
+        for cell_type, _stem, group in CLASSES:
+            n_tested = sum(g in de[cell_type] for g in genes)
+            row = OrderedDict([
+                ("panel", panel), ("gene_set", gene_set), ("category", category),
+                ("go_id", go_id), ("annotation", annotation),
+                ("canonical_fraction", canonical_fraction),
+                ("cell_type", cell_type), ("group", group),
+                ("n_genes_in_set", str(len(genes))), ("n_genes_tested", str(n_tested)),
+            ])
+            if n_tested < floor:
+                row.update(test_status=f"NA_below_{floor}_genes", mean_log2FC="NA",
+                           z_vs_random="NA", perm_p="NA", significant="NA")
+            else:
+                obs, z_score, p_value, _ = permutation_test(
+                    de[cell_type], genes, test_rng(seed, gene_set, cell_type), draws)
+                row.update(test_status="tested", mean_log2FC=fmt(obs, 4),
+                           z_vs_random=fmt(z_score, 3), perm_p=fmt(p_value, 4),
+                           significant=str(p_value < 0.05))
+                tested_indices.append(len(rows))
+                p_values.append(p_value)
+            rows.append(row)
+
+    q_values = bh_adjust(p_values)
+    for row in rows:
+        row["significant_FDR_q05"] = "NA"
+        row["q_value_BH"] = "NA"
+    for index, q_value in zip(tested_indices, q_values):
+        rows[index]["significant_FDR_q05"] = str(q_value < 0.05)
+        rows[index]["q_value_BH"] = fmt(q_value, 4)
+    return rows, len(p_values)
+
+
+def write_table(path: Path, rows, tested_count: int, draws: int, seed: int, floor: int):
+    nominal = sum(row["significant"] == "True" for row in rows)
+    fdr = sum(row["significant_FDR_q05"] == "True" for row in rows)
+    numeric_q = [float(row["q_value_BH"]) for row in rows if row["q_value_BH"] != "NA"]
+    tail = binomial_tail(nominal, tested_count)
+    comments = [
+        "# Authoritative source for Figure 3B-D: 10 displayed gene sets x 9 cell classes.",
+        "# Membership is frozen in Table_S11_gene_set_membership.csv: direct GO annotations",
+        "# from org.Mm.eg.db 3.20.0 (GO/Entrez source date 2024-Sep20), plus the curated",
+        "# 94-gene Tirosh S+G2/M cell-cycle set. GOALL/inherited annotations are not used.",
+        f"# Each test compares its mean log2FC with {draws:,} size-matched random gene sets",
+        f"# sampled from the same cell-class DE universe (deterministic keyed seed {seed}).",
+        f"# A hard floor of {floor} tested genes is applied per set/class cell.",
+        "# The cell-cycle set is retained as a targeted biological-control set even though it",
+        "# is not testable in every class; its seven below-floor cells are explicitly NA.",
+        f"# Therefore the rectangular display has 90 cells but only {tested_count} inferential tests.",
+        f"# Benjamini-Hochberg q values are calculated across those {tested_count} non-NA tests only.",
+        f"# Nominal P<0.05 cells: {nominal}/{tested_count}; exact Binomial({tested_count},0.05) upper-tail P={tail:.3g}.",
+        f"# FDR q<0.05 cells: {fdr}/{tested_count}; lowest q={min(numeric_q):.4f}.",
+        "# Panels are descriptive and carry no significance symbols; per-cell P and q values",
+        "# are retained for transparency. Removed DNA-replication and cytoplasmic-translation",
+        "# sets remain documented in Table_S6_gene_set_audit.csv and are not part of this table.",
+        "#",
+    ]
+    fieldnames = list(rows[0])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", newline="") as handle:
+        handle.write("\n".join(comments) + "\n")
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+    return nominal, fdr, min(numeric_q), tail
+
 
 def main():
-    DE = {key: load_de(stem) for key, stem, _, _ in CLASSES}
-    # log2FC-only view for the battery null (all tested genes per class)
-    L2 = {key: {g: v[0] for g, v in d.items()} for key, d in DE.items()}
+    script = Path(__file__).resolve()
+    default_de, default_tables = locate_defaults(script)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("de_dir", nargs="?", type=Path, default=default_de)
+    parser.add_argument("membership_csv", nargs="?", type=Path,
+                        default=default_tables / "Table_S11_gene_set_membership.csv")
+    parser.add_argument("output_csv", nargs="?", type=Path,
+                        default=default_tables / "Table_S3_gene_set_battery.csv")
+    parser.add_argument("--draws", type=int, default=N_DRAWS)
+    parser.add_argument("--seed", type=int, default=RNG_SEED)
+    parser.add_argument("--min-tested-genes", type=int, default=MIN_TESTED_GENES)
+    args = parser.parse_args()
+    rows, tested = compute(args.de_dir.resolve(), args.membership_csv.resolve(),
+                           args.draws, args.seed, args.min_tested_genes)
+    nominal, fdr, lowest, tail = write_table(args.output_csv.resolve(), rows, tested,
+                                              args.draws, args.seed, args.min_tested_genes)
+    print(f"wrote {args.output_csv.resolve()}")
+    print(f"display cells=90; inferential tests={tested}; below-floor NA={90-tested}")
+    print(f"nominal P<0.05={nominal}; FDR q<0.05={fdr}; lowest q={lowest:.4f}; binomial P={tail:.3g}")
 
-    GS = json.load(open(os.path.join(GSD, "go_gene_sets.json")))
-    GX = json.load(open(os.path.join(GSD, "go_gene_sets_extra.json")))
-    battery = {**GS, **GX}
-    # category + GO-id metadata is carried in the shipped battery CSV header comment / README
-    # "Forebrain regionalisation" (GO:0021871) was TESTED and EXCLUDED from the shipped panel
-    # because only 5-11 of its 27 genes are detected per cell class (see manuscript Methods).
-    # The JSON retains it for the record; the shipped CSV has 19 sets, not 20. Drop it here so
-    # the computed rows match the shipped set exactly.
-    EXCLUDED = {"Forebrain regionalisation"}
-    rng = np.random.default_rng(RNG_SEED)
-
-    # ---- battery table ----
-    rows = []
-    for gs, genes in battery.items():
-        if gs in EXCLUDED:
-            continue
-        for key, _, disp, group in CLASSES:
-            res = perm_z(L2[key], genes, rng)
-            if res is None:
-                continue
-            obs, z, p, k = res
-            rows.append(dict(gene_set=gs, cell_type=disp, group=group,
-                             n_genes_in_GO=len(genes), n_genes_tested=k,
-                             z_vs_random=round(z, 4), perm_p=round(p, 4),
-                             significant=(p < 0.05)))
-    print(f"battery rows computed: {len(rows)} "
-          f"({len(battery) - len(EXCLUDED)} sets x 9 classes; "
-          f"'{', '.join(EXCLUDED)}' excluded per Methods)")
-
-    # ---- retinoic-acid drop-out test ----
-    # The RA drop-out uses ONLY the two retinoic-acid GO sets (response + metabolic; 136-gene
-    # union), NOT the gliogenesis / astrocyte-differentiation sets that also live in the JSON
-    # (those were separate lineage controls). This reproduces the shipped per-class tested counts
-    # (Cycling RG 27, Imm. astrocytes 24; minus the two drivers 26 and 22).
-    RA = json.load(open(os.path.join(GSD, "go_ra_sets.json")))
-    ra_all = sorted(set(RA["Retinoic acid response"]) | set(RA["Retinoid metabolic"]))
-    drivers = {"Cyp26b1", "Dhrs3"}
-    ra_rows = []
-    for key, disp in [("Cycling RG", "Cycling RG"), ("Immature astrocytes", "Imm. astrocytes")]:
-        for label, gene_list in [("full set", ra_all),
-                                 ("minus both", [g for g in ra_all if g not in drivers])]:
-            res = perm_z(L2[key], gene_list, rng)
-            if res:
-                obs, z, p, k = res
-                ra_rows.append(dict(test=f"{disp} {label}", n_genes=k,
-                                    mean_log2FC=round(obs, 4), z_vs_random=round(z, 3),
-                                    perm_p=round(p, 4)))
-    print(f"RA drop-out rows: {len(ra_rows)}")
-
-    # ---- verify against the shipped canonical CSVs (do not overwrite them) ----
-    # The shipped figure3_gene_set_battery.csv additionally carries editorial category and
-    # go_id columns and is the version used for the figure. Here we confirm the recomputed
-    # z-scores and significance reproduce it to within permutation noise.
-    ship = {}
-    with open(os.path.join(GSD, "tables/Table_S3_gene_set_battery.csv")) as f:
-        for r in csv.DictReader(f):
-            ship[(r["gene_set"], r["cell_type"])] = (float(r["z_vs_random"]),
-                                                     r["significant"] == "True")
-    dz, flip, unmatched = [], 0, []
-    for r in rows:
-        k = (r["gene_set"], r["cell_type"])
-        if k in ship:
-            dz.append(abs(r["z_vs_random"] - ship[k][0]))
-            flip += int(r["significant"] != ship[k][1])
-        else:
-            unmatched.append(k)
-    if dz:
-        print(f"battery vs shipped: {len(dz)}/{len(rows)} computed cells matched to the "
-              f"{len(ship)}-cell shipped CSV | max |dz|={max(dz):.3f} "
-              f"mean |dz|={np.mean(dz):.3f} | significance flips={flip}")
-        if unmatched:
-            print(f"  WARNING: {len(unmatched)} computed cells not in shipped CSV: {unmatched[:5]}")
-        else:
-            print("  all computed cells matched (no set silently dropped)")
-        print("(small dz and few/zero flips confirm the shipped CSV; permutation seed=3, "
-              f"{N_PERM} draws)")
-
-    # ---- verify the retinoic-acid drop-out test against its shipped CSV ----
-    ra_ship = {}
-    with open(os.path.join(GSD, "figure3_RA_set_tests.csv")) as f:
-        for r in csv.DictReader(f):
-            ra_ship[r["test"]] = float(r["z_vs_random"])
-    # both the recompute and the shipped CSV use the "Imm. astrocytes" abbreviation; match directly
-    ra_dz, ra_missing = [], []
-    for r in ra_rows:
-        k = r["test"]
-        if k in ra_ship:
-            ra_dz.append(abs(r["z_vs_random"] - ra_ship[k]))
-        else:
-            ra_missing.append(r["test"])
-    if ra_dz:
-        print(f"RA drop-out vs shipped: {len(ra_dz)}/{len(ra_rows)} recomputed tests matched "
-              f"({len(ra_ship)} rows in shipped CSV) | max |dz|={max(ra_dz):.3f} mean |dz|={np.mean(ra_dz):.3f}")
-    if ra_missing:
-        print(f"  WARNING: recomputed RA tests not found in shipped CSV: {ra_missing}")
-    else:
-        print("  all recomputed RA tests matched; shipped CSV additionally carries 3 non-glial "
-              "control-class rows this recompute does not regenerate")
 
 if __name__ == "__main__":
     main()

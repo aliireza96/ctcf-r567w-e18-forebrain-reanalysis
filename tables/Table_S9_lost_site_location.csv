@@ -1,21 +1,13 @@
-# Panel C source. Genomic-position composition of CTCF sites across ALL TEN deciles of
-"# normalised occupancy change. decile_rank 1 = most binding lost, 10 = binding gained."
-"# Uses every one of the 40,312 peaks with a callable CTCF core motif; no group is selected."
-"# Percentages sum to 100 within each decile (linear axis, deliberately)."
-# Rebuilt 2026-08-01. Two earlier versions are superseded: a log odds-ratio forest plot
-"# (three failed axis attempts), and a two-group bar chart comparing decile 1 against"
-# decile 10 only. The two-group version discarded 80% of the data and labelled decile 10
-"# 'retained' when 100% of its peaks GAINED signal (median +0.48 log2 = 1.40-fold up),"
-# which also inflated the promoter contrast to 15.5 vs 59.9 percent; against all other
-# sites the honest contrast is 15.5 vs 35.2 percent.
-decile_rank,median_log2FC_norm,n_peaks,pct_promoter,pct_intron,pct_distal,pct_other
-1,-2.3045,4032,15.5,31.9,45.0,7.6
-2,-1.622,4031,18.6,34.3,38.8,8.3
-3,-1.2485,4031,22.1,34.5,35.7,7.7
-4,-0.9788,4031,25.5,33.4,33.8,7.3
-5,-0.7389,4032,28.9,31.4,32.2,7.5
-6,-0.5281,4031,30.6,31.4,30.4,7.6
-7,-0.3298,4030,35.9,27.3,28.1,8.6
-8,-0.1364,4031,41.8,25.8,25.9,6.5
-9,0.0826,4033,53.5,21.2,20.3,5.0
-10,0.484,4030,59.9,19.5,15.7,5.0
+# ChIPseeker genomic-position composition across all callable-component occupancy deciles.
+# Promoter = +/-3 kb from a known-gene TSS; percentages sum to 100 within each decile.
+decile_rank,median_log2FC_norm,n_components,n_promoter,pct_promoter,n_intron,pct_intron,n_distal,pct_distal,n_other,pct_other
+1,-2.310986,3728,570,15.2897,1194,32.0279,1690,45.3326,274,7.3498
+2,-1.613593,3729,656,17.5918,1282,34.3792,1469,39.3939,322,8.6350
+3,-1.228602,3728,768,20.6009,1296,34.7639,1364,36.5880,300,8.0472
+4,-0.944418,3729,895,24.0011,1233,33.0652,1306,35.0228,295,7.9110
+5,-0.706401,3728,985,26.4217,1212,32.5107,1242,33.3155,289,7.7521
+6,-0.495934,3729,1113,29.8471,1183,31.7243,1123,30.1153,310,8.3132
+7,-0.304288,3728,1256,33.6910,1068,28.6481,1077,28.8895,327,8.7715
+8,-0.111011,3729,1455,39.0185,973,26.0928,998,26.7632,303,8.1255
+9,0.099946,3728,1878,50.3755,817,21.9152,807,21.6470,226,6.0622
+10,0.485111,3729,2116,56.7444,779,20.8903,627,16.8142,207,5.5511

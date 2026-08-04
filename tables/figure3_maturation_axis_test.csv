@@ -1,0 +1,30 @@
+# Gene-wise position diagnostic for the battery's sets in WILD-TYPE cells.
+# Test: Spearman correlation of each member gene's SCT expression against
+"# pseudotime_transfer, across 2,206 WT deep-layer EN cells (rooted_v2 dorsal mapping)."
+# Genes filtered to those detected in >=5% of those cells.
+# median_rho < 0 would mean the set declines with maturation.
+# RESULT: each broad set has a near-zero median member-gene correlation. This does
+# not test the composite guidance-minus-synaptic module balance, which shows a
+# heterogeneous same-transcriptome association in a separate audit. No individual
+# broad GO set is treated as a universal maturation marker.
+gene_set,n_genes,median_rho,frac_genes_declining
+Axon guidance,115,0.008,0.417
+Axonogenesis,90,0.0088,0.378
+Neuron projection extension,26,-0.0115,0.615
+Neuron migration,97,0.0018,0.474
+Synaptic transmission,97,0.0244,0.34
+Neuronal action potential,27,0.0027,0.481
+Ionotropic glutamate receptor sig,20,0.0262,0.3
+
+"# Individual genes DO track it strongly, which is why the set-level null matters:"
+gene,rho_vs_pseudotime,p
+Dcc,-0.301,2.84e-47
+Epha4,-0.228,1.64e-27
+Efna5,0.122,8.97e-09
+Nrxn3,0.12,1.7e-08
+Sema5a,-0.079,0.00022
+Unc5c,0.079,0.000198
+Robo1,-0.044,0.0404
+Grin2b,0.044,0.0381
+Syt1,0.023,0.27
+Snap25,-0.016,0.454

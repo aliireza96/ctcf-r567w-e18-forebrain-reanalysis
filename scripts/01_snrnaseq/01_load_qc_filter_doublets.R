@@ -1,5 +1,5 @@
 # ============================================================
-# 01_load_qc_filter_doublets.R — load, QC, filtering, doublets
+# 01_load_qc_filter_doublets.R — load, QC and filtering
 # ============================================================
 
 source("scripts/00_setup.R")
@@ -161,10 +161,12 @@ if (length(sex_female) + length(sex_male) >= 2) {
   message("Sex marker QC skipped: too few sex-linked genes found in this dataset.")
 }
 
-# ---- Optional: doublet detection (recommended) ----
-# This works but parameters must be tuned; treat as QC aid.
+# ---- Doublet-detection availability audit ----
+# No algorithmic doublet detection or removal is applied in this workflow.
 if (!requireNamespace("DoubletFinder", quietly = TRUE)) {
-  message("Install DoubletFinder if you want doublet removal: remotes::install_github('chris-mcginnis-ucsf/DoubletFinder')")
+  message("DoubletFinder is unavailable; no algorithmic doublet detection was applied.")
+} else {
+  message("DoubletFinder is available, but no algorithmic doublet detection was applied.")
 }
 
 # Save object

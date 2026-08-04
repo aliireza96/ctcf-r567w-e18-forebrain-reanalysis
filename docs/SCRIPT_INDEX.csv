@@ -11,6 +11,8 @@ stage,script,purpose
 01_snrnaseq,04b_composition_variableN_sensitivity.R,equal-N resampling -> Supplementary Figure S1E
 01_snrnaseq,04e_composition_descriptive_panel.R,composition table feeding Figure 1D / Table S1
 01_snrnaseq,05_withinstate_DE_GO.R,"global and within-type DE, GO enrichment -> Fig 3A, Tables S4/S5"
+01_snrnaseq,12_d2_subclustering.R,D2 SPN subclustering; per-state abundance and within-state maturation tests
+01_snrnaseq,13_sex_verification.R,sex of each library from Xist and Y-linked gene detection
 02_trajectories,07_build_ventral_reference_mayer.R,builds the Mayer ventral reference
 02_trajectories,07e_supp_S2_reference_root_dotplots.R,Supplementary Figure S2A-D root dot plots
 02_trajectories,08_build_dorsal_reference_dibella.R,builds the Di Bella dorsal reference
@@ -36,9 +38,11 @@ stage,script,purpose
 04_orthogonal,16_hic_insulation_tad_boundaries.py,Hi-C insulation at the cPcdh locus -> S4D
 04_orthogonal,17_bulk_rnaseq_interpretation.R,"cPcdh subfamily expression -> Fig 4D, S4B"
 04_orthogonal,18_4c_interpretation.R,4C contact change at cPcdh -> Fig 4D
-05_figures,CTCF_MOUSE.H11MO.0.A.pcm,"HOCOMOCO CTCF position count matrix (input, not a script)"
+05_figures,build_figure3_membership.py,expands the Figure 3 gene-set battery into Table S11 gene membership
 05_figures,compute_figure3_tables.py,computes the gene-programme battery feeding Table_S3
 05_figures,make_figure4.py,Figure 4A-D from Tables S7-S10
 05_figures,plot_figure1D.py,Figure 1D from Table_S1_composition_FDR.csv
 05_figures,plot_figure2D.py,Figure 2D from Table_S2_pseudotime_shift_FDR.csv
+05_figures,plot_figure2FGH.py,Figure 2F-H panels and the Supplementary S2F marker heatmap
 05_figures,plot_figure3.py,Figure 3A-D from Table_S3 and Table_S4
+05_figures,plot_s1_qc_retention.py,Supplementary S1C nucleus-retention panel

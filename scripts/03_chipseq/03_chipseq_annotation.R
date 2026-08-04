@@ -15,12 +15,10 @@ if (!file.exists(class_obj_path)) {
 }
 obj <- readRDS(class_obj_path)
 
-chipseq_msg("Annotating LOST / GAINED / MAINTAINED peaks with ChIPseeker.")
+chipseq_msg("Annotating LOST / GAINED / MAINTAINED union components with ChIPseeker.")
 anno_lost <- ChIPseeker::annotatePeak(obj$lost_peaks, tssRegion = c(-3000, 3000), TxDb = txdb, annoDb = "org.Mm.eg.db")
 anno_gained <- ChIPseeker::annotatePeak(obj$gained_peaks, tssRegion = c(-3000, 3000), TxDb = txdb, annoDb = "org.Mm.eg.db")
 anno_maintained <- ChIPseeker::annotatePeak(obj$maintained_peaks, tssRegion = c(-3000, 3000), TxDb = txdb, annoDb = "org.Mm.eg.db")
-
-chipseq_save_rds(list(lost = anno_lost, gained = anno_gained, maintained = anno_maintained), "chipseq_03_peak_annotations.rds")
 
 lost_df <- as.data.frame(anno_lost) %>% dplyr::mutate(peak_class = "LOST")
 gained_df <- as.data.frame(anno_gained) %>% dplyr::mutate(peak_class = "GAINED")
@@ -31,7 +29,61 @@ chipseq_write_csv(gained_df, "chipseq_03_GAINED_peaks_annotated.csv")
 chipseq_write_csv(maintained_df, "chipseq_03_MAINTAINED_peaks_annotated.csv")
 
 anno_df <- dplyr::bind_rows(lost_df, gained_df, maintained_df) %>%
-  dplyr::mutate(genomic_feature = collapse_annotation_class(annotation))
+  dplyr::mutate(
+    genomic_feature = collapse_annotation_class(annotation),
+    figure4_feature = dplyr::case_when(
+      grepl("Promoter", annotation, ignore.case = TRUE) ~ "Promoter",
+      grepl("Intron", annotation, ignore.case = TRUE) ~ "Intron",
+      grepl("Intergenic", annotation, ignore.case = TRUE) ~ "Distal",
+      TRUE ~ "Other"
+    )
+  )
+
+# ChIPseeker retains the GRanges metadata in current releases. Recover the
+# component identifier by exact coordinates as a defensive fallback so that
+# Figure 4C cannot silently depend on row order.
+component_key <- paste0(
+  as.character(GenomicRanges::seqnames(obj$union_components)), ":",
+  start(obj$union_components), "-", end(obj$union_components)
+)
+union_id_by_key <- stats::setNames(obj$union_components$union_id, component_key)
+anno_key <- paste0(anno_df$seqnames, ":", anno_df$start, "-", anno_df$end)
+if (!"union_id" %in% colnames(anno_df)) {
+  anno_df$union_id <- unname(union_id_by_key[anno_key])
+}
+stopifnot(
+  nrow(anno_df) == length(obj$union_components),
+  !anyNA(anno_df$union_id),
+  dplyr::n_distinct(anno_df$union_id) == length(obj$union_components)
+)
+
+union_annotation_df <- anno_df %>%
+  dplyr::transmute(
+    union_id,
+    chrom = as.character(seqnames),
+    start = start - 1L,
+    end,
+    peak_class,
+    annotation,
+    genomic_feature,
+    figure4_feature,
+    distanceToTSS,
+    geneId,
+    SYMBOL
+  ) %>%
+  dplyr::arrange(match(union_id, obj$union_components$union_id))
+chipseq_write_csv(union_annotation_df, "chipseq_03_union_component_annotations.csv")
+
+chipseq_save_rds(
+  list(
+    lost = anno_lost,
+    gained = anno_gained,
+    maintained = anno_maintained,
+    anno_df = anno_df,
+    union_component_annotations = union_annotation_df
+  ),
+  "chipseq_03_peak_annotations.rds"
+)
 
 feature_summary <- anno_df %>%
   dplyr::count(peak_class, genomic_feature, name = "n_peaks") %>%

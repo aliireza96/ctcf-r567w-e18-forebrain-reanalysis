@@ -1,0 +1,32 @@
+# Revised exploratory audit of the guidance-minus-synaptic balance.
+# This table documents a same-transcriptome association; it does not provide an
+# independent calibration of transferred position or a universal maturation clock.
+# Module scores were reconstructed with SCT AddModuleScore (seed 1) using
+# org.Mm.eg.db 3.22.0. The exact annotation snapshot and per-cell scores used for
+# the earlier package were not archived, so reconstructed score values are close
+# to, but not bitwise identical to, the earlier values.
+
+analysis,scope,n,result,interpretation
+Displayed-set membership,Figure 3 gene sets,NA,"209 guidance genes; 215 synaptic genes; 3 shared (Ank3, Cdk5r1, Met); Jaccard 0.007","Near-disjoint programmes; their opposite differential-expression directions are not definitional"
+Displayed-set effect direction,Deep-layer excitatory neurons,NA,"guidance mean log fold change +0.048; synaptic -0.082; Mann-Whitney P=7.9e-3","Opposite programme shifts occur within one broad cell class"
+Score-reconstruction provenance,Current SCT object,11554,"207 current direct-annotation guidance genes and 209 synaptic genes present in SCT; 4 shared","The current annotation differs slightly from the unarchived package snapshot; use reconstructed values as an audit"
+Pooled WT association,All four dorsal broad classes,5462,"guidance rho +0.374; synaptic +0.539; balance -0.305","Real pooled association, but pooling crosses classes with different score and position distributions"
+WT balance association,Cycling radial glia,343,"rho -0.093; P=0.0855","No detectable monotonic association in this class"
+WT balance association,Deep-layer excitatory neurons,2206,"rho -0.146; P=6.45e-12","Modest negative association within class"
+WT balance association,Immature astrocytes,1129,"rho -0.164; P=2.87e-8","Modest negative association within class"
+WT balance association,Upper-layer excitatory neurons,1784,"rho -0.497; P=3.63e-112","Strong negative association within class"
+Class-adjusted WT association,All four dorsal broad classes,5462,"partial Spearman rho -0.301; P=9.02e-115","The pooled balance association is not explained only by broad-class mixing"
+Component scores,Deep plus upper excitatory neurons,3990,"guidance rho +0.011 (P=0.497); synaptic rho +0.293 (P=5.51e-80); balance rho -0.265","Within excitatory neurons the balance relationship is chiefly driven by increasing synaptic score, not by both modules rising"
+Fine-subclass heterogeneity,Wild-type excitatory subclasses,NA,"CT/PT-like deep rho +0.211; L5/6-like deep rho -0.242; upper IT/Satb2-positive rho -0.036 (P=0.264)","Magnitude and even direction differ among finer identities; the balance is not a universal clock"
+Score-construction sensitivity,Target-only gene-z-score sensitivity,5462,"pooled balance rho -0.340; excitatory balance rho -0.263; guidance correlations are more score-sensitive","Balance direction is robust to this alternative score, but guidance alone is not a stable clock"
+Position-adjusted genotype association,Deep and upper excitatory neurons,8167,"nonlinear adjusted mutant-WT balance +0.00606 in deep (P=7.09e-5) and +0.00742 in upper (P=1.12e-5); raw shifts attenuated by 50% and 64%","Adjustment attenuates but does not erase the cell-level genotype association; do not claim the shift is fully explained by position"
+Retired matched-quintile analysis,Pooled deep plus upper excitatory neurons,8167,"Original bins did not control class. Reconstructed class-adjusted genotype effects: Q1 +0.00897 (P=2.21e-4); Q2 +0.0100 (P=3.21e-4); Q3 +0.00649 (P=0.0116); Q4 +0.00133 (P=0.590); Q5 +0.00436 (P=0.0575)","The former claim that three non-significant bins establish a position effect is invalid and has been retired"
+Independence limit,Module score versus transferred position,NA,"Both quantities are computed from the same query transcriptomes","This is an exploratory internal association, not independent validation of Figure 2"
+Replication limit,All cell-level associations and genotype comparisons,NA,"one library per genotype","P values are cell-level diagnostics, not biological-replicate evidence"
+
+# CONCLUSION: guidance-minus-synaptic balance is associated with transferred position
+# in several broad wild-type classes and after broad-class adjustment. The association
+# is heterogeneous across finer subclasses and, in excitatory neurons, chiefly
+# synaptic-driven. Because both axes use the same transcriptomes, it is neither an
+# independent validation nor a universal maturation clock. The former three-panel
+# Supplementary Figure S3 calibration and matched-quintile inference are retired.
