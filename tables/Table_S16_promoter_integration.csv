@@ -1,0 +1,43 @@
+# Integration of CTCF promoter occupancy with single-nucleus differential expression.
+# GO ENRICHMENT IS RECORDED HERE BUT NOT REPORTED IN RESULTS: the terms it returns for the
+#   gained-UP set (negative regulation of cell differentiation, neuron fate commitment,
+#   gliogenesis) are already shown in Figure 3, which is the manuscript's gene-programme
+#   figure. Repeating them would duplicate that figure. Results reports the gene counts and
+#   direction split instead, and Figures 4D/4E show individual genes.
+# This is the full result behind Figures 4D and 4E, which show representative genes only.
+# ONE PROMOTER DEFINITION THROUGHOUT: ENCODE forebrain H3K4me3 (E16.5, ENCFF965GZP) AND
+#   H3K27ac AND ChIPseeker Promoter<=3kb; nearest RefSeq TSS <=2 kb.
+# THE COUNTS ARE NESTED, NOT ALTERNATIVE DEFINITIONS:
+#   LOST   253 peaks -> 127 genes -> 33 DE-significant
+#   GAINED 2,491 peaks -> 1,256 genes -> 272 DE-significant
+#   The direction test runs on the DE-significant subset (272 / 33). GO enrichment runs
+#   on gene sets (147 up, 125 down, 127 lost). Pairing 127 with the direction statistics
+#   would overstate that test roughly fourfold.
+# BACKGROUND: genes carrying ANY CTCF peak at a promoter meeting the same definition
+#   (2,854 symbols, 2,817 mapped to Entrez). A promoter-matched background is required:
+#   comparing against all DE genes confounds promoter status with the direction tested.
+# DIRECTION: odds ratio for a significant gene being DOWN, gene set vs background.
+#   OR below 1 means the set shifts UP relative to background.
+analysis,gene_set,n_peaks,n_genes,n_DE_significant,pct_down,odds_ratio_down,p_value,result
+direction test,gained promoter CTCF,2491,1256,272,46.0,0.55,1.4e-04,shifts UP relative to promoter-matched background
+direction test,lost promoter CTCF,253,127,33,54.5,0.98,1.0,underpowered; not a demonstrated null (see note)
+GO enrichment,"gained promoter, significantly UP",,147,147,,,,12 significant BP terms: negative regulation of cell differentiation (20/143); negative regulation of developmental process (25/143); neuron fate commitment (6/143); gliogenesis (14/143); brain development (25/143); adjusted P 0.025-0.034
+GO enrichment,"gained promoter, significantly DOWN",,125,125,,,,no significant BP terms
+GO enrichment,"lost promoter, all genes",253,127,33,,,,no significant BP terms
+
+"# SENSITIVITY OF THE DIRECTION TEST TO PROMOTER DEFINITION (2 kb window, promoter-matched background)"
+# 'intersection' is the definition used above. The others are shown to demonstrate the
+# direction result is not an artefact of that choice.
+definition,peak_class,n_significant,pct_down,odds_ratio,p_value
+our annotation,LOST,59,64.4,1.27,4.9e-01
+our annotation,GAINED,338,52.7,0.63,1.6e-03
+ENCODE marks,LOST,34,52.9,0.92,8.6e-01
+ENCODE marks,GAINED,272,46.0,0.55,1.5e-04
+intersection,LOST,33,54.5,0.98,1.0e+00
+intersection,GAINED,272,46.0,0.55,1.4e-04
+
+# POWER NOTE ON THE LOST SET
+"The lost-promoter null is underpowered, not a demonstrated absence of effect:"
+"downsampling the gained set to n=127 recovers its own effect only 27% of the time,"
+and the direction test itself rests on only 33 significant genes.
+The interpretable lost-side result is depletion at active promoters (Supplementary Figure S3A).

@@ -1,0 +1,29 @@
+# Fate-switch tests within the cycling RG subclusters, mutant vs wild type.
+# QUESTION: does the mutant expansion reflect cells switching compartment identity,
+#   or independent expansion of states that keep their identity?
+# Dorsal TF set: Emx1, Emx2, Eomes, Neurog2, Neurod6, Tbr1.
+# Ventral TF set: Gsx2, Sp8, Sp9, Dlx1, Dlx2, Isl1.
+# Gliogenic set: Egfr, Olig2, Bcan, Fgfr3. A cell is positive on any member.
+# Two-sided Fisher exact per test; percentages are of cells in that state.
+#
+# RESULT: no test reaches significance (smallest p = 0.055). The trends do NOT all
+#   point the same way. Five of eight run against conversion (mutant cells carry
+#   fewer foreign-compartment traces); three run toward it and are listed as such in
+#   the trend_direction column. All three toward-conversion rows rest on the dorsal
+#   IPC wild-type arm of 18 cells, where one cell moves the rate by 5.6 percentage
+#   points: row 2a is 1/18 vs 10/81 with a 95% CI on the odds ratio of 0.30 to 109.9,
+#   and row 3a is 0/18 vs 8/81, which is why its odds ratio is infinite. Row 3 is the
+#   pooled version of 3a and inherits the same cells.
+# CONCLUSION SUPPORTED: no evidence of conversion. NOT supported: a claim that every
+#   trend argues against it.
+# LIMIT: one library per genotype, so nuclei are pseudoreplicates. These tests can
+#   fail to detect conversion; they cannot prove it did not occur.
+test,wt_pct,mut_pct,odds_ratio,p_value,trend_direction,n_wt / n_mut
+1. Residual dorsal identity in ventral IPC,10.9,9.0,0.81,0.565,against,101 / 343
+2a. Ventral identity in dorsal IPC,5.6,12.3,2.38,0.683,toward,18 / 81
+2b. Ventral identity in astrocyte-primed RG,17.9,9.7,0.50,0.202,against,28 / 144
+"3. Dual-identity cells, all cycling RG",5.5,6.3,1.15,0.687,toward,343 / 804
+3a. Dual-identity within dorsal IPC,0.0,9.9,Inf,0.344,toward,18 / 81
+5a. Gliogenic traces in dorsal IPC,38.9,23.5,0.49,0.236,against,18 / 81
+5b. Gliogenic traces in astrocyte-primed RG,78.6,57.6,0.37,0.055,against,28 / 144
+5c. Gliogenic traces in ventral IPC,37.6,30.0,0.71,0.181,against,101 / 343

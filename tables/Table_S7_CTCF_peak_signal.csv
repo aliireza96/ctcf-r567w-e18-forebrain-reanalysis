@@ -1,4 +1,8 @@
 # One row per reduced non-overlapping CTCF union component (mm10, BED-style 0-based start).
+# ROW COUNT. Reducing all wild-type and mutant MACS2 intervals gives 47,052 disjoint union
+#   components. This table holds the 45,021 that carry signal in both tracks and enter every
+#   analysis; 2,031 components with no signal in one track are omitted. The Results text
+#   quotes both numbers.
 # Exact-coordinate MACS2 multi-summit records were collapsed before WT and mutant intervals were reduced.
 # Signal is the mean of the deposited spike-in-normalised bigWig over the complete union component.
 # log2FC_norm = log2((mutant + 0.01)/(wild type + 0.01)).

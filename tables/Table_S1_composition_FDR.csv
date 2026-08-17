@@ -1,51 +1,23 @@
-# Figure 1D source. Cell-type composition, mutant vs wild type.
-#
-# TEST: two-sided Fisher exact per cell type on nucleus counts (cell type vs all
-#   other cells, mutant vs wild type), Benjamini-Hochberg across the 12 cell types.
-#
-# SYMBOL RULE. The panel carries NO significance markers - no stars, no asterisks.
-#   Direction and magnitude are read from the position of the point; reliability is
-#   read from whether the point is filled. A point is FILLED only if it passes BOTH:
-#     (a) FDR: Benjamini-Hochberg q < 0.05 across the 12 cell types, and
-#     (b) resampling: |delta| >= 1 percentage point AND sign consistency >= 0.95.
-#   The filled_in_panel column is authoritative. 10 rows reach q < 0.05 but only 8
-#   are filled: Cajal-Retzius (q = 8.8e-05, delta +0.53 pp) and SPN-D2 (q = 1.1e-02,
-#   delta +0.85 pp, consistency 0.941) clear the FDR threshold but fail the
-#   resampling criterion, so they are drawn OPEN. q < 0.05 alone is NOT sufficient.
-#
-# UNIT OF ANALYSIS. Nuclei are treated as independent observations. The study has
-#   one library per genotype (ZJ6 wild type, ZJ9 mutant), so nuclei are
-#   pseudoreplicates: they share one animal, one dissection and one capture. The
-#   P-values therefore describe how reliably these two libraries differ, not how
-#   reliably the genotypes differ, and they are anti-conservative for the latter.
-#
-# SENSITIVITY. design_effect_to_nullify is the variance-inflation factor D at which
-#   a cell type stops reaching q<0.05 when the chi-square is divided by D. Nuclei
-#   clustered within an animal typically carry D of roughly 20-50, so the column
-#   orders the results by how much clustering they could absorb. LGE-IN precursors
-#   (D=25) and extended amygdala GABA (D=18) are the most robust; the two rows that
-#   fail the resampling criterion are also the least robust here (D=4 and D=2), so
-#   the two criteria agree about which results are fragile.
-#
-# TECHNICAL YARDSTICK. Off-target regions excluded from the analysis scope bound
-#   non-genotype differences between these libraries: cerebellum -8.73 pp (wild
-#   type only) and thalamus +6.28 pp (mutant only), opposite directions, i.e.
-#   dissection variability. The largest cell-type difference here is 5.39 pp.
-#   exceeds_technical records whether a difference exceeds that bound; none does.
-#
-# ci_low/high_pct are an equal-N resampling interval bounding sampling-depth
-#   instability. They are NOT confidence intervals for a genotype effect.
-
-celltype,mut_nuclei,wt_nuclei,mut_pct,wt_pct,delta_pct_points,ci_low_pct,ci_high_pct,sign_consistency,fisher_p,q_value_BH,design_effect_to_nullify,exceeds_technical_yardstick,passes_resampling,filled_in_panel
-Deep layer EN,2245,2206,20.687,26.125,-5.39,-7.4,-3.08,0.998,7.94e-19,2.38e-18,14,no,yes,yes
-Upper layer EN,1932,1784,17.803,21.127,-3.35,-5.4,-1.4,0.995,7.45e-09,1.28e-08,8,no,yes,yes
-Immature Astrocytes,1111,1129,10.238,13.37,-3.09,-4.7,-1.47,0.995,1.92e-11,3.83e-11,10,no,yes,yes
-OPC,138,228,1.272,2.7,-1.42,-2.29,-0.6,0.993,8.40e-13,2.02e-12,10,no,yes,yes
-MGE-IN,767,647,7.068,7.662,-0.62,-2.0,0.79,0.896,1.19e-01,1.30e-01,1,no,no,no
-Migrating CGE-derived IN,683,527,6.294,6.241,0.07,-1.15,1.48,0.551,9.05e-01,9.05e-01,1,no,no,no
-Cajal-Retzius,113,44,1.041,0.521,0.53,0.08,1.04,0.975,6.62e-05,8.83e-05,4,no,no,no
-SPN-D2,663,442,6.109,5.234,0.85,-0.4,1.92,0.941,9.54e-03,1.14e-02,2,no,no,no
-ExtendedAmygdala_GABA,275,42,2.534,0.497,2.03,1.4,2.66,1.0,4.39e-32,2.63e-31,18,no,yes,yes
-SPN-D1,1306,811,12.035,9.604,2.39,0.7,3.92,0.992,7.99e-08,1.20e-07,7,no,yes,yes
-Cycling RG,804,343,7.409,4.062,3.34,2.1,4.6,0.999,3.70e-23,1.48e-22,16,no,yes,yes
-LGE-IN prec,815,241,7.51,2.854,4.68,3.6,5.88,1.0,3.96e-48,4.76e-47,25,no,yes,yes
+# Updated Figure 1D source. 10,357 mutant / 8,110 wild-type nuclei, 18 classes.
+# Same test as the installed panel: Fisher exact per class + BH, plus nonparametric bootstrap, 2000 draws, each genotype resampled with replacement at its own n (10,357 mutant, 8,110 wild type).
+# filled_in_panel requires BOTH q<0.05 AND |delta|>=1pp with sign consistency>=0.95.
+# One library per genotype: P values describe how reliably these two libraries differ, not the genotypes.
+celltype,family,mut_nuclei,wt_nuclei,mut_pct,wt_pct,delta_pct_points,ci_low_pct,ci_high_pct,iqr_low_pct,iqr_high_pct,sign_consistency,fisher_p,q_value_BH,design_effect_to_nullify,passes_resampling,filled_in_panel
+Deep layer EN,Dorsal excitatory,2245,2206,21.676,27.201,-5.52,-6.73,-4.28,-5.93,-5.07,1.0,3.6065205811394856e-18,3.245868523025537e-17,19.8,yes,yes
+Upper layer EN,Dorsal excitatory,1932,1784,18.654,21.998,-3.34,-4.53,-2.15,-3.75,-2.91,1.0,2.0776818587400232e-08,4.674784182165052e-08,8.2,yes,yes
+OPC,Glial,138,228,1.332,2.811,-1.48,-1.92,-1.04,-1.62,-1.33,1.0,1.255547814135917e-12,4.5199721308893016e-12,13.3,yes,yes
+Immature Astrocytes,Glial,1035,896,9.993,11.048,-1.05,-1.95,-0.13,-1.39,-0.79,0.989,0.02133097937581496,0.02559717525097795,1.4,yes,yes
+"GABAergic IN, origin unassigned",Ventral interneuron,223,241,2.153,2.972,-0.82,-1.27,-0.35,-0.96,-0.66,1.0,0.00044961820859907626,0.0006744273128986145,3.2,no,no
+MGE-IN,Ventral interneuron,767,647,7.406,7.978,-0.57,-1.4,0.2,-0.86,-0.31,0.927,0.14721614934755706,0.16561816801600168,0.0,no,no
+Gliogenic RG,Progenitor,137,153,1.323,1.887,-0.56,-0.93,-0.19,-0.69,-0.43,0.999,0.00233943549763914,0.003239218381346501,2.4,no,no
+SPN-D2 (differentiating),Ventral projection,448,370,4.326,4.562,-0.24,-0.84,0.36,-0.45,-0.03,0.787,0.4492915673005424,0.47572048302410375,0.0,no,no
+CGE-IN,Ventral interneuron,173,146,1.67,1.8,-0.13,-0.51,0.26,-0.26,0.01,0.74,0.5314278435772928,0.5314278435772928,0.0,no,no
+Cajal-Retzius,Dorsal excitatory,113,44,1.091,0.543,0.55,0.3,0.82,0.46,0.63,1.0,4.757165618614208e-05,7.784452830459614e-05,4.2,no,no
+Dorsal IPC,Progenitor,81,18,0.782,0.222,0.56,0.36,0.76,0.49,0.62,1.0,7.238661613440194e-08,1.4477323226880388e-07,7.0,no,no
+Lhx8+ subpallial IN,Ventral interneuron,185,81,1.786,0.999,0.79,0.46,1.13,0.67,0.89,1.0,6.699477673854393e-06,1.2059059812937907e-05,5.2,no,no
+Astrocyte-primed RG,Glial,144,28,1.39,0.345,1.05,0.79,1.31,0.95,1.13,1.0,1.318085181034248e-14,5.931383314654116e-14,14.0,yes,yes
+SPN-D1 (differentiating),Ventral projection,942,645,9.095,7.953,1.14,0.33,1.98,0.86,1.42,0.999,0.005941673395957747,0.007639294366231389,2.0,yes,yes
+SPN-D2 (precursor-like),Ventral projection,215,72,2.076,0.888,1.19,0.84,1.55,1.06,1.29,1.0,3.73433750026452e-11,1.1203012500793561e-10,10.9,yes,yes
+SPN-D1 (precursor-like),Ventral projection,364,166,3.515,2.047,1.47,1.0,1.96,1.31,1.63,1.0,2.212274500421012e-09,5.688705858225459e-09,9.1,yes,yes
+Ventral IPC,Progenitor,400,144,3.862,1.776,2.09,1.61,2.53,1.92,2.24,1.0,1.792057271330347e-17,1.0752343627982082e-16,18.0,yes,yes
+LGE-derived GABAergic,Ventral interneuron,815,241,7.869,2.972,4.9,4.26,5.53,4.68,5.12,1.0,7.314437753213222e-49,1.31659879557838e-47,52.7,yes,yes

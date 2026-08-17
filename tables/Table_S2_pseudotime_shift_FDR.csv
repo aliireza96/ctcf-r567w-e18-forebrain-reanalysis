@@ -1,41 +1,23 @@
-"# Figure 2D source. Shift in median transferred pseudotime, mutant minus wild type,"
-# for each cell class mapped onto its externally-defined reference trajectory.
-#
-# TEST: two-sided Wilcoxon rank-sum on per-cell transferred pseudotime (mutant vs
-"#   wild-type cells of that class), Benjamini-Hochberg across the 9 classes."
-#
-# SYMBOL RULE. The panel carries no significance markers. A point is FILLED when
-#   q < 0.05 and open otherwise. 5 of 9 classes are filled.
-#
-# TWO CRITERIA AGREE. The previous version of this panel marked points by whether
-#   an equal-N resampling interval excluded zero. That criterion and the FDR test
-#   classify all 8 classes for which both are available IDENTICALLY - the five
-"#   filled classes have both q < 0.05 and a resampling interval excluding zero,"
-#   and the three open classes fail both. Cycling RG has no published resampling
-#   interval and is open on the FDR test alone (q = 0.87).
-#
-# CYCLING RG. This row appears in the panel but had no per-class summary table in
-#   the analysis outputs; it was recomputed here from the mapped cell table
-"#   09b_dorsal_rg_ipc_exc_mapped_table.csv. As a check, the same recomputation"
-#   reproduced the published Wilcoxon P for all six classes that do have one
-"#   (deep-layer EN 6.90e-27, upper-layer EN 1.86e-46, immature astrocytes"
-"#   6.17e-02, LGE-IN precursors 7.91e-01, MGE 9.48e-14, CGE 1.27e-02)."
-#
-# UNIT OF ANALYSIS. Cells are treated as independent observations. The study has
-"#   one library per genotype, so cells are pseudoreplicates and these P-values"
-"#   describe how reliably the two libraries differ, not the genotypes."
-#
-"# ci_low/high are the equal-N resampling interval on the delta median, carried"
-"#   over from the original analysis. They bound sampling-depth instability, not"
-#   between-animal variation.
-
-lineage,root,n_wt,n_mut,delta_median_pseudotime,ci_low,ci_high,ci_excludes_zero,wilcoxon_p,q_value_BH,filled_in_panel
-Cycling RG,RG root (dorsal),343,804,0.319,,,not available,8.74e-01,8.74e-01,no
-Immature astrocytes,RG root (dorsal),1129,1111,-0.643,-1.791,0.511,no,6.17e-02,9.26e-02,no
-Deep-layer EN,RG root (dorsal),2206,2245,-1.536,-1.903,-1.038,yes,6.90e-27,3.10e-26,yes
-Upper-layer EN,RG root (dorsal),1784,1932,-2.222,-2.869,-1.693,yes,1.86e-46,1.68e-45,yes
-SPN-D1,LGE root,811,1306,-0.361,-1.322,0.626,no,2.17e-01,2.80e-01,no
-SPN-D2,LGE root,442,663,-2.332,-3.052,-1.679,yes,9.72e-12,2.19e-11,yes
-LGE-IN precursors,LGE root,241,815,-0.225,-1.296,1.094,no,7.91e-01,8.74e-01,no
-MGE interneurons,MGE root,647,767,-2.619,-3.68,-1.604,yes,9.48e-14,2.84e-13,yes
-CGE interneurons,CGE root,527,683,-0.997,-1.557,-0.206,yes,1.27e-02,2.28e-02,yes
+# Updated Figure 2D source. Pseudotime values UNCHANGED, from projection_09_rooted_v2; only the grouping of nuclei differs.
+# Filled requires ALL THREE: BH q < 0.05, a bootstrap interval excluding
+#   zero (2000 draws, each genotype resampled with replacement at its
+#   own n), and
+#   |delta| >= 1.0 pseudotime units. The third is the analogue of
+#   panel 1D's 1-percentage-point rule and exists for the same reason.
+# One library per genotype: P values describe how reliably these two libraries differ.
+celltype,root,n_wt,n_mut,delta_median_pseudotime,ci_low,ci_high,iqr_low,iqr_high,ci_excludes_zero,wilcoxon_p,projection_caveat,q_value_BH,passes_effect_size,filled_in_panel,axis_defined
+MGE-IN,MGE root,647,767,-2.619,-3.578,-1.58,-2.874,-2.203,True,9.477045151363939e-14,,4.73852257568197e-13,yes,yes,yes
+Upper layer EN,RG root (dorsal),1784,1932,-2.222,-2.776,-1.893,-2.424,-2.119,True,1.8648609433791115e-46,,2.7972914150686672e-45,yes,yes,yes
+SPN-D2 (precursor-like),LGE root,72,215,-1.831,-5.843,0.743,-3.28,-0.603,False,0.20152271198626903,,0.30228406797940355,yes,no,yes
+SPN-D1 (precursor-like),LGE root,166,364,-1.649,-2.909,-0.456,-2.025,-1.182,True,0.0020396337250329693,,0.004409885886879003,yes,yes,yes
+SPN-D2 (differentiating),LGE root,370,448,-1.563,-2.211,-0.445,-1.754,-1.09,True,4.82238638618152e-05,,0.000180839489481807,yes,yes,yes
+Deep layer EN,RG root (dorsal),2206,2245,-1.536,-1.777,-1.24,-1.619,-1.434,True,6.89570773027432e-27,,5.17178079770574e-26,yes,yes,yes
+Lhx8+ subpallial IN,CGE root,81,185,-1.313,-2.335,-0.433,-1.753,-1.013,True,0.00018346135130993947,,0.0005503840539298184,yes,yes,no
+Immature Astrocytes,RG root (dorsal),896,1035,-1.178,-1.971,-0.247,-1.434,-0.786,True,0.017319613410409655,,0.0324742751445181,yes,yes,yes
+Ventral IPC,RG root (dorsal),144,400,-0.786,-2.372,0.771,-1.243,0.001,False,0.3175794819743806,,0.42935522580219393,no,no,no
+"GABAergic IN, origin unassigned",CGE root,241,223,-0.323,-0.967,0.08,-0.61,-0.232,False,0.04447767343593935,axis may not fit this population,0.07412945572656558,no,no,no
+CGE-IN,CGE root,146,173,-0.24,-2.161,1.773,-0.738,0.322,False,0.3721078623619014,,0.42935522580219393,no,no,yes
+LGE-derived GABAergic,LGE root,241,815,-0.225,-1.251,0.878,-0.511,0.188,False,0.7910557463379404,,0.7910557463379404,no,no,yes
+Gliogenic RG,RG root (dorsal),153,137,0.014,-1.083,2.573,-0.084,1.18,False,0.7640550329364211,,0.7910557463379404,no,no,no
+Astrocyte-primed RG,RG root (dorsal),28,144,0.317,-7.87,4.231,-2.231,1.684,False,0.3604185728777486,,0.42935522580219393,no,no,no
+SPN-D1 (differentiating),LGE root,645,942,0.528,0.064,1.124,0.372,0.711,True,0.0020579467472102014,,0.004409885886879003,no,no,yes

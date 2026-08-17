@@ -1,0 +1,31 @@
+# Supplementary Figure S3A. Histone-mark context of the three CTCF peak classes.
+# X-AXIS IS PEAK CLASS: this panel is stratified by the MACS2 call, not by continuous
+#   signal. It therefore inherits the threshold limitation of the call; the
+#   maintained-only sensitivity test (Figure 4 Table S12) applies to Figure 4B/C, not here.
+# Marks: ENCODE mouse forebrain replicated peaks, mm10 -- H3K4me3 E16.5 ENCFF965GZP,
+#   H3K27ac E16.5 ENCFF378OWA, H3K4me1 E16.5 ENCFF502DRX, H3K27me3 E16.5 ENCFF363FLT.
+#   Our ChIP is E18.5; ENCODE forebrain marks exist at E16.5 and P0 but not E18.5, and
+#   the class ordering is identical at both flanking stages (P0 rows included below).
+# Denominator: all peaks in the class -- LOST 6,666, MAINTAINED 28,964, GAINED 9,391
+#   (45,021 union components with signal in both genotype tracks).
+# ROWS ARE NOT A PARTITION: 27.9% of peaks carry two or more marks, so the four rows
+#   cannot sum to 100 and the unmarked fraction is NOT derivable from them. Panel B
+#   provides the complete positional accounting; for reference the fraction carrying
+#   none of the four marks is LOST 84.8%, MAINTAINED 59.2%, GAINED 50.5%.
+# H3K27me3 separates the classes 1.7x, below the 2.7-5.5x range spanned by the three
+#   active marks (H3K4me1 2.7x, H3K4me3 4.7x, H3K27ac 5.5x), and is not significant once
+#   occupancy is matched. The panel draws it on the same footing as the other rows.
+# OCCUPANCY-MATCHED CONTROL (reported in text, not drawn): gained peaks are weaker on
+#   their own genotype than lost peaks (median 5.04 vs 11.49). On 1:1 signal-matched
+#   pairs (n = 1,759) the separation persists. p is Fisher exact, gained vs lost, all
+#   sites; matched p is McNemar.
+mark,gloss,encode_accession,stage,n_reference_peaks,LOST_pct,MAINTAINED_pct,GAINED_pct,OR_gained_vs_lost,p,matched_LOST_pct,matched_GAINED_pct,matched_McNemar_p
+H3K4me3,promoters,ENCFF965GZP,E16.5,25019,8.2,26.3,38.3,6.96,0.0e+00,15.6,42.3,7.1e-67
+H3K27ac,active enhancers and promoters,ENCFF378OWA,E16.5,50762,6.1,20.3,33.6,7.83,0.0e+00,12.5,36.7,5.2e-64
+H3K4me1,"enhancers, primed and active",ENCFF502DRX,E16.5,123291,9.9,30.1,26.8,3.34,3.0e-165,15.1,32.1,7.5e-32
+H3K27me3,polycomb repressed,ENCFF363FLT,E16.5,25816,2.2,4.1,3.8,1.73,1.4e-08,3.1,3.6,4.6e-01
+H3K27ac (P0),replication at flanking stage,ENCFF676TSV,P0,47425,7.3,22.8,36.0,,,,,
+H3K4me1 (P0),replication at flanking stage,ENCFF109ZOH,P0,50678,3.7,11.2,11.2,,,,,
+
+# NOT DRAWN: fraction carrying none of the four marks
+None of the four,complement of the four rows,,,,84.8,59.2,50.5,0.18,0.0e+00,,,

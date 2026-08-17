@@ -1,0 +1,22 @@
+# Regional composition of each E18.5 library.
+# frac is the fraction of that library's nuclei assigned to the region; n_cells the count.
+# Source of Figure 1B. Region assignment is described in Methods, cluster annotation.
+condition,Region,n_cells,frac
+mut,Cortical + Striatal,10852,0.6928430058098703
+mut,Diencephalon (hypothalamus),3042,0.19421566749664815
+mut,Diencephalon (thalamus),1005,0.06416395326565792
+mut,Hindbrain (cerebellum),169,0.010789759305369342
+mut,Immune (microglia),58,0.003702994317819064
+mut,Meninges/VLMC,264,0.0168550086190385
+mut,Midbrain,46,0.002936857562408223
+mut,Technical/low quality,52,0.0033199259401136437
+mut,Vasculature (endothelial),175,0.011172827683074761
+wt,Cortical + Striatal,8444,0.6426668696247811
+wt,Diencephalon (hypothalamus),2622,0.19955856610092093
+wt,Diencephalon (thalamus),18,0.0013699672730040338
+wt,Hindbrain (cerebellum),1289,0.09810487860567775
+wt,Immune (microglia),63,0.004794885455514118
+wt,Meninges/VLMC,183,0.013928000608874343
+wt,Midbrain,372,0.028312656975416697
+wt,Technical/low quality,56,0.004262120404901438
+wt,Vasculature (endothelial),92,0.007002054950909506

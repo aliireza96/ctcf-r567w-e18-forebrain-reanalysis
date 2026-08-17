@@ -1,0 +1,25 @@
+# ChIPseeker genomic-position composition across occupancy-change deciles.
+# Promoter = +/-3 kb from a known-gene TSS; percentages sum to 100 within each decile.
+# DENOMINATOR CHANGED 2026-08-09: all 45,021 union components carrying signal in both
+#   genotype tracks. The previous version used 37,285 'motif-callable' components --
+#   those with a HOCOMOCO CTCF core match within +/-250 bp and a complete upstream
+#   20-mer. That filter is required for the U-motif analysis (Table S8) and was
+#   inherited here because both outputs come from 11_chipseq_umotif_by_occupancy.py.
+#   It is not needed for a positional panel and it is unbalanced on the axis this
+#   panel plots: it excluded 26.1% of promoter-proximal sites vs 11.8% of distal
+#   ones (and 24.0% LOST / 11.9% MAINTAINED / 28.8% GAINED by peak class).
+#   Effect of the change: the gradient is slightly LARGER on the full set --
+#   promoter 15.3->56.7% became 16.8->62.9%; distal 45.3->16.8% became 43.1->14.7%.
+#   Both are monotonic with Spearman +1.000 and an identical 3.7x promoter ratio.
+# Previous version retained at _retired/Table_S9_lost_site_location_motifcallable.csv
+decile_rank,median_log2FC_norm,n_components,n_promoter,pct_promoter,n_intron,pct_intron,n_distal,pct_distal,n_other,pct_other
+1,-2.379322,4502,757,16.814749,1471,32.674367,1942,43.136384,332,7.374500
+2,-1.651095,4502,871,19.346957,1536,34.118170,1732,38.471790,363,8.063083
+3,-1.239218,4502,1006,22.345624,1533,34.051533,1594,35.406486,369,8.196357
+4,-0.940131,4502,1212,26.921368,1453,32.274545,1500,33.318525,337,7.485562
+5,-0.688341,4502,1314,29.187028,1416,31.452688,1412,31.363838,360,7.996446
+6,-0.469135,4502,1529,33.962683,1319,29.298090,1292,28.698356,362,8.040871
+7,-0.269802,4502,1710,37.983119,1196,26.565971,1226,27.232341,370,8.218570
+8,-0.073480,4502,2061,45.779653,1066,23.678365,1069,23.745002,306,6.796979
+9,0.149715,4502,2524,56.063972,877,19.480231,838,18.613949,263,5.841848
+10,0.577549,4503,2831,62.869198,812,18.032423,662,14.701310,198,4.397069

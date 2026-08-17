@@ -1,0 +1,42 @@
+# Panel D source. Within-cell-class expression of genes whose promoter
+#   GAINS CTCF in R567W.
+# TWO INDEPENDENT MEASUREMENTS, never on a shared scale:
+#   ChIP_log2FC = log2((mut_norm_signal + 0.01)/(wt_norm_signal + 0.01)) from
+#     Table_S7_CTCF_peak_signal.csv. Signal is the mean of the deposited spike-in
+#     normalised bigWig over the union component, NOT MACS2 signalValue.
+#     There is NO per-peak p-value: two libraries, one per genotype, no replication.
+#   RNA_<class> = avg_log2FC (mutant vs wild type) WITHIN that cell class, from
+#     05b_cortstr_plus_hypoglut_DE_celltype_broad_<CLASS>_mut_vs_wt.csv (Seurat, LR).
+#     Within-class values are used precisely because they cannot be produced by a
+#     shift in cell-type proportions. avg_log2FC is NOT composition-adjusted.
+#   padj_<class> = p_val_adj for the same comparison.
+# EMPTY CELL = gene detected in <10% of that class's cells in both genotypes, so it is
+#   absent from the DE table (Seurat min.pct = 0.1). Drawn grey with a dash; never zero.
+# GENE SELECTION: selection axis is ChIP, display axis is RNA, so the panel is not
+#   circular. Pool entry required: promoter = ENCODE forebrain H3K4me3 (E16.5,
+#   ENCFF965GZP) AND ChIPseeker Promoter<=3kb; nearest RefSeq TSS <=2 kb; ChIP
+#   wt_norm_signal >= 3.0; RNA padj < 0.05; sign of ChIP_log2FC agrees with peak_class
+#   (42.1% of GAINED-class peaks fail this: class is from peak CALLING, magnitude from
+#   signal QUANTIFICATION). Genes were then chosen by biological category membership
+#   (org.Mm.eg.db GOALL), NOT by effect-size rank -- ChIP and RNA effect sizes are
+#   uncorrelated in these pools (gained Spearman rho -0.011 p=0.89).
+# CELL CLASSES: 8 of the 12 broad classes. OPC, Hypothalamus_glutamatergic and
+#   Cajal_Retzius excluded; ExtendedAmygdala_GABA excluded because it holds only 42 WT
+#   nuclei, which inflates effect sizes threefold (1,040 genes at |log2FC|>1 vs 33-129
+#   elsewhere; median |log2FC| 0.450 vs 0.141-0.234).
+# Rows removed after the contribution audit are listed in panelDE_trim_record.csv.
+panel,block,gene,ChIP_log2FC,ChIP_wt_signal,ChIP_mut_signal,RNA_Cycling_RG,RNA_Immature_Astrocytes,RNA_Deep_layer_EN,RNA_Upper_layer_EN,RNA_LGE_IN_prec,RNA_MGE_IN,RNA_Migrating_CGE_derived_IN,RNA_SPNs,padj_Cycling_RG,padj_Immature_Astrocytes,padj_Deep_layer_EN,padj_Upper_layer_EN,padj_LGE_IN_prec,padj_MGE_IN,padj_Migrating_CGE_derived_IN,padj_SPNs
+D,Differentiation brake (UP),Nfib,+0.61,3.45,5.26,+0.0860,+0.2842,+0.3208,+0.6487,-0.2285,+0.5873,-0.0183,+0.4068,1.00e+00,4.57e-04,2.74e-17,3.19e-38,1.00e+00,3.40e-02,1.00e+00,1.00e+00
+D,Differentiation brake (UP),Bcl11a,+0.69,4.45,7.19,+0.6641,+0.6119,+0.3315,+0.3501,+0.2924,+0.3281,+0.2991,+0.0767,5.83e-02,9.58e-02,3.91e-13,5.82e-11,1.00e+00,1.00e+00,1.00e+00,1.00e+00
+D,Differentiation brake (UP),Zfhx3,+0.71,3.12,5.12,+0.2353,+0.2089,+0.4092,,+0.4684,+0.7486,+0.1572,+0.4458,1.00e+00,8.25e-02,1.00e+00,,1.00e+00,1.00e+00,1.00e+00,7.64e-04
+D,Differentiation brake (UP),Fgfr1,+0.61,5.37,8.21,+0.0237,-0.2088,+1.2376,+0.5895,-0.3395,+0.1778,-0.0251,+0.0194,1.00e+00,1.00e+00,2.13e-27,2.53e-05,1.00e+00,1.00e+00,1.00e+00,1.00e+00
+D,Differentiation brake (UP),Setbp1,+0.19,5.67,6.47,+0.3171,+0.5680,+0.1868,+0.3007,+0.0380,+0.4262,+0.2716,+0.1321,1.00e+00,1.51e-19,2.39e-02,2.48e-05,1.00e+00,6.48e-02,1.00e+00,1.00e+00
+D,Neurodevelopmental regulators (UP),Dscam,+0.63,3.31,5.13,+0.6146,-0.1074,+0.1505,+0.4294,+1.3829,+0.2104,+0.1792,+0.5655,1.00e+00,1.00e+00,1.00e+00,6.62e-04,3.82e-05,1.00e+00,1.00e+00,5.32e-04
+D,Neurodevelopmental regulators (UP),Hipk2,+0.90,4.68,8.76,+0.0807,-0.2616,+0.1742,+0.3822,+0.2095,+0.3777,+0.0298,+0.6349,1.00e+00,1.00e+00,1.00e+00,3.17e-05,1.00e+00,1.00e+00,1.00e+00,1.36e-01
+D,Neurodevelopmental regulators (UP),Epha4,+0.40,5.34,7.06,+0.3380,+0.8476,+0.7273,+0.3428,-0.3380,+0.7508,-0.0368,+0.1805,1.00e+00,6.46e-12,2.04e-14,1.00e+00,1.00e+00,1.93e-04,1.00e+00,1.00e+00
+D,Synaptic / excitability (DOWN),Camk2b,+0.18,4.15,4.72,-1.1562,,-0.2989,-0.9075,-0.2089,-0.7144,-0.7059,-0.7300,1.00e+00,,6.36e-02,2.68e-20,1.00e+00,1.00e+00,1.00e+00,4.20e-09
+D,Synaptic / excitability (DOWN),Grm3,+0.13,7.75,8.51,-1.1861,-0.8177,-0.2238,-1.0759,-0.5176,-0.8861,-0.2553,-0.3778,2.13e-04,8.75e-22,1.00e+00,8.55e-14,1.00e+00,2.14e-05,1.00e+00,2.13e-04
+D,Synaptic / excitability (DOWN),Grid2,+0.36,3.44,4.42,-1.0987,-1.2514,-0.6326,-1.1626,-0.6273,-0.7368,-0.0417,-0.3794,2.27e-03,1.06e-42,3.50e-07,4.71e-21,1.00e+00,1.71e-03,1.00e+00,6.46e-05
+D,Synaptic / excitability (DOWN),Grik2,+0.88,3.56,6.55,-0.2878,+0.0018,-0.3236,-0.3335,-0.1386,-0.2334,-0.1186,-0.3739,1.00e+00,1.00e+00,3.88e-09,2.03e-04,1.00e+00,1.00e+00,1.00e+00,5.54e-15
+D,Synaptic / excitability (DOWN),Adcy1,+0.87,3.19,5.86,,,+0.0650,-0.3123,-0.5258,-0.8889,+0.0669,-0.6373,,,1.00e+00,1.00e+00,1.00e+00,7.37e-05,1.00e+00,2.52e-07
+D,Synaptic / excitability (DOWN),Atp1b1,+0.46,6.87,9.47,-0.0658,+0.0277,-0.3038,-0.9697,+0.2482,-0.8996,-0.2790,-0.5151,1.00e+00,1.00e+00,3.16e-02,6.61e-14,1.00e+00,9.86e-11,1.00e+00,2.78e-04

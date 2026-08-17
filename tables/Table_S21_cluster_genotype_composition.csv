@@ -1,0 +1,34 @@
+# Genotype composition of every cluster, before and after restricting to the analysis scope.
+# Source: 03_seu_annotated.rds, columns seurat_clusters, condition,
+#   include_cortical_striatal_scope.
+# Library totals: 13,139 wild type and 15,663 mutant nuclei after filtering.
+# Four clusters are contributed almost entirely by one library. They correspond to regions
+#   sampled in only one embryo, so dissection and genotype are confounded within them and
+#   they cannot support a genotype comparison. All four are excluded from the scope.
+# Every cluster retained in the scope contains both genotypes: 37.7 to 86.8 percent mutant,
+#   against a scope-wide 56.2 percent (10,852 mutant of 19,296).
+cluster,label_if_excluded,n_wt,n_mut,n_total,pct_mut,in_analysis_scope
+19,Cerebellar Purkinje,297,2,299,0.7,no
+16,Midbrain excitatory,372,46,418,11,no
+9,Cerebellar granule lineage,992,167,1159,14.4,no
+17,,228,138,366,37.7,yes
+6,,929,671,1600,41.9,yes
+5,,942,705,1647,42.8,yes
+22,,63,58,121,47.9,no
+23,,56,52,108,48.1,no
+1,,1129,1111,2240,49.6,yes
+4,,850,892,1742,51.2,yes
+0,,2622,3042,5664,53.7,no
+7,,647,767,1414,54.2,yes
+8,,527,683,1210,56.4,yes
+15,,183,264,447,59.1,no
+3,,842,1227,2069,59.3,yes
+12,,442,663,1105,60,yes
+11,,427,682,1109,61.5,yes
+2,,811,1306,2117,61.7,yes
+20,,92,175,267,65.5,no
+10,,343,804,1147,70.1,yes
+21,,44,113,157,72,yes
+13,,241,815,1056,77.2,yes
+18,,42,275,317,86.8,yes
+14,Thalamus (VGLUT2+),18,1005,1023,98.2,no

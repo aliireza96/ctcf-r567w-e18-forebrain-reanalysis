@@ -1,0 +1,25 @@
+# Cell-cycle comparison between genotypes within each cycling RG subcluster.
+# Proliferating fraction = Mki67+ or Top2a+, Fisher exact.
+# S score = mean expression of Mcm2, Mcm5, Pcna, Rrm2, Tyms, Slbp, Gins2, Ubr7,
+#   Cdc45, Dtl. G2M score = Ccnb1, Ccnb2, Cdk1, Top2a, Aurka, Aurkb, Plk1, Bub1,
+#   Cenpa, Cdc20. Wilcoxon per state, BH-adjusted across the five testable states.
+# The non-neural state is omitted: 0 wild-type cells.
+#
+# RESULT 1: the proliferating FRACTION does not differ in any state (p 0.35-0.68).
+#   The mutant expansion is not more cells entering cycle.
+# RESULT 2: the S score rises in the ventral IPC (q = 0.003) with G2M unchanged
+#   (q = 0.79). No other state survives correction.
+# INTERPRETATION: a higher S:G2M ratio means relatively more time in S phase, i.e.
+#   a LENGTHENED S phase rather than faster cycling. The ratio rises in all five
+#   states (direction consistent) but reaches significance only in the ventral IPC.
+# CONFOUND: mutant ventral IPCs have modestly higher gene detection (1600 vs 1498,
+#   p = 0.008). Under depth-matched resampling the S result persists but weakens:
+#   median p = 0.037 across 200 iterations, with 59% reaching p < 0.05. The S:G2M
+#   ratio, which is internally normalised for depth, gives p = 0.0025.
+# LIMIT: one library per genotype; nuclei are pseudoreplicates.
+state,prolif_pct_wt,prolif_pct_mut,p_prolif,S_score_wt,S_score_mut,p_S,q_S,S_G2M_ratio_wt,S_G2M_ratio_mut,ratio_direction
+Dorsal IPC,100.0,93.8,0.581,0.140,0.202,0.253,0.535,0.223,0.308,up
+Astrocyte-primed RG,100.0,95.8,0.591,0.142,0.130,0.766,0.766,0.209,0.219,up
+Ventral IPC (LGE-leaning),91.1,88.0,0.476,0.168,0.270,0.000654,0.00327,0.415,0.732,up
+Gliogenic (Egfr+/Olig2+),77.1,74.5,0.680,0.170,0.183,0.321,0.535,0.774,0.864,up
+Mixed / unassigned,83.7,91.2,0.353,0.111,0.178,0.702,0.766,0.371,0.426,up

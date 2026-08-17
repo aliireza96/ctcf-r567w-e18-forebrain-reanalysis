@@ -1,0 +1,35 @@
+# How binding was measured, how well the two libraries agree, and whether the two
+#   ranked analyses (Figure 4B, 4C) depend on the peak calls.
+# MEASUREMENT: signal is the mean of the deposited spike-in-normalised bigWig coverage
+#   (GSM6614265 wild type, GSM6614266 homozygous mutant) over each reduced union
+#   component. log2FC_norm = log2((mutant + 0.01)/(wild type + 0.01)). The narrowPeak
+#   signalValue column is not used: it is raw per-library fold-enrichment and carries
+#   sequencing depth.
+# PART 1 rows quantify agreement and effect scale. PART 2 rows repeat the Figure 4B and
+#   4C analyses on the 28,964 intervals called in both genotypes, where peak calling
+#   cannot move an interval into or out of the set.
+# One ChIP library per genotype: intervals can be ranked and groups compared, but no
+#   P value applies to a single site.
+part,measure,value,n,note
+1 agreement,"Pearson r, wild-type vs mutant signal at intervals called in both",0.679,28964,
+1 agreement,"Spearman rho, same intervals",0.658,28964,
+1 effect scale,"median |log2FC|, intervals called in both",0.619,28964,background variation
+1 effect scale,"median |log2FC|, intervals called only in wild type",1.878,6666,3.0x the background
+1 totals,"summed signal, wild type",707483,45021,
+1 totals,"summed signal, mutant",447507,45021,-37% vs wild type
+1 totals,"summed signal change, lost class",-74%,6666,
+1 totals,"summed signal change, maintained class",-35%,28964,
+1 totals,"summed signal change, gained class",+5%,9391,
+
+# PART 2: Figure 4B and 4C recomputed on intervals called in BOTH genotypes
+decile_rank,n_components,pct_promoter,pct_distal,pct_intron,n_motif_callable,pct_umotif_proxy
+1,2896,16.30,44.13,30.32,2522,17.61
+2,2896,19.99,39.74,31.63,2591,16.60
+3,2897,23.33,35.14,32.69,2568,15.19
+4,2896,26.93,32.87,32.32,2607,13.46
+5,2897,28.72,32.55,30.27,2547,11.35
+6,2896,31.73,29.77,29.66,2623,10.41
+7,2896,34.77,29.11,26.83,2560,8.98
+8,2897,39.90,27.55,23.92,2548,7.57
+9,2896,49.76,23.93,19.27,2552,5.84
+10,2897,66.79,15.19,12.36,2413,4.39

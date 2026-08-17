@@ -1,0 +1,23 @@
+# Panel D. Frequency of the position-anchored U-motif-like proxy across occupancy-change deciles.
+# DECILES: defined on all 45,021 union components carrying signal in both genotype tracks,
+#   identical to panels B and C, so all three share one axis. The previous version defined
+#   deciles on the 37,285 motif-callable subset; 10.4% of shared peaks fell in a different
+#   decile between the two rankings. Result is unchanged: 19.3->4.8% became 19.2->4.7%.
+# NUMERATOR AND DENOMINATOR: within each decile, only motif-callable components can be
+#   scored -- a peak with no CTCF core motif has no upstream 20-mer to read. n_callable is
+#   therefore the denominator for that decile's percentage, and it varies (3,082-3,984)
+#   because callability itself declines toward the gained end.
+# 'Proxy positive' = the strand-oriented 20 bp immediately upstream of the HOCOMOCO CTCF
+#   core match contains TGCAG. Wilson 95% intervals.
+# Previous version at _superseded/Table_S8_umotif_motifcallable_deciles.csv
+decile_rank,median_log2FC_norm,n_components_in_decile,n_callable,n_proxy_positive,pct_proxy_positive,ci_lo,ci_hi
+1,-2.379322,4502,3438,660,19.1972,17.9153,20.5478
+2,-1.651095,4502,3771,644,17.0777,15.9102,18.3122
+3,-1.239218,4502,3933,690,17.5439,16.3870,18.7641
+4,-0.940131,4502,3984,589,14.7841,13.7159,15.9202
+5,-0.688341,4502,3906,473,12.1096,11.1235,13.1701
+6,-0.469135,4502,3925,422,10.7516,9.8206,11.7594
+7,-0.269802,4502,3837,341,8.8872,8.0274,9.8292
+8,-0.073480,4502,3793,286,7.5402,6.7422,8.4241
+9,0.149715,4502,3616,213,5.8905,5.1689,6.7057
+10,0.577549,4503,3082,146,4.7372,4.0419,5.5452

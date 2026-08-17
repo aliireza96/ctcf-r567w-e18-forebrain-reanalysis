@@ -1,0 +1,8 @@
+# D2 SPN subclustering. resolution 0.20 on the RNA assay, 20 PCs, seed 42.
+# Abundance normalised to analysed-scope nuclei: WT 8444, MUT 10852.
+# abundance_p: Fisher exact test on nucleus counts against the analysed scope.
+# pt_p: Wilcoxon rank-sum test on per-cell transferred pseudotime, within state.
+# State names are assigned from terminal-SPN marker detection, not cluster number.
+"subcluster","n_wt","n_mut","pct_wt","pct_mut","abundance_ratio","abundance_p","pt_median_wt","pt_median_mut","pt_delta","pt_p"
+"precursor-like",72,215,0.853,1.981,2.32,5.63e-11,42.83,40.99,-1.83,0.202
+"differentiating",370,448,4.382,4.128,0.94,0.388,52.72,51.15,-1.56,4.82e-05

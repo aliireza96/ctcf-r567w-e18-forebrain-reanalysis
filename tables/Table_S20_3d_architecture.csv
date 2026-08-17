@@ -1,0 +1,81 @@
+# Supplementary Figure S3B. X-AXIS IS PEAK CLASS (MACS2 call), not continuous signal; this
+#   panel inherits the threshold limitation of the call.
+# Where the three CTCF peak classes sit relative to 3D-genome
+#   features. Rewritten 2026-08-09: rows named by DATASET AND ASSAY only, with no
+#   interpretive gloss; sets re-derived from source; occupancy-matched sub-panel REMOVED.
+# COLOURS: peak-class colours match Figure 4A throughout the package -- lost #BF443A (red),
+#   maintained #3D7CAF (blue), gained #E0A53D (gold). An earlier version of this panel used
+#   blue for lost and red for gained, contradicting Figure 4A.
+#
+# ONE PEAK SET THROUGHOUT: 45,021 union CTCF intervals with signal in both genotype
+#   tracks (LOST 6,666, MAINTAINED 28,964, GAINED 9,391). Every row asks those same
+#   peaks a different yes/no overlap question. Nothing is re-called between rows.
+#
+# ROWS ARE NOT A PARTITION and the features are NOT independent of one another, so
+#   percentages do not sum to 100 and one peak can appear in several rows. Pairwise
+#   Jaccard is tabulated at the end.
+#
+# WHAT EACH ROW IS:
+#   'Hi-C insulating boundaries, strong/weak' -- Bonev 2017 Hi-C in mESC-derived neural
+#     progenitors (4DN 4DNFIMMHY96D). Strong/Weak are the DEPOSITED FILE'S OWN labels
+#     in column 4 (4,360 Strong, 3,150 Weak); they are not a threshold applied here and
+#     the source does not equate them with TAD vs sub-TAD. Peak within 10 kb.
+#   'Boundaries lost on CTCF depletion' / 'that survives without CTCF' -- Nora 2017
+#     mESC CTCF-degron. Dependent = a control boundary with no depleted-condition
+#     boundary within 25 kb (n = 4,295). Independent = a control boundary within 10 kb
+#     of one that persists after degradation (n = 3,219). These two rows are a WITHIN-
+#     DATASET contrast and are the most interpretable pair in the panel.
+#   'H3K4me3 PLAC-seq loop anchors' -- Yu 2024 GSE200114 E14.5 forebrain H3K4me3
+#     PLAC-seq, 59,278 MAPS loop calls, 118,556 anchors, direct overlap. NOT a neutral
+#     architectural category: the assay pulls down H3K4me3, so anchors are
+#     promoter-enriched by design (42% of anchor-overlapping peaks are promoters vs
+#     28% of non-anchor peaks). The class difference does survive conditioning on
+#     promoter status (within-promoter OR 1.60, within-distal OR 1.74), so it is not
+#     purely a restatement of Figure 4B, but the row is partly promoter information.
+#
+# WHY THE OCCUPANCY-MATCHED SUB-PANEL WAS REMOVED: it addressed whether the class
+#   differences here are an artefact of gained peaks being weaker. Two of its four rows
+#   were non-significant and it doubled the panel's width for a control that is already
+#   made for the histone marks in S3A. The architectural claim being made here is a
+#   ranking (maintained > lost/gained on every row), not an effect size, so a matched
+#   control is not load-bearing for it.
+#
+# CAVEAT ON ALL BOUNDARY ROWS: both boundary callers are in-vitro mESC-derived and
+#   neither is E18.5 forebrain. They agree with each other on only about a fifth of
+#   sites (Jaccard 0.25 between Bonev-any and Nora-dependent).
+#
+# NOTE ON REPRODUCIBILITY: an earlier version of this analysis recorded 4,632 dependent
+#   and 2,415 independent Nora boundaries. An exhaustive rescan of the deposited files
+#   gives 4,295 and 3,219; those are the values used here. The class ordering is
+#   unchanged. The Bonev and PLAC-seq rows reproduce their earlier values exactly.
+row_label,reference,assay,n_reference_features,window_bp,LOST_pct,MAINTAINED_pct,GAINED_pct,OR_gained_vs_lost,p_fisher,reading
+"Hi-C insulating boundaries, strong",Bonev 2017 (4DNFIMMHY96D),"Hi-C, mESC-derived NPC",4360,10000,10.6,20.0,12.6,1.22,9.4e-05,maintained highest; gained above lost
+"Hi-C insulating boundaries, weak",Bonev 2017 (4DNFIMMHY96D),"Hi-C, mESC-derived NPC",3150,10000,6.2,8.1,6.1,0.98,7.4e-01,maintained highest; LOST above gained
+Boundaries lost on CTCF depletion,Nora 2017 (4DNFIK2EGGKW/4DNFIA6H3KJZ),"Hi-C, mESC CTCF-degron",4295,25000,18.3,21.9,14.9,0.78,1.2e-08,maintained highest; LOST above gained
+Boundaries retained on CTCF depletion,Nora 2017 (4DNFIK2EGGKW/4DNFIA6H3KJZ),"Hi-C, mESC CTCF-degron",3219,10000,7.3,12.1,9.4,1.32,2.2e-06,maintained highest; gained above lost
+H3K4me3 PLAC-seq loop anchors,Yu 2024 (GSE200114),"H3K4me3 PLAC-seq, E14.5 forebrain",118556,0,37.0,55.7,50.8,1.76,1.5e-67,maintained highest; gained above lost
+
+"# WITHIN-DATASET CONTRAST (Nora rows only), immune to cross-dataset comparability"
+"dependent:independent ratio, lost vs gained",,,,,,,,1.58,2.0e-11,lost sites are relatively more CTCF-dependent-boundary-associated than gained
+
+# PLAC-seq row conditioned on gene-model position (promoter-bias control)
+stratum,,,,,LOST_pct,,GAINED_pct,OR,p,
+Promoter,,,,,48.9,,60.5,1.60,8.4e-15,
+Intron,,,,,34.5,,38.0,1.16,1.2e-02,
+Distal,,,,,32.0,,44.9,1.74,5.1e-18,
+
+# PAIRWISE JACCARD BETWEEN FEATURE PEAK SETS
+feature,Bonev strong,Bonev weak,Nora dependent,Nora independent,PLAC anchor
+Bonev strong,1.00,0.00,0.20,0.25,0.20
+Bonev weak,0.00,1.00,0.10,0.07,0.08
+Nora dependent,0.20,0.10,1.00,0.00,0.18
+Nora independent,0.25,0.07,0.00,1.00,0.13
+PLAC anchor,0.20,0.08,0.18,0.13,1.00
+
+# UNANNOTATED FRACTION: components carrying NEITHER any of the four ENCODE E16.5 forebrain
+#   histone marks NOR any 3D feature in this table. Same overlap windows as the rows above.
+#   This is the value quoted in Results.
+peak_class,n_components,pct_no_histone_mark,pct_no_3D_feature,pct_neither,n_neither
+LOST,6666,84.8,45.5,40.6,2706
+MAINTAINED,28964,59.2,27.5,19.5,5636
+GAINED,9391,50.5,37.3,23.3,2189

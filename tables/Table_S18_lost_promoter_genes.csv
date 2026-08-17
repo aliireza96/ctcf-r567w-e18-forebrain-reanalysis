@@ -1,0 +1,37 @@
+# Panel E source. Within-cell-class expression of genes whose promoter
+#   LOSES CTCF in R567W.
+# TWO INDEPENDENT MEASUREMENTS, never on a shared scale:
+#   ChIP_log2FC = log2((mut_norm_signal + 0.01)/(wt_norm_signal + 0.01)) from
+#     Table_S7_CTCF_peak_signal.csv. Signal is the mean of the deposited spike-in
+#     normalised bigWig over the union component, NOT MACS2 signalValue.
+#     There is NO per-peak p-value: two libraries, one per genotype, no replication.
+#   RNA_<class> = avg_log2FC (mutant vs wild type) WITHIN that cell class, from
+#     05b_cortstr_plus_hypoglut_DE_celltype_broad_<CLASS>_mut_vs_wt.csv (Seurat, LR).
+#     Within-class values are used precisely because they cannot be produced by a
+#     shift in cell-type proportions. avg_log2FC is NOT composition-adjusted.
+#   padj_<class> = p_val_adj for the same comparison.
+# EMPTY CELL = gene detected in <10% of that class's cells in both genotypes, so it is
+#   absent from the DE table (Seurat min.pct = 0.1). Drawn grey with a dash; never zero.
+# GENE SELECTION: selection axis is ChIP, display axis is RNA, so the panel is not
+#   circular. Pool entry required: promoter = ENCODE forebrain H3K4me3 (E16.5,
+#   ENCFF965GZP) AND ChIPseeker Promoter<=3kb; nearest RefSeq TSS <=2 kb; ChIP
+#   wt_norm_signal >= 3.0; RNA padj < 0.05; sign of ChIP_log2FC agrees with peak_class
+#   (42.1% of GAINED-class peaks fail this: class is from peak CALLING, magnitude from
+#   signal QUANTIFICATION). Genes were then chosen by biological category membership
+#   (org.Mm.eg.db GOALL), NOT by effect-size rank -- ChIP and RNA effect sizes are
+#   uncorrelated in these pools (gained Spearman rho -0.011 p=0.89).
+# CELL CLASSES: 8 of the 12 broad classes. OPC, Hypothalamus_glutamatergic and
+#   Cajal_Retzius excluded; ExtendedAmygdala_GABA excluded because it holds only 42 WT
+#   nuclei, which inflates effect sizes threefold (1,040 genes at |log2FC|>1 vs 33-129
+#   elsewhere; median |log2FC| 0.450 vs 0.141-0.234).
+# Dpp10 carries a gained peak (+0.19, wt 5.45) AND a lost peak (-0.98, wt 6.30) at
+#   different promoters. This table reports the LOST peak.
+# Rows removed after the contribution audit are listed in panelDE_trim_record.csv.
+panel,block,gene,ChIP_log2FC,ChIP_wt_signal,ChIP_mut_signal,RNA_Cycling_RG,RNA_Immature_Astrocytes,RNA_Deep_layer_EN,RNA_Upper_layer_EN,RNA_LGE_IN_prec,RNA_MGE_IN,RNA_Migrating_CGE_derived_IN,RNA_SPNs,padj_Cycling_RG,padj_Immature_Astrocytes,padj_Deep_layer_EN,padj_Upper_layer_EN,padj_LGE_IN_prec,padj_MGE_IN,padj_Migrating_CGE_derived_IN,padj_SPNs
+E,Synaptic / excitability (DOWN),Atp1a3,-1.03,8.06,3.95,-0.6904,-0.6263,-0.3905,-0.6548,-0.1791,-0.6066,-0.2979,-0.4238,1.00e+00,1.00e+00,1.34e-10,3.72e-18,1.00e+00,5.16e-06,1.00e+00,3.22e-09
+E,Synaptic / excitability (DOWN),Rimbp2,-1.14,8.22,3.72,,,-0.7592,-1.0081,,-0.9038,-0.4285,-0.3042,,,5.23e-13,3.72e-05,,2.97e-01,1.00e+00,1.00e+00
+E,Synaptic / excitability (DOWN),Cacnb3,-2.00,9.07,2.25,-0.2779,-0.3681,-0.1894,-0.4762,-0.3746,-0.1554,-0.0138,-0.2502,1.00e+00,1.00e+00,1.00e+00,1.22e-03,1.00e+00,1.00e+00,1.00e+00,1.00e+00
+E,Synaptic / excitability (DOWN),Dpp10,-0.98,6.30,3.20,-0.3359,-0.8386,-1.1565,-1.4016,+0.5199,-0.1312,+0.2474,-0.1399,1.00e+00,7.48e-01,9.37e-37,5.18e-25,1.00e+00,1.00e+00,1.00e+00,1.00e+00
+E,Proliferation / brake (UP),Ccnd2,-1.00,11.33,5.65,+0.0588,+0.3351,+0.5078,+0.8403,-0.0096,,,+0.1112,1.00e+00,7.43e-04,1.00e+00,6.61e-02,1.00e+00,,,1.00e+00
+E,Proliferation / brake (UP),Fgf13,-1.74,11.54,3.45,+0.4063,+0.9928,+0.5658,+0.4043,+0.4594,+0.3992,+0.3337,+0.4535,1.00e+00,3.96e-13,3.01e-21,4.95e-05,1.00e+00,1.00e+00,1.00e+00,4.05e-05
+E,Ventral fate TF,Nr2f2,-0.86,10.33,5.67,+0.2818,-0.3589,-1.8660,,-0.7820,-0.5795,+0.0618,,1.00e+00,1.00e+00,1.60e-32,,1.00e+00,1.00e+00,1.00e+00,

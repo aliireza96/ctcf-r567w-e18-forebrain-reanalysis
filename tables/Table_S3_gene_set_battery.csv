@@ -1,108 +1,138 @@
-# Authoritative source for Figure 3B-D: 10 displayed gene sets x 9 cell classes.
-# Membership is frozen in Table_S11_gene_set_membership.csv: direct GO annotations
-# from org.Mm.eg.db 3.20.0 (GO/Entrez source date 2024-Sep20), plus the curated
-# 94-gene Tirosh S+G2/M cell-cycle set. GOALL/inherited annotations are not used.
-# Each test compares its mean log2FC with 4,000 size-matched random gene sets
-# sampled from the same cell-class DE universe (deterministic keyed seed 3).
-# A hard floor of 15 tested genes is applied per set/class cell.
-# The cell-cycle set is retained as a targeted biological-control set even though it
-# is not testable in every class; its seven below-floor cells are explicitly NA.
-# Therefore the rectangular display has 90 cells but only 83 inferential tests.
-# Benjamini-Hochberg q values are calculated across those 83 non-NA tests only.
-# Nominal P<0.05 cells: 14/83; exact Binomial(83,0.05) upper-tail P=6.14e-05.
-# FDR q<0.05 cells: 0/83; lowest q=0.1106.
-# Panels are descriptive and carry no significance symbols; per-cell P and q values
-# are retained for transparency. Removed DNA-replication and cytoplasmic-translation
-# sets remain documented in Table_S6_gene_set_audit.csv and are not part of this table.
-#
-panel,gene_set,category,go_id,annotation,canonical_fraction,cell_type,group,n_genes_in_set,n_genes_tested,test_status,mean_log2FC,z_vs_random,perm_p,significant,significant_FDR_q05,q_value_BH
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,Cycling RG,Dorsal,191,97,tested,0.0596,2.603,0.0097,True,False,0.1106
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,Immature astrocytes,Dorsal,191,100,tested,0.103,2.693,0.012,True,False,0.1106
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,Deep-layer EN,Dorsal,191,99,tested,0.0526,2.359,0.0222,True,False,0.1678
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,Upper-layer EN,Dorsal,191,92,tested,-0.006,1.055,0.2647,False,False,0.5232
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,SPN-D1,LGE-derived,191,94,tested,-0.0328,1.086,0.2737,False,False,0.5232
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,SPN-D2,LGE-derived,191,91,tested,-0.1233,-0.765,0.4406,False,False,0.6531
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,LGE-IN precursors,LGE-derived,191,92,tested,0.015,1.459,0.1457,False,False,0.5167
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,MGE interneurons,Cortical IN,191,87,tested,-0.0585,0.034,0.9733,False,False,0.9851
-B,Axon guidance,Guidance,GO:0007411,direct GO,0.87,CGE interneurons,Cortical IN,191,100,tested,0.0027,1.118,0.2459,False,False,0.5232
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Cycling RG,Dorsal,43,21,tested,-0.0042,0.434,0.6481,False,False,0.815
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Immature astrocytes,Dorsal,43,21,tested,0.1002,1.167,0.2067,False,False,0.5199
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Deep-layer EN,Dorsal,43,29,tested,0.0967,2.046,0.0397,True,False,0.2356
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Upper-layer EN,Dorsal,43,27,tested,0.0579,1.549,0.1012,False,False,0.4001
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,SPN-D1,LGE-derived,43,26,tested,-0.0437,0.353,0.7116,False,False,0.8263
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,SPN-D2,LGE-derived,43,22,tested,-0.1745,-1.03,0.2879,False,False,0.5232
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,LGE-IN precursors,LGE-derived,43,23,tested,0.0139,0.732,0.4531,False,False,0.6598
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,MGE interneurons,Cortical IN,43,21,tested,-0.0611,-0.006,0.9958,False,False,0.9958
-B,Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,CGE interneurons,Cortical IN,43,26,tested,0.0154,0.782,0.4149,False,False,0.6261
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Cycling RG,Dorsal,444,111,tested,0.0011,1.207,0.2202,False,False,0.5232
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Immature astrocytes,Dorsal,444,119,tested,-0.0244,-0.581,0.5531,False,False,0.7526
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Deep-layer EN,Dorsal,444,101,tested,-0.0435,-0.998,0.2924,False,False,0.5232
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Upper-layer EN,Dorsal,444,93,tested,-0.0994,-1.654,0.088,False,False,0.3843
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,SPN-D1,LGE-derived,444,93,tested,-0.0589,0.214,0.8415,False,False,0.919
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,SPN-D2,LGE-derived,444,91,tested,-0.1301,-0.91,0.3484,False,False,0.5561
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,LGE-IN precursors,LGE-derived,444,91,tested,-0.0046,1.016,0.3059,False,False,0.5232
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,MGE interneurons,Cortical IN,444,87,tested,-0.075,-0.392,0.6961,False,False,0.8263
-B,Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,CGE interneurons,Cortical IN,444,100,tested,0.0021,1.155,0.2352,False,False,0.5232
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Cycling RG,Dorsal,161,72,tested,-0.2057,-3.575,0.003,True,False,0.1106
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Immature astrocytes,Dorsal,161,73,tested,-0.0676,-1.359,0.1747,False,False,0.5167
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Deep-layer EN,Dorsal,161,87,tested,-0.0498,-1.132,0.2389,False,False,0.5232
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Upper-layer EN,Dorsal,161,80,tested,-0.1983,-4.004,0.0025,True,False,0.1106
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,SPN-D1,LGE-derived,161,83,tested,-0.1006,-1.073,0.2789,False,False,0.5232
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,SPN-D2,LGE-derived,161,82,tested,-0.1306,-0.919,0.3552,False,False,0.5562
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,LGE-IN precursors,LGE-derived,161,74,tested,0.0013,1.027,0.3029,False,False,0.5232
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,MGE interneurons,Cortical IN,161,80,tested,-0.1641,-2.567,0.009,True,False,0.1106
-C,Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,CGE interneurons,Cortical IN,161,92,tested,-0.0476,-0.493,0.6191,False,False,0.7934
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Cycling RG,Dorsal,22,15,tested,0.0177,0.63,0.4921,False,False,0.7043
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Immature astrocytes,Dorsal,22,15,tested,-0.2623,-2.551,0.017,True,False,0.1411
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Deep-layer EN,Dorsal,22,18,tested,-0.261,-3.675,0.0042,True,False,0.1106
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Upper-layer EN,Dorsal,22,15,tested,-0.1838,-1.595,0.098,False,False,0.4001
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,SPN-D1,LGE-derived,22,15,tested,-0.1581,-1.206,0.1912,False,False,0.5167
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,SPN-D2,LGE-derived,22,16,tested,-0.1885,-1.052,0.2749,False,False,0.5232
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,LGE-IN precursors,LGE-derived,22,16,tested,-0.0376,0.106,0.9198,False,False,0.9663
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,MGE interneurons,Cortical IN,22,18,tested,-0.2525,-2.226,0.0297,True,False,0.1899
-C,Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,CGE interneurons,Cortical IN,22,18,tested,-0.099,-0.97,0.3232,False,False,0.5259
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Cycling RG,Dorsal,53,17,tested,-0.2206,-1.86,0.0582,False,False,0.3073
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Immature astrocytes,Dorsal,53,20,tested,-0.3016,-3.301,0.009,True,False,0.1106
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Deep-layer EN,Dorsal,53,24,tested,-0.0797,-1.104,0.2372,False,False,0.5232
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Upper-layer EN,Dorsal,53,24,tested,-0.2393,-2.677,0.011,True,False,0.1106
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,SPN-D1,LGE-derived,53,24,tested,-0.1409,-1.237,0.1992,False,False,0.5167
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,SPN-D2,LGE-derived,53,22,tested,-0.2411,-1.885,0.0592,False,False,0.3073
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,LGE-IN precursors,LGE-derived,53,21,tested,-0.0435,0.064,0.9455,False,False,0.9689
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,MGE interneurons,Cortical IN,53,22,tested,-0.2664,-2.583,0.0117,True,False,0.1106
-C,Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,CGE interneurons,Cortical IN,53,24,tested,-0.0909,-0.96,0.3104,False,False,0.5232
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Cycling RG,Dorsal,94,81,tested,0.0541,2.257,0.0295,True,False,0.1899
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Immature astrocytes,Dorsal,94,24,tested,-0.1039,-1.184,0.199,False,False,0.5167
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Deep-layer EN,Dorsal,94,13,NA_below_15_genes,NA,NA,NA,NA,NA,NA
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Upper-layer EN,Dorsal,94,11,NA_below_15_genes,NA,NA,NA,NA,NA,NA
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,SPN-D1,LGE-derived,94,14,NA_below_15_genes,NA,NA,NA,NA,NA,NA
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,SPN-D2,LGE-derived,94,12,NA_below_15_genes,NA,NA,NA,NA,NA,NA
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,LGE-IN precursors,LGE-derived,94,14,NA_below_15_genes,NA,NA,NA,NA,NA,NA
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,MGE interneurons,Cortical IN,94,13,NA_below_15_genes,NA,NA,NA,NA,NA,NA
-D,Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,CGE interneurons,Cortical IN,94,13,NA_below_15_genes,NA,NA,NA,NA,NA,NA
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,Cycling RG,Dorsal,253,155,tested,-0.0263,0.553,0.5799,False,False,0.7763
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,Immature astrocytes,Dorsal,253,116,tested,0.045,1.344,0.173,False,False,0.5167
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,Deep-layer EN,Dorsal,253,102,tested,-0.0216,-0.2,0.8285,False,False,0.9169
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,Upper-layer EN,Dorsal,253,94,tested,0.0015,1.225,0.1935,False,False,0.5167
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,SPN-D1,LGE-derived,253,96,tested,-0.0348,1,0.3152,False,False,0.5232
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,SPN-D2,LGE-derived,253,94,tested,-0.1055,-0.289,0.7561,False,False,0.848
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,LGE-IN precursors,LGE-derived,253,94,tested,-0.0536,-0.131,0.8943,False,False,0.9516
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,MGE interneurons,Cortical IN,253,96,tested,-0.0494,0.297,0.7561,False,False,0.848
-D,DNA repair,DNA repair,GO:0006281,direct GO,0.62,CGE interneurons,Cortical IN,253,106,tested,-0.0759,-1.469,0.1387,False,False,0.5167
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Cycling RG,Dorsal,144,54,tested,-0.1091,-1.269,0.197,False,False,0.5167
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Immature astrocytes,Dorsal,144,45,tested,0.0318,0.62,0.5016,False,False,0.7057
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Deep-layer EN,Dorsal,144,46,tested,0.0002,0.369,0.6978,False,False,0.8263
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Upper-layer EN,Dorsal,144,37,tested,0.0051,0.835,0.3734,False,False,0.5739
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,SPN-D1,LGE-derived,144,45,tested,-0.0576,0.169,0.8558,False,False,0.9225
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,SPN-D2,LGE-derived,144,38,tested,-0.0332,1.052,0.2814,False,False,0.5232
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,LGE-IN precursors,LGE-derived,144,39,tested,-0.0761,-0.398,0.6816,False,False,0.8263
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,MGE interneurons,Cortical IN,144,40,tested,-0.0304,0.499,0.6071,False,False,0.7934
-D,Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,CGE interneurons,Cortical IN,144,47,tested,-0.0295,0.068,0.9408,False,False,0.9689
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Cycling RG,Dorsal,533,201,tested,-0.0299,0.49,0.6213,False,False,0.7934
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Immature astrocytes,Dorsal,533,180,tested,0.0067,0.353,0.7153,False,False,0.8263
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Deep-layer EN,Dorsal,533,175,tested,-0.0083,0.364,0.7168,False,False,0.8263
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Upper-layer EN,Dorsal,533,159,tested,-0.0144,1.03,0.2887,False,False,0.5232
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,SPN-D1,LGE-derived,533,176,tested,-0.0366,1.346,0.179,False,False,0.5167
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,SPN-D2,LGE-derived,533,161,tested,-0.0578,1.304,0.1875,False,False,0.5167
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,LGE-IN precursors,LGE-derived,533,153,tested,0.0103,1.715,0.0842,False,False,0.3843
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,MGE interneurons,Cortical IN,533,157,tested,-0.0095,1.765,0.0757,False,False,0.3697
-D,Apoptotic process,Cell death,GO:0006915,direct GO,0.72,CGE interneurons,Cortical IN,533,166,tested,-0.0469,-0.62,0.5276,False,False,0.7299
+# Figure 3 gene-set battery on the installed 18-class scheme, 13 classes.
+# 121 of 130 combinations tested; the rest fall below the 15-gene floor and are NA.
+# Permutation against size-matched random gene sets drawn from the same class's
+#   own DE table, 4,000 draws, per-(set, class) seed derived from master seed 3.
+# z_vs_random is the effect: mean log2FC of the set minus the null mean, in null SDs.
+# BH is across tested combinations only. One library per genotype: nuclei are
+#   pseudoreplicates, so these P values describe how reliably the two libraries differ.
+gene_set,category,go_id,annotation,canonical_fraction,cell_type,family,n_genes_in_set,n_genes_tested,test_status,mean_log2FC,z_vs_random,perm_p,significant,significant_FDR_q05,q_value_BH
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,Ventral IPC,Progenitor,191,96,tested,-0.1372,-1.176,0.2404,False,False,0.606
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,Gliogenic RG,Progenitor,191,92,tested,0.0718,1.2,0.2267,False,False,0.606
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,Immature Astrocytes,Glial,191,100,tested,0.086,2.067,0.0422,True,False,0.2323
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,OPC,Glial,191,88,tested,-0.0255,-0.259,0.7926,False,False,0.9133
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,Deep layer EN,Dorsal excitatory,191,99,tested,0.0526,2.286,0.031,True,False,0.2083
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,Upper layer EN,Dorsal excitatory,191,92,tested,-0.006,1.046,0.2719,False,False,0.6083
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,MGE-IN,Ventral interneuron,191,87,tested,-0.0585,0.028,0.9775,False,False,0.9783
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,CGE-IN,Ventral interneuron,191,90,tested,-0.0581,-0.294,0.7736,False,False,0.9
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,"GABAergic IN, origin unassigned",Ventral interneuron,191,108,tested,0.0539,1.532,0.1257,False,False,0.4474
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,LGE-derived GABAergic,Ventral interneuron,191,92,tested,0.015,1.436,0.1522,False,False,0.5192
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,SPN-D1 (precursor-like),Ventral projection,191,88,tested,-0.0512,0.814,0.4239,False,False,0.7482
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,SPN-D1 (differentiating),Ventral projection,191,97,tested,-0.0408,0.427,0.6668,False,False,0.8988
+Axon guidance,Guidance,GO:0007411,direct GO,0.87,SPN-D2 (differentiating),Ventral projection,191,91,tested,-0.0908,-0.292,0.7651,False,False,0.8988
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Ventral IPC,Progenitor,43,23,tested,-0.2078,-1.304,0.1845,False,False,0.558
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Gliogenic RG,Progenitor,43,19,tested,0.0428,0.323,0.7426,False,False,0.8988
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Immature Astrocytes,Glial,43,22,tested,0.0556,0.536,0.5636,False,False,0.8743
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,OPC,Glial,43,23,tested,-0.1177,-0.957,0.3299,False,False,0.6238
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Deep layer EN,Dorsal excitatory,43,29,tested,0.0967,2.087,0.036,True,False,0.2177
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,Upper layer EN,Dorsal excitatory,43,27,tested,0.0579,1.572,0.0927,False,False,0.3756
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,MGE-IN,Ventral interneuron,43,21,tested,-0.0611,-0.033,0.9733,False,False,0.9783
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,CGE-IN,Ventral interneuron,43,22,tested,-0.0815,-0.361,0.7013,False,False,0.8988
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,"GABAergic IN, origin unassigned",Ventral interneuron,43,28,tested,0.001,0.147,0.8893,False,False,0.9641
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,LGE-derived GABAergic,Ventral interneuron,43,23,tested,0.0139,0.701,0.4566,False,False,0.7674
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,SPN-D1 (precursor-like),Ventral projection,43,22,tested,-0.0134,0.773,0.4374,False,False,0.7492
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,SPN-D1 (differentiating),Ventral projection,43,27,tested,-0.0779,-0.402,0.6708,False,False,0.8988
+Semaphorin-plexin signaling,Guidance,GO:0071526,direct GO,1.0,SPN-D2 (differentiating),Ventral projection,43,21,tested,-0.2083,-1.605,0.1037,False,False,0.3922
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Ventral IPC,Progenitor,444,106,tested,-0.112,-0.655,0.5091,False,False,0.8214
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Gliogenic RG,Progenitor,444,116,tested,-0.1131,-2.135,0.0342,True,False,0.2177
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Immature Astrocytes,Glial,444,119,tested,0.0041,-0.136,0.888,False,False,0.9641
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,OPC,Glial,444,104,tested,0.0603,1.379,0.1635,False,False,0.5205
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Deep layer EN,Dorsal excitatory,444,101,tested,-0.0435,-0.991,0.3117,False,False,0.6083
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,Upper layer EN,Dorsal excitatory,444,93,tested,-0.0994,-1.6,0.0962,False,False,0.3756
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,MGE-IN,Ventral interneuron,444,87,tested,-0.075,-0.399,0.6843,False,False,0.8988
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,CGE-IN,Ventral interneuron,444,89,tested,0.0299,1.189,0.2342,False,False,0.606
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,"GABAergic IN, origin unassigned",Ventral interneuron,444,108,tested,-0.0512,-1.039,0.3062,False,False,0.6083
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,LGE-derived GABAergic,Ventral interneuron,444,91,tested,-0.0046,0.998,0.3084,False,False,0.6083
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,SPN-D1 (precursor-like),Ventral projection,444,90,tested,-0.106,-0.336,0.7326,False,False,0.8988
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,SPN-D1 (differentiating),Ventral projection,444,97,tested,-0.0467,0.237,0.8005,False,False,0.9138
+Cell adhesion,Adhesion,GO:0007155,direct GO,0.58,SPN-D2 (differentiating),Ventral projection,444,92,tested,-0.1019,-0.569,0.5476,False,False,0.8605
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Ventral IPC,Progenitor,161,71,tested,-0.2076,-2.268,0.0265,True,False,0.2083
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Gliogenic RG,Progenitor,161,68,tested,-0.178,-2.551,0.013,True,False,0.143
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Immature Astrocytes,Glial,161,74,tested,-0.0601,-1.544,0.1202,False,False,0.4408
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,OPC,Glial,161,80,tested,-0.113,-1.763,0.0807,False,False,0.3564
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Deep layer EN,Dorsal excitatory,161,87,tested,-0.0498,-1.111,0.2537,False,False,0.606
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,Upper layer EN,Dorsal excitatory,161,80,tested,-0.1983,-4.129,0.002,True,False,0.121
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,MGE-IN,Ventral interneuron,161,80,tested,-0.1641,-2.574,0.0092,True,False,0.1399
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,CGE-IN,Ventral interneuron,161,78,tested,-0.0689,-0.44,0.6601,False,False,0.8988
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,"GABAergic IN, origin unassigned",Ventral interneuron,161,95,tested,-0.0874,-1.792,0.0707,False,False,0.3423
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,LGE-derived GABAergic,Ventral interneuron,161,74,tested,0.0013,1.02,0.3052,False,False,0.6083
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,SPN-D1 (precursor-like),Ventral projection,161,77,tested,-0.2012,-2.11,0.038,True,False,0.2189
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,SPN-D1 (differentiating),Ventral projection,161,84,tested,-0.0903,-1.123,0.2554,False,False,0.606
+Synaptic transmission,Neurotransmission,GO:0007268,direct GO,0.59,SPN-D2 (differentiating),Ventral projection,161,83,tested,-0.0936,-0.352,0.7218,False,False,0.8988
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Ventral IPC,Progenitor,22,15,tested,-0.3164,-1.964,0.0492,True,False,0.259
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Gliogenic RG,Progenitor,22,14,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Immature Astrocytes,Glial,22,15,tested,-0.1237,-1.321,0.1545,False,False,0.5192
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,OPC,Glial,22,16,tested,-0.0464,-0.3,0.7531,False,False,0.8988
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Deep layer EN,Dorsal excitatory,22,18,tested,-0.261,-3.559,0.005,True,False,0.1399
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,Upper layer EN,Dorsal excitatory,22,15,tested,-0.1838,-1.573,0.0952,False,False,0.3756
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,MGE-IN,Ventral interneuron,22,18,tested,-0.2525,-2.171,0.0295,True,False,0.2083
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,CGE-IN,Ventral interneuron,22,16,tested,-0.0325,0.046,0.9588,False,False,0.9783
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,"GABAergic IN, origin unassigned",Ventral interneuron,22,19,tested,-0.0416,-0.341,0.7146,False,False,0.8988
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,LGE-derived GABAergic,Ventral interneuron,22,16,tested,-0.0376,0.125,0.902,False,False,0.9641
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,SPN-D1 (precursor-like),Ventral projection,22,16,tested,-0.2183,-1.092,0.2614,False,False,0.6083
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,SPN-D1 (differentiating),Ventral projection,22,17,tested,-0.0929,-0.524,0.5844,False,False,0.895
+Ionotropic glutamate receptor sig,Neurotransmission,GO:0035235,direct GO,1.0,SPN-D2 (differentiating),Ventral projection,22,16,tested,-0.2042,-1.345,0.1635,False,False,0.5205
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Ventral IPC,Progenitor,53,20,tested,-0.3437,-2.519,0.0165,True,False,0.1512
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Gliogenic RG,Progenitor,53,17,tested,-0.0924,-0.686,0.4939,False,False,0.8182
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Immature Astrocytes,Glial,53,19,tested,-0.2406,-2.838,0.0122,True,False,0.143
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,OPC,Glial,53,25,tested,-0.0324,-0.214,0.8273,False,False,0.9269
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Deep layer EN,Dorsal excitatory,53,24,tested,-0.0797,-1.079,0.2394,False,False,0.606
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,Upper layer EN,Dorsal excitatory,53,24,tested,-0.2393,-2.805,0.0087,True,False,0.1399
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,MGE-IN,Ventral interneuron,53,22,tested,-0.2664,-2.66,0.0107,True,False,0.143
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,CGE-IN,Ventral interneuron,53,23,tested,-0.1278,-0.755,0.4396,False,False,0.7492
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,"GABAergic IN, origin unassigned",Ventral interneuron,53,26,tested,-0.1692,-1.881,0.0607,False,False,0.3062
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,LGE-derived GABAergic,Ventral interneuron,53,21,tested,-0.0435,0.055,0.953,False,False,0.9783
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,SPN-D1 (precursor-like),Ventral projection,53,23,tested,-0.3274,-2.411,0.0175,True,False,0.1512
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,SPN-D1 (differentiating),Ventral projection,53,23,tested,-0.0561,-0.023,0.9783,False,False,0.9783
+Neuronal action potential,Excitability,GO:0019228,direct GO,0.62,SPN-D2 (differentiating),Ventral projection,53,22,tested,-0.1729,-1.179,0.2179,False,False,0.606
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Ventral IPC,Progenitor,94,82,tested,0.0502,2.643,0.0087,True,False,0.1399
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Gliogenic RG,Progenitor,94,79,tested,0.0305,0.419,0.6718,False,False,0.8988
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Immature Astrocytes,Glial,94,22,tested,0.2629,3.203,0.0072,True,False,0.1399
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,OPC,Glial,94,52,tested,0.7669,10.713,0.0002,True,True,0.0302
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Deep layer EN,Dorsal excitatory,94,13,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,Upper layer EN,Dorsal excitatory,94,11,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,MGE-IN,Ventral interneuron,94,13,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,CGE-IN,Ventral interneuron,94,9,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,"GABAergic IN, origin unassigned",Ventral interneuron,94,17,tested,-0.1091,-0.954,0.3272,False,False,0.6238
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,LGE-derived GABAergic,Ventral interneuron,94,14,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,SPN-D1 (precursor-like),Ventral projection,94,14,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,SPN-D1 (differentiating),Ventral projection,94,14,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+Cell cycle (S and G2/M),Proliferation,curated (Tirosh 2016),curated,1.0,SPN-D2 (differentiating),Ventral projection,94,14,NA_below_15_genes,NA,NA,NA,NA,NA,NA
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,Ventral IPC,Progenitor,253,157,tested,0.0134,2.657,0.006,True,False,0.1399
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,Gliogenic RG,Progenitor,253,165,tested,0.0158,0.331,0.7398,False,False,0.8988
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,Immature Astrocytes,Glial,253,116,tested,0.0958,2.493,0.0147,True,False,0.1487
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,OPC,Glial,253,124,tested,0.0368,1.033,0.3109,False,False,0.6083
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,Deep layer EN,Dorsal excitatory,253,102,tested,-0.0216,-0.219,0.8118,False,False,0.918
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,Upper layer EN,Dorsal excitatory,253,94,tested,0.0015,1.216,0.1955,False,False,0.5768
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,MGE-IN,Ventral interneuron,253,96,tested,-0.0494,0.291,0.7623,False,False,0.8988
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,CGE-IN,Ventral interneuron,253,93,tested,-0.087,-0.812,0.4199,False,False,0.7482
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,"GABAergic IN, origin unassigned",Ventral interneuron,253,125,tested,-0.0324,-0.6,0.5456,False,False,0.8605
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,LGE-derived GABAergic,Ventral interneuron,253,94,tested,-0.0536,-0.121,0.9098,False,False,0.9641
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,SPN-D1 (precursor-like),Ventral projection,253,94,tested,-0.0699,0.411,0.6808,False,False,0.8988
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,SPN-D1 (differentiating),Ventral projection,253,104,tested,-0.0222,1.093,0.2744,False,False,0.6083
+DNA repair,DNA repair,GO:0006281,direct GO,0.62,SPN-D2 (differentiating),Ventral projection,253,95,tested,-0.0828,-0.084,0.9343,False,False,0.9745
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Ventral IPC,Progenitor,144,52,tested,-0.1254,-0.668,0.5004,False,False,0.8182
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Gliogenic RG,Progenitor,144,55,tested,-0.0629,-0.797,0.4266,False,False,0.7482
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Immature Astrocytes,Glial,144,47,tested,0.0293,0.384,0.6916,False,False,0.8988
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,OPC,Glial,144,49,tested,0.1541,2.198,0.0305,True,False,0.2083
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Deep layer EN,Dorsal excitatory,144,46,tested,0.0002,0.374,0.7011,False,False,0.8988
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,Upper layer EN,Dorsal excitatory,144,37,tested,0.0051,0.812,0.3897,False,False,0.7144
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,MGE-IN,Ventral interneuron,144,40,tested,-0.0304,0.5,0.6078,False,False,0.8988
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,CGE-IN,Ventral interneuron,144,42,tested,-0.026,0.172,0.8625,False,False,0.9575
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,"GABAergic IN, origin unassigned",Ventral interneuron,144,52,tested,-0.0041,0.101,0.915,False,False,0.9641
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,LGE-derived GABAergic,Ventral interneuron,144,39,tested,-0.0761,-0.386,0.6956,False,False,0.8988
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,SPN-D1 (precursor-like),Ventral projection,144,40,tested,-0.1876,-1.325,0.1725,False,False,0.5351
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,SPN-D1 (differentiating),Ventral projection,144,46,tested,-0.0024,1.17,0.2259,False,False,0.606
+Response to oxidative stress,Stress,GO:0006979,direct GO,0.87,SPN-D2 (differentiating),Ventral projection,144,40,tested,-0.0217,0.967,0.3117,False,False,0.6083
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Ventral IPC,Progenitor,533,199,tested,-0.0687,0.441,0.6528,False,False,0.8988
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Gliogenic RG,Progenitor,533,207,tested,0.0159,0.351,0.7286,False,False,0.8988
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Immature Astrocytes,Glial,533,183,tested,0.0125,0.096,0.9163,False,False,0.9641
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,OPC,Glial,533,186,tested,0.0377,1.239,0.2167,False,False,0.606
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Deep layer EN,Dorsal excitatory,533,175,tested,-0.0083,0.344,0.7256,False,False,0.8988
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,Upper layer EN,Dorsal excitatory,533,159,tested,-0.0144,1.037,0.2797,False,False,0.6083
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,MGE-IN,Ventral interneuron,533,157,tested,-0.0095,1.767,0.0797,False,False,0.3564
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,CGE-IN,Ventral interneuron,533,150,tested,-0.0264,0.311,0.7433,False,False,0.8988
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,"GABAergic IN, origin unassigned",Ventral interneuron,533,191,tested,0.0001,0.282,0.7646,False,False,0.8988
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,LGE-derived GABAergic,Ventral interneuron,533,153,tested,0.0103,1.733,0.0825,False,False,0.3564
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,SPN-D1 (precursor-like),Ventral projection,533,157,tested,-0.0547,0.948,0.3529,False,False,0.657
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,SPN-D1 (differentiating),Ventral projection,533,184,tested,-0.0308,1.05,0.2904,False,False,0.6083
+Apoptotic process,Cell death,GO:0006915,direct GO,0.72,SPN-D2 (differentiating),Ventral projection,533,168,tested,-0.0458,1.149,0.2467,False,False,0.606

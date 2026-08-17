@@ -1,0 +1,991 @@
+"class","n_cells","gene","pct_expr","mean_expr"
+"Astrocyte-primed RG",172,"Mki67",84.3,1.9143
+"Astrocyte-primed RG",172,"Top2a",86,1.9354
+"Astrocyte-primed RG",172,"Eomes",0.6,0.0069
+"Astrocyte-primed RG",172,"Neurog2",3.5,0.0426
+"Astrocyte-primed RG",172,"Btg2",5.2,0.0782
+"Astrocyte-primed RG",172,"Dlx1",5.2,0.1098
+"Astrocyte-primed RG",172,"Dlx2",2.3,0.0314
+"Astrocyte-primed RG",172,"Ascl1",9.9,0.1382
+"Astrocyte-primed RG",172,"Egfr",14.5,0.2475
+"Astrocyte-primed RG",172,"Olig2",10.5,0.1516
+"Astrocyte-primed RG",172,"Bcan",33.1,0.5592
+"Astrocyte-primed RG",172,"Aqp4",2.3,0.0334
+"Astrocyte-primed RG",172,"Aldh1l1",29.7,0.4434
+"Astrocyte-primed RG",172,"Clu",31.4,0.54
+"Astrocyte-primed RG",172,"Slc1a3",98.3,3.1999
+"Astrocyte-primed RG",172,"Slco1c1",65.7,1.6136
+"Astrocyte-primed RG",172,"Mfge8",70.9,1.3163
+"Astrocyte-primed RG",172,"Pdgfra",1.7,0.017
+"Astrocyte-primed RG",172,"Cspg4",2.9,0.0409
+"Astrocyte-primed RG",172,"Sox10",0.6,0.0036
+"Astrocyte-primed RG",172,"Fezf2",14,0.1987
+"Astrocyte-primed RG",172,"Tle4",27.3,0.4142
+"Astrocyte-primed RG",172,"Ntsr1",0.6,0.0085
+"Astrocyte-primed RG",172,"Satb2",8.7,0.1463
+"Astrocyte-primed RG",172,"Cux1",59.9,1.1087
+"Astrocyte-primed RG",172,"Mef2c",11.6,0.1641
+"Astrocyte-primed RG",172,"Reln",9.9,0.1367
+"Astrocyte-primed RG",172,"Trp73",0,0
+"Astrocyte-primed RG",172,"Ndnf",4.7,0.0775
+"Astrocyte-primed RG",172,"Lhx6",1.2,0.0201
+"Astrocyte-primed RG",172,"Maf",2.3,0.0408
+"Astrocyte-primed RG",172,"Nxph1",4.7,0.0646
+"Astrocyte-primed RG",172,"Prox1",6.4,0.0957
+"Astrocyte-primed RG",172,"Htr3a",0,0
+"Astrocyte-primed RG",172,"Nr3c2",4.7,0.0725
+"Astrocyte-primed RG",172,"Lhx8",1.2,0.0165
+"Astrocyte-primed RG",172,"Nkx2-1",1.7,0.0247
+"Astrocyte-primed RG",172,"Cntnap5a",9.3,0.1256
+"Astrocyte-primed RG",172,"Adarb2",11.6,0.1902
+"Astrocyte-primed RG",172,"Nr2f2",6.4,0.1083
+"Astrocyte-primed RG",172,"Meis2",92.4,2.9058
+"Astrocyte-primed RG",172,"Tshz1",11,0.1698
+"Astrocyte-primed RG",172,"Etv1",27.9,0.4463
+"Astrocyte-primed RG",172,"Pbx3",62.8,1.3023
+"Astrocyte-primed RG",172,"Ebf1",5.2,0.0916
+"Astrocyte-primed RG",172,"Isl1",3.5,0.0576
+"Astrocyte-primed RG",172,"Rxrg",2.9,0.0386
+"Astrocyte-primed RG",172,"Npy1r",0,0
+"Astrocyte-primed RG",172,"Dchs2",0.6,0.0081
+"Astrocyte-primed RG",172,"Pde8b",5.2,0.065
+"Astrocyte-primed RG",172,"Drd2",0.6,0.0083
+"Astrocyte-primed RG",172,"Penk",0.6,0.0071
+"Astrocyte-primed RG",172,"Adora2a",0,0
+"Astrocyte-primed RG",172,"Six3",9.9,0.1598
+"Astrocyte-primed RG",172,"Sox4",33.1,0.5105
+"Cajal-Retzius",157,"Mki67",3.8,0.0415
+"Cajal-Retzius",157,"Top2a",1.9,0.0106
+"Cajal-Retzius",157,"Eomes",16.6,0.1868
+"Cajal-Retzius",157,"Neurog2",3.2,0.0419
+"Cajal-Retzius",157,"Btg2",2.5,0.0222
+"Cajal-Retzius",157,"Dlx1",7.6,0.0979
+"Cajal-Retzius",157,"Dlx2",2.5,0.0218
+"Cajal-Retzius",157,"Ascl1",5.7,0.0885
+"Cajal-Retzius",157,"Egfr",1.9,0.0235
+"Cajal-Retzius",157,"Olig2",0.6,0.0059
+"Cajal-Retzius",157,"Bcan",3.8,0.0373
+"Cajal-Retzius",157,"Aqp4",0.6,0.0089
+"Cajal-Retzius",157,"Aldh1l1",0,0
+"Cajal-Retzius",157,"Clu",5.1,0.0577
+"Cajal-Retzius",157,"Slc1a3",10.2,0.131
+"Cajal-Retzius",157,"Slco1c1",1.9,0.0265
+"Cajal-Retzius",157,"Mfge8",2.5,0.0353
+"Cajal-Retzius",157,"Pdgfra",0.6,0.0079
+"Cajal-Retzius",157,"Cspg4",10.2,0.1304
+"Cajal-Retzius",157,"Sox10",0,0
+"Cajal-Retzius",157,"Fezf2",8.9,0.0935
+"Cajal-Retzius",157,"Tle4",28.7,0.3765
+"Cajal-Retzius",157,"Ntsr1",1.9,0.023
+"Cajal-Retzius",157,"Satb2",7.6,0.1041
+"Cajal-Retzius",157,"Cux1",42,0.524
+"Cajal-Retzius",157,"Mef2c",37.6,0.697
+"Cajal-Retzius",157,"Reln",100,4.6232
+"Cajal-Retzius",157,"Trp73",57.3,1.0532
+"Cajal-Retzius",157,"Ndnf",77.1,2.0823
+"Cajal-Retzius",157,"Lhx6",1.9,0.0203
+"Cajal-Retzius",157,"Maf",4.5,0.0614
+"Cajal-Retzius",157,"Nxph1",17.2,0.2684
+"Cajal-Retzius",157,"Prox1",3.8,0.0303
+"Cajal-Retzius",157,"Htr3a",0.6,0.0047
+"Cajal-Retzius",157,"Nr3c2",3.8,0.0421
+"Cajal-Retzius",157,"Lhx8",0.6,0.0054
+"Cajal-Retzius",157,"Nkx2-1",0,0
+"Cajal-Retzius",157,"Cntnap5a",33.8,0.675
+"Cajal-Retzius",157,"Adarb2",22.3,0.348
+"Cajal-Retzius",157,"Nr2f2",54.1,1.0139
+"Cajal-Retzius",157,"Meis2",29.3,0.5016
+"Cajal-Retzius",157,"Tshz1",28,0.3231
+"Cajal-Retzius",157,"Etv1",5.7,0.0697
+"Cajal-Retzius",157,"Pbx3",17.2,0.2783
+"Cajal-Retzius",157,"Ebf1",17.2,0.2795
+"Cajal-Retzius",157,"Isl1",3.2,0.045
+"Cajal-Retzius",157,"Rxrg",2.5,0.0344
+"Cajal-Retzius",157,"Npy1r",3.2,0.0346
+"Cajal-Retzius",157,"Dchs2",4.5,0.0583
+"Cajal-Retzius",157,"Pde8b",16.6,0.2088
+"Cajal-Retzius",157,"Drd2",0.6,0.0072
+"Cajal-Retzius",157,"Penk",5.1,0.0633
+"Cajal-Retzius",157,"Adora2a",0.6,0.0074
+"Cajal-Retzius",157,"Six3",1.9,0.0209
+"Cajal-Retzius",157,"Sox4",37.6,0.4953
+"CGE-IN",319,"Mki67",2.5,0.0455
+"CGE-IN",319,"Top2a",2.8,0.0458
+"CGE-IN",319,"Eomes",0.9,0.0155
+"CGE-IN",319,"Neurog2",0.9,0.0142
+"CGE-IN",319,"Btg2",0.9,0.0178
+"CGE-IN",319,"Dlx1",73.4,1.5887
+"CGE-IN",319,"Dlx2",21,0.3463
+"CGE-IN",319,"Ascl1",24.5,0.4308
+"CGE-IN",319,"Egfr",3.8,0.0673
+"CGE-IN",319,"Olig2",0.9,0.0122
+"CGE-IN",319,"Bcan",2.5,0.0395
+"CGE-IN",319,"Aqp4",0,0
+"CGE-IN",319,"Aldh1l1",0.6,0.0074
+"CGE-IN",319,"Clu",1.3,0.0235
+"CGE-IN",319,"Slc1a3",6.6,0.1115
+"CGE-IN",319,"Slco1c1",1.3,0.0188
+"CGE-IN",319,"Mfge8",2.5,0.0321
+"CGE-IN",319,"Pdgfra",0.3,0.0032
+"CGE-IN",319,"Cspg4",0.9,0.0122
+"CGE-IN",319,"Sox10",0,0
+"CGE-IN",319,"Fezf2",2.2,0.0323
+"CGE-IN",319,"Tle4",6,0.1002
+"CGE-IN",319,"Ntsr1",1.3,0.0176
+"CGE-IN",319,"Satb2",6.6,0.1302
+"CGE-IN",319,"Cux1",27.3,0.4841
+"CGE-IN",319,"Mef2c",52,1.1755
+"CGE-IN",319,"Reln",52.7,1.3242
+"CGE-IN",319,"Trp73",0.6,0.0089
+"CGE-IN",319,"Ndnf",10,0.196
+"CGE-IN",319,"Lhx6",1.9,0.0289
+"CGE-IN",319,"Maf",32.3,0.658
+"CGE-IN",319,"Nxph1",10,0.2239
+"CGE-IN",319,"Prox1",49.8,1.0381
+"CGE-IN",319,"Htr3a",24.5,0.414
+"CGE-IN",319,"Nr3c2",72.4,1.8603
+"CGE-IN",319,"Lhx8",1.3,0.0241
+"CGE-IN",319,"Nkx2-1",0.9,0.0132
+"CGE-IN",319,"Cntnap5a",24.1,0.5128
+"CGE-IN",319,"Adarb2",100,4.7936
+"CGE-IN",319,"Nr2f2",43.6,0.8447
+"CGE-IN",319,"Meis2",27.3,0.6365
+"CGE-IN",319,"Tshz1",14.4,0.2437
+"CGE-IN",319,"Etv1",3.1,0.0553
+"CGE-IN",319,"Pbx3",56.4,1.4962
+"CGE-IN",319,"Ebf1",7.2,0.1327
+"CGE-IN",319,"Isl1",2.2,0.0402
+"CGE-IN",319,"Rxrg",0.9,0.0145
+"CGE-IN",319,"Npy1r",6.9,0.1027
+"CGE-IN",319,"Dchs2",11.6,0.2073
+"CGE-IN",319,"Pde8b",0.6,0.009
+"CGE-IN",319,"Drd2",0.3,0.0034
+"CGE-IN",319,"Penk",0.9,0.0126
+"CGE-IN",319,"Adora2a",0.3,0.005
+"CGE-IN",319,"Six3",2.2,0.0371
+"CGE-IN",319,"Sox4",43.9,0.7771
+"Deep layer EN",4451,"Mki67",1.8,0.0238
+"Deep layer EN",4451,"Top2a",2,0.0294
+"Deep layer EN",4451,"Eomes",2.4,0.0374
+"Deep layer EN",4451,"Neurog2",4.6,0.0658
+"Deep layer EN",4451,"Btg2",0.9,0.0109
+"Deep layer EN",4451,"Dlx1",3.8,0.05
+"Deep layer EN",4451,"Dlx2",1,0.0122
+"Deep layer EN",4451,"Ascl1",3.8,0.0548
+"Deep layer EN",4451,"Egfr",1.3,0.0163
+"Deep layer EN",4451,"Olig2",0.7,0.0088
+"Deep layer EN",4451,"Bcan",2.8,0.0363
+"Deep layer EN",4451,"Aqp4",0.4,0.0047
+"Deep layer EN",4451,"Aldh1l1",0.6,0.0086
+"Deep layer EN",4451,"Clu",3.5,0.0433
+"Deep layer EN",4451,"Slc1a3",14.1,0.2523
+"Deep layer EN",4451,"Slco1c1",1.1,0.0159
+"Deep layer EN",4451,"Mfge8",1.6,0.0206
+"Deep layer EN",4451,"Pdgfra",1.5,0.0197
+"Deep layer EN",4451,"Cspg4",0.4,0.0045
+"Deep layer EN",4451,"Sox10",0.2,0.0033
+"Deep layer EN",4451,"Fezf2",36.9,0.6334
+"Deep layer EN",4451,"Tle4",41.5,0.7695
+"Deep layer EN",4451,"Ntsr1",18.1,0.2583
+"Deep layer EN",4451,"Satb2",33.9,0.6359
+"Deep layer EN",4451,"Cux1",21.7,0.3261
+"Deep layer EN",4451,"Mef2c",60,1.4697
+"Deep layer EN",4451,"Reln",17.2,0.2969
+"Deep layer EN",4451,"Trp73",0.4,0.0056
+"Deep layer EN",4451,"Ndnf",1.2,0.018
+"Deep layer EN",4451,"Lhx6",1.3,0.015
+"Deep layer EN",4451,"Maf",3.4,0.0468
+"Deep layer EN",4451,"Nxph1",10.5,0.1677
+"Deep layer EN",4451,"Prox1",5.6,0.1054
+"Deep layer EN",4451,"Htr3a",0.4,0.0038
+"Deep layer EN",4451,"Nr3c2",18.2,0.3717
+"Deep layer EN",4451,"Lhx8",0.5,0.0062
+"Deep layer EN",4451,"Nkx2-1",0.4,0.0044
+"Deep layer EN",4451,"Cntnap5a",35,0.7584
+"Deep layer EN",4451,"Adarb2",19.9,0.3707
+"Deep layer EN",4451,"Nr2f2",12.9,0.2074
+"Deep layer EN",4451,"Meis2",68,1.6738
+"Deep layer EN",4451,"Tshz1",4.9,0.0689
+"Deep layer EN",4451,"Etv1",11.4,0.187
+"Deep layer EN",4451,"Pbx3",20.1,0.3474
+"Deep layer EN",4451,"Ebf1",8.4,0.1412
+"Deep layer EN",4451,"Isl1",2.6,0.0343
+"Deep layer EN",4451,"Rxrg",1.7,0.0199
+"Deep layer EN",4451,"Npy1r",6.3,0.0784
+"Deep layer EN",4451,"Dchs2",4.8,0.0704
+"Deep layer EN",4451,"Pde8b",3.4,0.0427
+"Deep layer EN",4451,"Drd2",0.7,0.0084
+"Deep layer EN",4451,"Penk",1.7,0.0237
+"Deep layer EN",4451,"Adora2a",0.2,0.0029
+"Deep layer EN",4451,"Six3",2,0.0275
+"Deep layer EN",4451,"Sox4",64.4,1.1577
+"Dorsal IPC",99,"Mki67",84.8,2.0669
+"Dorsal IPC",99,"Top2a",81.8,1.7374
+"Dorsal IPC",99,"Eomes",67.7,1.3158
+"Dorsal IPC",99,"Neurog2",43.4,0.735
+"Dorsal IPC",99,"Btg2",20.2,0.2959
+"Dorsal IPC",99,"Dlx1",7.1,0.1265
+"Dorsal IPC",99,"Dlx2",6.1,0.0878
+"Dorsal IPC",99,"Ascl1",19.2,0.2832
+"Dorsal IPC",99,"Egfr",16.2,0.2734
+"Dorsal IPC",99,"Olig2",4,0.0592
+"Dorsal IPC",99,"Bcan",7.1,0.0845
+"Dorsal IPC",99,"Aqp4",1,0.0141
+"Dorsal IPC",99,"Aldh1l1",0,0
+"Dorsal IPC",99,"Clu",1,0.0137
+"Dorsal IPC",99,"Slc1a3",54.5,1.0618
+"Dorsal IPC",99,"Slco1c1",36.4,0.6509
+"Dorsal IPC",99,"Mfge8",9.1,0.1286
+"Dorsal IPC",99,"Pdgfra",1,0.0079
+"Dorsal IPC",99,"Cspg4",0,0
+"Dorsal IPC",99,"Sox10",0,0
+"Dorsal IPC",99,"Fezf2",25.3,0.4144
+"Dorsal IPC",99,"Tle4",15.2,0.1897
+"Dorsal IPC",99,"Ntsr1",0,0
+"Dorsal IPC",99,"Satb2",25.3,0.4564
+"Dorsal IPC",99,"Cux1",70.7,1.297
+"Dorsal IPC",99,"Mef2c",19.2,0.3201
+"Dorsal IPC",99,"Reln",10.1,0.1373
+"Dorsal IPC",99,"Trp73",0,0
+"Dorsal IPC",99,"Ndnf",1,0.0104
+"Dorsal IPC",99,"Lhx6",1,0.0133
+"Dorsal IPC",99,"Maf",0,0
+"Dorsal IPC",99,"Nxph1",9.1,0.1826
+"Dorsal IPC",99,"Prox1",16.2,0.2847
+"Dorsal IPC",99,"Htr3a",0,0
+"Dorsal IPC",99,"Nr3c2",3,0.0385
+"Dorsal IPC",99,"Lhx8",0,0
+"Dorsal IPC",99,"Nkx2-1",2,0.0357
+"Dorsal IPC",99,"Cntnap5a",8.1,0.123
+"Dorsal IPC",99,"Adarb2",17.2,0.3369
+"Dorsal IPC",99,"Nr2f2",11.1,0.1495
+"Dorsal IPC",99,"Meis2",94.9,3.2318
+"Dorsal IPC",99,"Tshz1",9.1,0.1331
+"Dorsal IPC",99,"Etv1",12.1,0.2138
+"Dorsal IPC",99,"Pbx3",62.6,1.5607
+"Dorsal IPC",99,"Ebf1",14.1,0.213
+"Dorsal IPC",99,"Isl1",0,0
+"Dorsal IPC",99,"Rxrg",1,0.0114
+"Dorsal IPC",99,"Npy1r",1,0.0115
+"Dorsal IPC",99,"Dchs2",0,0
+"Dorsal IPC",99,"Pde8b",5.1,0.0718
+"Dorsal IPC",99,"Drd2",1,0.0116
+"Dorsal IPC",99,"Penk",0,0
+"Dorsal IPC",99,"Adora2a",0,0
+"Dorsal IPC",99,"Six3",2,0.024
+"Dorsal IPC",99,"Sox4",69.7,1.3616
+"GABAergic IN, origin unassigned",464,"Mki67",1.5,0.0196
+"GABAergic IN, origin unassigned",464,"Top2a",2.6,0.0373
+"GABAergic IN, origin unassigned",464,"Eomes",0.4,0.0044
+"GABAergic IN, origin unassigned",464,"Neurog2",1.1,0.0111
+"GABAergic IN, origin unassigned",464,"Btg2",0.4,0.005
+"GABAergic IN, origin unassigned",464,"Dlx1",20.3,0.3102
+"GABAergic IN, origin unassigned",464,"Dlx2",4.5,0.0557
+"GABAergic IN, origin unassigned",464,"Ascl1",5.4,0.0632
+"GABAergic IN, origin unassigned",464,"Egfr",2.4,0.0312
+"GABAergic IN, origin unassigned",464,"Olig2",0.6,0.0066
+"GABAergic IN, origin unassigned",464,"Bcan",4.1,0.0412
+"GABAergic IN, origin unassigned",464,"Aqp4",0,0
+"GABAergic IN, origin unassigned",464,"Aldh1l1",0,0
+"GABAergic IN, origin unassigned",464,"Clu",5.8,0.0653
+"GABAergic IN, origin unassigned",464,"Slc1a3",5.6,0.074
+"GABAergic IN, origin unassigned",464,"Slco1c1",1.5,0.0203
+"GABAergic IN, origin unassigned",464,"Mfge8",1.9,0.023
+"GABAergic IN, origin unassigned",464,"Pdgfra",0.4,0.0058
+"GABAergic IN, origin unassigned",464,"Cspg4",0.2,0.003
+"GABAergic IN, origin unassigned",464,"Sox10",0,0
+"GABAergic IN, origin unassigned",464,"Fezf2",1.9,0.0206
+"GABAergic IN, origin unassigned",464,"Tle4",23.5,0.3352
+"GABAergic IN, origin unassigned",464,"Ntsr1",5,0.0578
+"GABAergic IN, origin unassigned",464,"Satb2",6.9,0.1068
+"GABAergic IN, origin unassigned",464,"Cux1",45.3,0.6353
+"GABAergic IN, origin unassigned",464,"Mef2c",28.9,0.4792
+"GABAergic IN, origin unassigned",464,"Reln",36.6,0.6302
+"GABAergic IN, origin unassigned",464,"Trp73",0.6,0.0061
+"GABAergic IN, origin unassigned",464,"Ndnf",3.7,0.0502
+"GABAergic IN, origin unassigned",464,"Lhx6",8.4,0.1203
+"GABAergic IN, origin unassigned",464,"Maf",12.5,0.1989
+"GABAergic IN, origin unassigned",464,"Nxph1",52.2,1.1988
+"GABAergic IN, origin unassigned",464,"Prox1",13.1,0.2677
+"GABAergic IN, origin unassigned",464,"Htr3a",2.2,0.0209
+"GABAergic IN, origin unassigned",464,"Nr3c2",16.4,0.2754
+"GABAergic IN, origin unassigned",464,"Lhx8",7.8,0.1306
+"GABAergic IN, origin unassigned",464,"Nkx2-1",3.7,0.0479
+"GABAergic IN, origin unassigned",464,"Cntnap5a",65.5,1.5911
+"GABAergic IN, origin unassigned",464,"Adarb2",98.1,3.7176
+"GABAergic IN, origin unassigned",464,"Nr2f2",23.5,0.3658
+"GABAergic IN, origin unassigned",464,"Meis2",46.6,1.2153
+"GABAergic IN, origin unassigned",464,"Tshz1",9.7,0.1327
+"GABAergic IN, origin unassigned",464,"Etv1",4.1,0.0554
+"GABAergic IN, origin unassigned",464,"Pbx3",54.1,1.2372
+"GABAergic IN, origin unassigned",464,"Ebf1",13.8,0.2488
+"GABAergic IN, origin unassigned",464,"Isl1",4.5,0.0599
+"GABAergic IN, origin unassigned",464,"Rxrg",2.6,0.0284
+"GABAergic IN, origin unassigned",464,"Npy1r",2.8,0.0357
+"GABAergic IN, origin unassigned",464,"Dchs2",12.9,0.1751
+"GABAergic IN, origin unassigned",464,"Pde8b",12.3,0.1497
+"GABAergic IN, origin unassigned",464,"Drd2",1.9,0.0257
+"GABAergic IN, origin unassigned",464,"Penk",5.4,0.0803
+"GABAergic IN, origin unassigned",464,"Adora2a",1.1,0.0099
+"GABAergic IN, origin unassigned",464,"Six3",7.8,0.1373
+"GABAergic IN, origin unassigned",464,"Sox4",40.9,0.6156
+"Gliogenic RG",290,"Mki67",64.5,1.4762
+"Gliogenic RG",290,"Top2a",64.5,1.3765
+"Gliogenic RG",290,"Eomes",2.1,0.036
+"Gliogenic RG",290,"Neurog2",3.1,0.0566
+"Gliogenic RG",290,"Btg2",12.8,0.2084
+"Gliogenic RG",290,"Dlx1",7.6,0.1663
+"Gliogenic RG",290,"Dlx2",4.1,0.0681
+"Gliogenic RG",290,"Ascl1",33.8,0.6543
+"Gliogenic RG",290,"Egfr",81,1.9044
+"Gliogenic RG",290,"Olig2",47.6,0.8726
+"Gliogenic RG",290,"Bcan",58.3,1.1242
+"Gliogenic RG",290,"Aqp4",8.3,0.1357
+"Gliogenic RG",290,"Aldh1l1",16.2,0.2313
+"Gliogenic RG",290,"Clu",5.5,0.0757
+"Gliogenic RG",290,"Slc1a3",85.9,2.4997
+"Gliogenic RG",290,"Slco1c1",16.6,0.3302
+"Gliogenic RG",290,"Mfge8",66.9,1.2856
+"Gliogenic RG",290,"Pdgfra",8.3,0.1265
+"Gliogenic RG",290,"Cspg4",4.5,0.0605
+"Gliogenic RG",290,"Sox10",1.7,0.0359
+"Gliogenic RG",290,"Fezf2",4.5,0.07
+"Gliogenic RG",290,"Tle4",25.2,0.3979
+"Gliogenic RG",290,"Ntsr1",1,0.0124
+"Gliogenic RG",290,"Satb2",15.2,0.2594
+"Gliogenic RG",290,"Cux1",59.7,1.0944
+"Gliogenic RG",290,"Mef2c",12.8,0.2213
+"Gliogenic RG",290,"Reln",16.6,0.2965
+"Gliogenic RG",290,"Trp73",0.3,0.0095
+"Gliogenic RG",290,"Ndnf",3.8,0.0564
+"Gliogenic RG",290,"Lhx6",1.4,0.0205
+"Gliogenic RG",290,"Maf",2.1,0.0233
+"Gliogenic RG",290,"Nxph1",40.3,0.8787
+"Gliogenic RG",290,"Prox1",14.5,0.2286
+"Gliogenic RG",290,"Htr3a",0.3,0.0057
+"Gliogenic RG",290,"Nr3c2",5.5,0.1044
+"Gliogenic RG",290,"Lhx8",0,0
+"Gliogenic RG",290,"Nkx2-1",1,0.0145
+"Gliogenic RG",290,"Cntnap5a",10.7,0.1793
+"Gliogenic RG",290,"Adarb2",19.3,0.3637
+"Gliogenic RG",290,"Nr2f2",18.6,0.3047
+"Gliogenic RG",290,"Meis2",78.3,2.2706
+"Gliogenic RG",290,"Tshz1",12.4,0.1958
+"Gliogenic RG",290,"Etv1",30,0.484
+"Gliogenic RG",290,"Pbx3",48.6,0.9615
+"Gliogenic RG",290,"Ebf1",7.2,0.114
+"Gliogenic RG",290,"Isl1",1,0.0182
+"Gliogenic RG",290,"Rxrg",5.5,0.0907
+"Gliogenic RG",290,"Npy1r",0.7,0.0102
+"Gliogenic RG",290,"Dchs2",3.8,0.0543
+"Gliogenic RG",290,"Pde8b",2.8,0.0436
+"Gliogenic RG",290,"Drd2",0,0
+"Gliogenic RG",290,"Penk",0.3,0.0029
+"Gliogenic RG",290,"Adora2a",1,0.0118
+"Gliogenic RG",290,"Six3",4.1,0.0584
+"Gliogenic RG",290,"Sox4",42.8,0.787
+"Immature Astrocytes",1931,"Mki67",11.3,0.2017
+"Immature Astrocytes",1931,"Top2a",8.1,0.1356
+"Immature Astrocytes",1931,"Eomes",3.7,0.0722
+"Immature Astrocytes",1931,"Neurog2",4.1,0.0591
+"Immature Astrocytes",1931,"Btg2",4.5,0.0618
+"Immature Astrocytes",1931,"Dlx1",5.6,0.082
+"Immature Astrocytes",1931,"Dlx2",1.8,0.0252
+"Immature Astrocytes",1931,"Ascl1",5.5,0.0867
+"Immature Astrocytes",1931,"Egfr",28.9,0.5699
+"Immature Astrocytes",1931,"Olig2",10.5,0.1643
+"Immature Astrocytes",1931,"Bcan",57.8,1.1977
+"Immature Astrocytes",1931,"Aqp4",20.4,0.3731
+"Immature Astrocytes",1931,"Aldh1l1",25.9,0.4052
+"Immature Astrocytes",1931,"Clu",29.8,0.4927
+"Immature Astrocytes",1931,"Slc1a3",95.4,2.9918
+"Immature Astrocytes",1931,"Slco1c1",32.7,0.7457
+"Immature Astrocytes",1931,"Mfge8",65.8,1.2638
+"Immature Astrocytes",1931,"Pdgfra",0.9,0.0131
+"Immature Astrocytes",1931,"Cspg4",3.9,0.0545
+"Immature Astrocytes",1931,"Sox10",0.4,0.0058
+"Immature Astrocytes",1931,"Fezf2",10,0.1525
+"Immature Astrocytes",1931,"Tle4",27.9,0.4328
+"Immature Astrocytes",1931,"Ntsr1",2,0.0228
+"Immature Astrocytes",1931,"Satb2",11,0.1822
+"Immature Astrocytes",1931,"Cux1",48.9,0.8506
+"Immature Astrocytes",1931,"Mef2c",17.7,0.312
+"Immature Astrocytes",1931,"Reln",18.2,0.3193
+"Immature Astrocytes",1931,"Trp73",1.2,0.0167
+"Immature Astrocytes",1931,"Ndnf",6.3,0.0976
+"Immature Astrocytes",1931,"Lhx6",1.6,0.0211
+"Immature Astrocytes",1931,"Maf",6.2,0.0941
+"Immature Astrocytes",1931,"Nxph1",19.1,0.3582
+"Immature Astrocytes",1931,"Prox1",14.1,0.224
+"Immature Astrocytes",1931,"Htr3a",0.3,0.0036
+"Immature Astrocytes",1931,"Nr3c2",11.7,0.203
+"Immature Astrocytes",1931,"Lhx8",0.9,0.0126
+"Immature Astrocytes",1931,"Nkx2-1",2.7,0.0373
+"Immature Astrocytes",1931,"Cntnap5a",13.4,0.2347
+"Immature Astrocytes",1931,"Adarb2",18.7,0.3776
+"Immature Astrocytes",1931,"Nr2f2",27.7,0.4854
+"Immature Astrocytes",1931,"Meis2",75.9,2.1119
+"Immature Astrocytes",1931,"Tshz1",11.7,0.1807
+"Immature Astrocytes",1931,"Etv1",18.1,0.2928
+"Immature Astrocytes",1931,"Pbx3",37,0.7323
+"Immature Astrocytes",1931,"Ebf1",9.7,0.1758
+"Immature Astrocytes",1931,"Isl1",3.5,0.0552
+"Immature Astrocytes",1931,"Rxrg",9.5,0.1357
+"Immature Astrocytes",1931,"Npy1r",0.9,0.0126
+"Immature Astrocytes",1931,"Dchs2",5.3,0.0796
+"Immature Astrocytes",1931,"Pde8b",5.8,0.0825
+"Immature Astrocytes",1931,"Drd2",1.1,0.0145
+"Immature Astrocytes",1931,"Penk",1.5,0.0187
+"Immature Astrocytes",1931,"Adora2a",0.4,0.0042
+"Immature Astrocytes",1931,"Six3",11.6,0.1829
+"Immature Astrocytes",1931,"Sox4",30.7,0.4981
+"LGE-derived GABAergic",1056,"Mki67",3.8,0.0654
+"LGE-derived GABAergic",1056,"Top2a",3.1,0.0538
+"LGE-derived GABAergic",1056,"Eomes",0.7,0.0115
+"LGE-derived GABAergic",1056,"Neurog2",0.5,0.0076
+"LGE-derived GABAergic",1056,"Btg2",2.1,0.0277
+"LGE-derived GABAergic",1056,"Dlx1",57.8,1.2227
+"LGE-derived GABAergic",1056,"Dlx2",19.4,0.3329
+"LGE-derived GABAergic",1056,"Ascl1",2.3,0.0372
+"LGE-derived GABAergic",1056,"Egfr",1.9,0.0364
+"LGE-derived GABAergic",1056,"Olig2",0.2,0.003
+"LGE-derived GABAergic",1056,"Bcan",2.9,0.0535
+"LGE-derived GABAergic",1056,"Aqp4",0.4,0.0062
+"LGE-derived GABAergic",1056,"Aldh1l1",0.8,0.0127
+"LGE-derived GABAergic",1056,"Clu",0.9,0.011
+"LGE-derived GABAergic",1056,"Slc1a3",10.8,0.2058
+"LGE-derived GABAergic",1056,"Slco1c1",0.6,0.0089
+"LGE-derived GABAergic",1056,"Mfge8",1.8,0.0261
+"LGE-derived GABAergic",1056,"Pdgfra",0.8,0.0138
+"LGE-derived GABAergic",1056,"Cspg4",0.6,0.0089
+"LGE-derived GABAergic",1056,"Sox10",0,0
+"LGE-derived GABAergic",1056,"Fezf2",2.2,0.0366
+"LGE-derived GABAergic",1056,"Tle4",17.1,0.3176
+"LGE-derived GABAergic",1056,"Ntsr1",7.1,0.1062
+"LGE-derived GABAergic",1056,"Satb2",6.6,0.1249
+"LGE-derived GABAergic",1056,"Cux1",46.6,0.8775
+"LGE-derived GABAergic",1056,"Mef2c",28.6,0.5596
+"LGE-derived GABAergic",1056,"Reln",12.3,0.2071
+"LGE-derived GABAergic",1056,"Trp73",0.4,0.0054
+"LGE-derived GABAergic",1056,"Ndnf",2.4,0.038
+"LGE-derived GABAergic",1056,"Lhx6",2.2,0.0412
+"LGE-derived GABAergic",1056,"Maf",2.7,0.0484
+"LGE-derived GABAergic",1056,"Nxph1",17.7,0.3991
+"LGE-derived GABAergic",1056,"Prox1",9.5,0.1829
+"LGE-derived GABAergic",1056,"Htr3a",1.2,0.0204
+"LGE-derived GABAergic",1056,"Nr3c2",2.6,0.0454
+"LGE-derived GABAergic",1056,"Lhx8",0.6,0.0119
+"LGE-derived GABAergic",1056,"Nkx2-1",0.5,0.008
+"LGE-derived GABAergic",1056,"Cntnap5a",16.9,0.3397
+"LGE-derived GABAergic",1056,"Adarb2",81.2,2.7479
+"LGE-derived GABAergic",1056,"Nr2f2",8,0.144
+"LGE-derived GABAergic",1056,"Meis2",96.4,3.7127
+"LGE-derived GABAergic",1056,"Tshz1",47.2,1.0599
+"LGE-derived GABAergic",1056,"Etv1",24.2,0.5121
+"LGE-derived GABAergic",1056,"Pbx3",83.8,3.1261
+"LGE-derived GABAergic",1056,"Ebf1",8,0.1534
+"LGE-derived GABAergic",1056,"Isl1",5.4,0.1035
+"LGE-derived GABAergic",1056,"Rxrg",3.6,0.0538
+"LGE-derived GABAergic",1056,"Npy1r",2,0.0319
+"LGE-derived GABAergic",1056,"Dchs2",12.7,0.2334
+"LGE-derived GABAergic",1056,"Pde8b",6.3,0.1055
+"LGE-derived GABAergic",1056,"Drd2",0.8,0.0142
+"LGE-derived GABAergic",1056,"Penk",3.5,0.0529
+"LGE-derived GABAergic",1056,"Adora2a",0.7,0.0084
+"LGE-derived GABAergic",1056,"Six3",15.9,0.3102
+"LGE-derived GABAergic",1056,"Sox4",61.1,1.2263
+"Lhx8+ subpallial IN",266,"Mki67",3,0.0288
+"Lhx8+ subpallial IN",266,"Top2a",1.5,0.0196
+"Lhx8+ subpallial IN",266,"Eomes",1.1,0.0098
+"Lhx8+ subpallial IN",266,"Neurog2",0.8,0.0063
+"Lhx8+ subpallial IN",266,"Btg2",0.4,0.0046
+"Lhx8+ subpallial IN",266,"Dlx1",36.8,0.541
+"Lhx8+ subpallial IN",266,"Dlx2",5.3,0.066
+"Lhx8+ subpallial IN",266,"Ascl1",0,0
+"Lhx8+ subpallial IN",266,"Egfr",3,0.0409
+"Lhx8+ subpallial IN",266,"Olig2",1.1,0.0098
+"Lhx8+ subpallial IN",266,"Bcan",1.9,0.0244
+"Lhx8+ subpallial IN",266,"Aqp4",0.4,0.0034
+"Lhx8+ subpallial IN",266,"Aldh1l1",1.5,0.0124
+"Lhx8+ subpallial IN",266,"Clu",4.5,0.0515
+"Lhx8+ subpallial IN",266,"Slc1a3",6.4,0.0941
+"Lhx8+ subpallial IN",266,"Slco1c1",1.9,0.0218
+"Lhx8+ subpallial IN",266,"Mfge8",2.6,0.0338
+"Lhx8+ subpallial IN",266,"Pdgfra",1.9,0.0213
+"Lhx8+ subpallial IN",266,"Cspg4",0.4,0.0041
+"Lhx8+ subpallial IN",266,"Sox10",0.4,0.0036
+"Lhx8+ subpallial IN",266,"Fezf2",0.8,0.0074
+"Lhx8+ subpallial IN",266,"Tle4",9.4,0.1012
+"Lhx8+ subpallial IN",266,"Ntsr1",4.5,0.0417
+"Lhx8+ subpallial IN",266,"Satb2",8.3,0.1238
+"Lhx8+ subpallial IN",266,"Cux1",39.1,0.5503
+"Lhx8+ subpallial IN",266,"Mef2c",39.1,0.798
+"Lhx8+ subpallial IN",266,"Reln",28.6,0.4282
+"Lhx8+ subpallial IN",266,"Trp73",0.4,0.0036
+"Lhx8+ subpallial IN",266,"Ndnf",1.9,0.0325
+"Lhx8+ subpallial IN",266,"Lhx6",39.5,0.5122
+"Lhx8+ subpallial IN",266,"Maf",3.4,0.0424
+"Lhx8+ subpallial IN",266,"Nxph1",13.9,0.2537
+"Lhx8+ subpallial IN",266,"Prox1",3.8,0.0403
+"Lhx8+ subpallial IN",266,"Htr3a",0,0
+"Lhx8+ subpallial IN",266,"Nr3c2",25.6,0.4027
+"Lhx8+ subpallial IN",266,"Lhx8",63.2,1.0881
+"Lhx8+ subpallial IN",266,"Nkx2-1",27.1,0.3889
+"Lhx8+ subpallial IN",266,"Cntnap5a",82.3,2.618
+"Lhx8+ subpallial IN",266,"Adarb2",99.2,3.6157
+"Lhx8+ subpallial IN",266,"Nr2f2",2.3,0.0242
+"Lhx8+ subpallial IN",266,"Meis2",20.7,0.3238
+"Lhx8+ subpallial IN",266,"Tshz1",7.1,0.0922
+"Lhx8+ subpallial IN",266,"Etv1",28.6,0.5
+"Lhx8+ subpallial IN",266,"Pbx3",39.5,0.7792
+"Lhx8+ subpallial IN",266,"Ebf1",9,0.1246
+"Lhx8+ subpallial IN",266,"Isl1",8.3,0.142
+"Lhx8+ subpallial IN",266,"Rxrg",2.6,0.0296
+"Lhx8+ subpallial IN",266,"Npy1r",1.1,0.0104
+"Lhx8+ subpallial IN",266,"Dchs2",40.2,0.6202
+"Lhx8+ subpallial IN",266,"Pde8b",5.6,0.0736
+"Lhx8+ subpallial IN",266,"Drd2",1.5,0.0175
+"Lhx8+ subpallial IN",266,"Penk",3.4,0.0417
+"Lhx8+ subpallial IN",266,"Adora2a",0,0
+"Lhx8+ subpallial IN",266,"Six3",3,0.0335
+"Lhx8+ subpallial IN",266,"Sox4",52.6,0.8376
+"MGE-IN",1414,"Mki67",1.5,0.0209
+"MGE-IN",1414,"Top2a",2.3,0.0389
+"MGE-IN",1414,"Eomes",0.8,0.0129
+"MGE-IN",1414,"Neurog2",0.6,0.0069
+"MGE-IN",1414,"Btg2",0.4,0.0042
+"MGE-IN",1414,"Dlx1",38.7,0.7044
+"MGE-IN",1414,"Dlx2",14.9,0.229
+"MGE-IN",1414,"Ascl1",9.3,0.1533
+"MGE-IN",1414,"Egfr",4.4,0.0814
+"MGE-IN",1414,"Olig2",0.7,0.011
+"MGE-IN",1414,"Bcan",5.4,0.0904
+"MGE-IN",1414,"Aqp4",0.1,0.0022
+"MGE-IN",1414,"Aldh1l1",0.4,0.0056
+"MGE-IN",1414,"Clu",2.3,0.0312
+"MGE-IN",1414,"Slc1a3",8.8,0.1585
+"MGE-IN",1414,"Slco1c1",1.3,0.0209
+"MGE-IN",1414,"Mfge8",0.9,0.014
+"MGE-IN",1414,"Pdgfra",1.1,0.0154
+"MGE-IN",1414,"Cspg4",0.4,0.0043
+"MGE-IN",1414,"Sox10",0.4,0.0067
+"MGE-IN",1414,"Fezf2",2.4,0.0332
+"MGE-IN",1414,"Tle4",8.9,0.1376
+"MGE-IN",1414,"Ntsr1",1.6,0.0222
+"MGE-IN",1414,"Satb2",7.4,0.1306
+"MGE-IN",1414,"Cux1",49.4,0.9332
+"MGE-IN",1414,"Mef2c",70.1,1.8712
+"MGE-IN",1414,"Reln",34.3,0.7874
+"MGE-IN",1414,"Trp73",0.2,0.0029
+"MGE-IN",1414,"Ndnf",4,0.0586
+"MGE-IN",1414,"Lhx6",43.6,0.7673
+"MGE-IN",1414,"Maf",60.4,1.3031
+"MGE-IN",1414,"Nxph1",89.7,2.9185
+"MGE-IN",1414,"Prox1",6.9,0.1195
+"MGE-IN",1414,"Htr3a",1.4,0.0238
+"MGE-IN",1414,"Nr3c2",4.6,0.0868
+"MGE-IN",1414,"Lhx8",4.5,0.0811
+"MGE-IN",1414,"Nkx2-1",7.3,0.1214
+"MGE-IN",1414,"Cntnap5a",28.1,0.6186
+"MGE-IN",1414,"Adarb2",16.3,0.3278
+"MGE-IN",1414,"Nr2f2",11.1,0.189
+"MGE-IN",1414,"Meis2",26,0.544
+"MGE-IN",1414,"Tshz1",7.9,0.1254
+"MGE-IN",1414,"Etv1",15.1,0.3035
+"MGE-IN",1414,"Pbx3",22.3,0.4613
+"MGE-IN",1414,"Ebf1",7.6,0.1281
+"MGE-IN",1414,"Isl1",2.9,0.0486
+"MGE-IN",1414,"Rxrg",1.3,0.0184
+"MGE-IN",1414,"Npy1r",1.7,0.0234
+"MGE-IN",1414,"Dchs2",9.1,0.1626
+"MGE-IN",1414,"Pde8b",2.4,0.0345
+"MGE-IN",1414,"Drd2",0.8,0.0114
+"MGE-IN",1414,"Penk",2.4,0.0382
+"MGE-IN",1414,"Adora2a",0.3,0.0033
+"MGE-IN",1414,"Six3",2.2,0.033
+"MGE-IN",1414,"Sox4",43.2,0.7706
+"OPC",366,"Mki67",19.1,0.406
+"OPC",366,"Top2a",18.3,0.3677
+"OPC",366,"Eomes",1.6,0.0209
+"OPC",366,"Neurog2",1.1,0.0149
+"OPC",366,"Btg2",4.4,0.059
+"OPC",366,"Dlx1",5.5,0.0862
+"OPC",366,"Dlx2",0.3,0.0025
+"OPC",366,"Ascl1",9.8,0.1485
+"OPC",366,"Egfr",9.3,0.1624
+"OPC",366,"Olig2",62.8,1.149
+"OPC",366,"Bcan",88,1.9323
+"OPC",366,"Aqp4",1.1,0.0178
+"OPC",366,"Aldh1l1",0.5,0.0067
+"OPC",366,"Clu",4.6,0.0662
+"OPC",366,"Slc1a3",55.5,1.1458
+"OPC",366,"Slco1c1",1.9,0.024
+"OPC",366,"Mfge8",13.9,0.2037
+"OPC",366,"Pdgfra",92.1,2.3667
+"OPC",366,"Cspg4",76.5,1.5991
+"OPC",366,"Sox10",59.6,1.0599
+"OPC",366,"Fezf2",0.8,0.0084
+"OPC",366,"Tle4",24.6,0.3893
+"OPC",366,"Ntsr1",0.8,0.0108
+"OPC",366,"Satb2",9,0.1689
+"OPC",366,"Cux1",39.1,0.642
+"OPC",366,"Mef2c",14.2,0.2509
+"OPC",366,"Reln",13.7,0.2344
+"OPC",366,"Trp73",0.5,0.0088
+"OPC",366,"Ndnf",1.4,0.0162
+"OPC",366,"Lhx6",1.6,0.0215
+"OPC",366,"Maf",2.2,0.0335
+"OPC",366,"Nxph1",82.8,2.0396
+"OPC",366,"Prox1",9,0.1357
+"OPC",366,"Htr3a",0.3,0.0045
+"OPC",366,"Nr3c2",12.3,0.1993
+"OPC",366,"Lhx8",0.8,0.0121
+"OPC",366,"Nkx2-1",5.5,0.0836
+"OPC",366,"Cntnap5a",10.9,0.1937
+"OPC",366,"Adarb2",33.1,0.6678
+"OPC",366,"Nr2f2",15.6,0.254
+"OPC",366,"Meis2",60.4,1.3404
+"OPC",366,"Tshz1",15.3,0.2186
+"OPC",366,"Etv1",29.2,0.5066
+"OPC",366,"Pbx3",38.5,0.7713
+"OPC",366,"Ebf1",12,0.2003
+"OPC",366,"Isl1",3,0.0463
+"OPC",366,"Rxrg",1.6,0.021
+"OPC",366,"Npy1r",1.1,0.0108
+"OPC",366,"Dchs2",4.6,0.0643
+"OPC",366,"Pde8b",21.6,0.3407
+"OPC",366,"Drd2",1.1,0.0139
+"OPC",366,"Penk",1.4,0.0204
+"OPC",366,"Adora2a",0.8,0.0088
+"OPC",366,"Six3",6.3,0.0912
+"OPC",366,"Sox4",32,0.5499
+"SPN-D1 (differentiating)",1587,"Mki67",1.5,0.0216
+"SPN-D1 (differentiating)",1587,"Top2a",1.6,0.0246
+"SPN-D1 (differentiating)",1587,"Eomes",1.1,0.017
+"SPN-D1 (differentiating)",1587,"Neurog2",0.4,0.0051
+"SPN-D1 (differentiating)",1587,"Btg2",1,0.0106
+"SPN-D1 (differentiating)",1587,"Dlx1",8.8,0.1299
+"SPN-D1 (differentiating)",1587,"Dlx2",3,0.0387
+"SPN-D1 (differentiating)",1587,"Ascl1",1.2,0.0141
+"SPN-D1 (differentiating)",1587,"Egfr",1.3,0.0168
+"SPN-D1 (differentiating)",1587,"Olig2",0.6,0.0063
+"SPN-D1 (differentiating)",1587,"Bcan",3.6,0.0457
+"SPN-D1 (differentiating)",1587,"Aqp4",0.4,0.0045
+"SPN-D1 (differentiating)",1587,"Aldh1l1",0.6,0.0066
+"SPN-D1 (differentiating)",1587,"Clu",4.9,0.0568
+"SPN-D1 (differentiating)",1587,"Slc1a3",6.2,0.0892
+"SPN-D1 (differentiating)",1587,"Slco1c1",1.6,0.0221
+"SPN-D1 (differentiating)",1587,"Mfge8",2.2,0.0272
+"SPN-D1 (differentiating)",1587,"Pdgfra",1.3,0.0157
+"SPN-D1 (differentiating)",1587,"Cspg4",0.6,0.0079
+"SPN-D1 (differentiating)",1587,"Sox10",0.3,0.0029
+"SPN-D1 (differentiating)",1587,"Fezf2",2.8,0.0361
+"SPN-D1 (differentiating)",1587,"Tle4",32.5,0.4826
+"SPN-D1 (differentiating)",1587,"Ntsr1",2.1,0.025
+"SPN-D1 (differentiating)",1587,"Satb2",7.9,0.1246
+"SPN-D1 (differentiating)",1587,"Cux1",37.4,0.5695
+"SPN-D1 (differentiating)",1587,"Mef2c",56.9,1.0591
+"SPN-D1 (differentiating)",1587,"Reln",60,1.3127
+"SPN-D1 (differentiating)",1587,"Trp73",0.4,0.005
+"SPN-D1 (differentiating)",1587,"Ndnf",0.3,0.0044
+"SPN-D1 (differentiating)",1587,"Lhx6",1.1,0.0131
+"SPN-D1 (differentiating)",1587,"Maf",1.9,0.0249
+"SPN-D1 (differentiating)",1587,"Nxph1",7.9,0.123
+"SPN-D1 (differentiating)",1587,"Prox1",2.3,0.0294
+"SPN-D1 (differentiating)",1587,"Htr3a",0.3,0.0026
+"SPN-D1 (differentiating)",1587,"Nr3c2",13.7,0.2193
+"SPN-D1 (differentiating)",1587,"Lhx8",1.1,0.0151
+"SPN-D1 (differentiating)",1587,"Nkx2-1",0.1,0.001
+"SPN-D1 (differentiating)",1587,"Cntnap5a",37.3,0.709
+"SPN-D1 (differentiating)",1587,"Adarb2",76.9,1.7642
+"SPN-D1 (differentiating)",1587,"Nr2f2",5.1,0.0636
+"SPN-D1 (differentiating)",1587,"Meis2",98.7,3.2868
+"SPN-D1 (differentiating)",1587,"Tshz1",7.9,0.1101
+"SPN-D1 (differentiating)",1587,"Etv1",5.8,0.0805
+"SPN-D1 (differentiating)",1587,"Pbx3",76.9,2.0362
+"SPN-D1 (differentiating)",1587,"Ebf1",95.1,2.8091
+"SPN-D1 (differentiating)",1587,"Isl1",62.9,1.2127
+"SPN-D1 (differentiating)",1587,"Rxrg",47.4,0.7758
+"SPN-D1 (differentiating)",1587,"Npy1r",5.2,0.0683
+"SPN-D1 (differentiating)",1587,"Dchs2",21.6,0.3378
+"SPN-D1 (differentiating)",1587,"Pde8b",6.7,0.0903
+"SPN-D1 (differentiating)",1587,"Drd2",1.3,0.0166
+"SPN-D1 (differentiating)",1587,"Penk",2.1,0.026
+"SPN-D1 (differentiating)",1587,"Adora2a",0.7,0.0071
+"SPN-D1 (differentiating)",1587,"Six3",10.6,0.148
+"SPN-D1 (differentiating)",1587,"Sox4",54.8,0.9156
+"SPN-D1 (precursor-like)",530,"Mki67",0.9,0.0149
+"SPN-D1 (precursor-like)",530,"Top2a",2.8,0.0387
+"SPN-D1 (precursor-like)",530,"Eomes",0.4,0.0052
+"SPN-D1 (precursor-like)",530,"Neurog2",0.2,0.0029
+"SPN-D1 (precursor-like)",530,"Btg2",0.9,0.0149
+"SPN-D1 (precursor-like)",530,"Dlx1",7.7,0.1306
+"SPN-D1 (precursor-like)",530,"Dlx2",3.8,0.0592
+"SPN-D1 (precursor-like)",530,"Ascl1",1.1,0.0173
+"SPN-D1 (precursor-like)",530,"Egfr",0.2,0.0049
+"SPN-D1 (precursor-like)",530,"Olig2",0,0
+"SPN-D1 (precursor-like)",530,"Bcan",1.5,0.0219
+"SPN-D1 (precursor-like)",530,"Aqp4",0.9,0.0131
+"SPN-D1 (precursor-like)",530,"Aldh1l1",0.8,0.0107
+"SPN-D1 (precursor-like)",530,"Clu",1.3,0.0179
+"SPN-D1 (precursor-like)",530,"Slc1a3",4.5,0.0761
+"SPN-D1 (precursor-like)",530,"Slco1c1",1.1,0.018
+"SPN-D1 (precursor-like)",530,"Mfge8",1.1,0.0167
+"SPN-D1 (precursor-like)",530,"Pdgfra",0.2,0.0034
+"SPN-D1 (precursor-like)",530,"Cspg4",0.2,0.002
+"SPN-D1 (precursor-like)",530,"Sox10",0,0
+"SPN-D1 (precursor-like)",530,"Fezf2",1.5,0.0213
+"SPN-D1 (precursor-like)",530,"Tle4",22.6,0.3963
+"SPN-D1 (precursor-like)",530,"Ntsr1",1.7,0.0241
+"SPN-D1 (precursor-like)",530,"Satb2",7.2,0.1175
+"SPN-D1 (precursor-like)",530,"Cux1",47.4,0.8355
+"SPN-D1 (precursor-like)",530,"Mef2c",38.5,0.8425
+"SPN-D1 (precursor-like)",530,"Reln",17.2,0.2872
+"SPN-D1 (precursor-like)",530,"Trp73",0.2,0.0018
+"SPN-D1 (precursor-like)",530,"Ndnf",0.8,0.0084
+"SPN-D1 (precursor-like)",530,"Lhx6",1.3,0.0205
+"SPN-D1 (precursor-like)",530,"Maf",2.1,0.0354
+"SPN-D1 (precursor-like)",530,"Nxph1",11.5,0.1954
+"SPN-D1 (precursor-like)",530,"Prox1",1.9,0.0313
+"SPN-D1 (precursor-like)",530,"Htr3a",0.4,0.0053
+"SPN-D1 (precursor-like)",530,"Nr3c2",9.2,0.1561
+"SPN-D1 (precursor-like)",530,"Lhx8",0.8,0.0128
+"SPN-D1 (precursor-like)",530,"Nkx2-1",0,0
+"SPN-D1 (precursor-like)",530,"Cntnap5a",28.1,0.612
+"SPN-D1 (precursor-like)",530,"Adarb2",34.3,0.8303
+"SPN-D1 (precursor-like)",530,"Nr2f2",4.3,0.0656
+"SPN-D1 (precursor-like)",530,"Meis2",80.4,2.4941
+"SPN-D1 (precursor-like)",530,"Tshz1",15.7,0.2648
+"SPN-D1 (precursor-like)",530,"Etv1",1.1,0.0192
+"SPN-D1 (precursor-like)",530,"Pbx3",73.4,2.0133
+"SPN-D1 (precursor-like)",530,"Ebf1",24.2,0.7812
+"SPN-D1 (precursor-like)",530,"Isl1",72.3,1.6311
+"SPN-D1 (precursor-like)",530,"Rxrg",21.1,0.3543
+"SPN-D1 (precursor-like)",530,"Npy1r",24.2,0.4578
+"SPN-D1 (precursor-like)",530,"Dchs2",50.2,0.9974
+"SPN-D1 (precursor-like)",530,"Pde8b",30.4,0.5297
+"SPN-D1 (precursor-like)",530,"Drd2",0.9,0.017
+"SPN-D1 (precursor-like)",530,"Penk",2.1,0.0325
+"SPN-D1 (precursor-like)",530,"Adora2a",0.8,0.0123
+"SPN-D1 (precursor-like)",530,"Six3",12.5,0.221
+"SPN-D1 (precursor-like)",530,"Sox4",66.4,1.4278
+"SPN-D2 (differentiating)",818,"Mki67",0.7,0.0093
+"SPN-D2 (differentiating)",818,"Top2a",1.2,0.0199
+"SPN-D2 (differentiating)",818,"Eomes",0.5,0.0071
+"SPN-D2 (differentiating)",818,"Neurog2",0.9,0.0108
+"SPN-D2 (differentiating)",818,"Btg2",0.4,0.0037
+"SPN-D2 (differentiating)",818,"Dlx1",14.4,0.2171
+"SPN-D2 (differentiating)",818,"Dlx2",4.2,0.0564
+"SPN-D2 (differentiating)",818,"Ascl1",1,0.0134
+"SPN-D2 (differentiating)",818,"Egfr",1.5,0.0221
+"SPN-D2 (differentiating)",818,"Olig2",0.7,0.0097
+"SPN-D2 (differentiating)",818,"Bcan",2,0.0271
+"SPN-D2 (differentiating)",818,"Aqp4",0.5,0.0067
+"SPN-D2 (differentiating)",818,"Aldh1l1",0.7,0.0118
+"SPN-D2 (differentiating)",818,"Clu",3.5,0.0441
+"SPN-D2 (differentiating)",818,"Slc1a3",6.2,0.1014
+"SPN-D2 (differentiating)",818,"Slco1c1",1.3,0.0182
+"SPN-D2 (differentiating)",818,"Mfge8",1.2,0.0177
+"SPN-D2 (differentiating)",818,"Pdgfra",0.6,0.0079
+"SPN-D2 (differentiating)",818,"Cspg4",0.2,0.0028
+"SPN-D2 (differentiating)",818,"Sox10",0.4,0.0061
+"SPN-D2 (differentiating)",818,"Fezf2",2.1,0.0283
+"SPN-D2 (differentiating)",818,"Tle4",46.6,0.8251
+"SPN-D2 (differentiating)",818,"Ntsr1",3.2,0.0399
+"SPN-D2 (differentiating)",818,"Satb2",6.7,0.1164
+"SPN-D2 (differentiating)",818,"Cux1",41.3,0.7015
+"SPN-D2 (differentiating)",818,"Mef2c",58.3,1.2807
+"SPN-D2 (differentiating)",818,"Reln",13.6,0.2161
+"SPN-D2 (differentiating)",818,"Trp73",0.2,0.0031
+"SPN-D2 (differentiating)",818,"Ndnf",0.2,0.0029
+"SPN-D2 (differentiating)",818,"Lhx6",0.9,0.0111
+"SPN-D2 (differentiating)",818,"Maf",3.1,0.0448
+"SPN-D2 (differentiating)",818,"Nxph1",7,0.1228
+"SPN-D2 (differentiating)",818,"Prox1",1.3,0.0204
+"SPN-D2 (differentiating)",818,"Htr3a",0.2,0.0058
+"SPN-D2 (differentiating)",818,"Nr3c2",5,0.079
+"SPN-D2 (differentiating)",818,"Lhx8",0.4,0.005
+"SPN-D2 (differentiating)",818,"Nkx2-1",0.4,0.0036
+"SPN-D2 (differentiating)",818,"Cntnap5a",15,0.2789
+"SPN-D2 (differentiating)",818,"Adarb2",15.3,0.282
+"SPN-D2 (differentiating)",818,"Nr2f2",3.7,0.0532
+"SPN-D2 (differentiating)",818,"Meis2",99.5,3.5991
+"SPN-D2 (differentiating)",818,"Tshz1",14.2,0.2139
+"SPN-D2 (differentiating)",818,"Etv1",2.3,0.0334
+"SPN-D2 (differentiating)",818,"Pbx3",58.7,1.3071
+"SPN-D2 (differentiating)",818,"Ebf1",10.9,0.2094
+"SPN-D2 (differentiating)",818,"Isl1",3.3,0.0493
+"SPN-D2 (differentiating)",818,"Rxrg",42.3,0.7114
+"SPN-D2 (differentiating)",818,"Npy1r",2.2,0.0345
+"SPN-D2 (differentiating)",818,"Dchs2",23.2,0.4065
+"SPN-D2 (differentiating)",818,"Pde8b",7.7,0.1154
+"SPN-D2 (differentiating)",818,"Drd2",41.1,0.6643
+"SPN-D2 (differentiating)",818,"Penk",30.6,0.6281
+"SPN-D2 (differentiating)",818,"Adora2a",23.8,0.3505
+"SPN-D2 (differentiating)",818,"Six3",35.6,0.6591
+"SPN-D2 (differentiating)",818,"Sox4",45.6,0.8233
+"SPN-D2 (precursor-like)",287,"Mki67",1.4,0.0296
+"SPN-D2 (precursor-like)",287,"Top2a",0.3,0.0055
+"SPN-D2 (precursor-like)",287,"Eomes",0.7,0.0094
+"SPN-D2 (precursor-like)",287,"Neurog2",0,0
+"SPN-D2 (precursor-like)",287,"Btg2",1,0.0167
+"SPN-D2 (precursor-like)",287,"Dlx1",25.8,0.4547
+"SPN-D2 (precursor-like)",287,"Dlx2",6.3,0.1061
+"SPN-D2 (precursor-like)",287,"Ascl1",0.7,0.0106
+"SPN-D2 (precursor-like)",287,"Egfr",2.1,0.0385
+"SPN-D2 (precursor-like)",287,"Olig2",0,0
+"SPN-D2 (precursor-like)",287,"Bcan",0.7,0.0105
+"SPN-D2 (precursor-like)",287,"Aqp4",0,0
+"SPN-D2 (precursor-like)",287,"Aldh1l1",1.7,0.0285
+"SPN-D2 (precursor-like)",287,"Clu",0.3,0.0045
+"SPN-D2 (precursor-like)",287,"Slc1a3",6.3,0.1118
+"SPN-D2 (precursor-like)",287,"Slco1c1",0.3,0.0062
+"SPN-D2 (precursor-like)",287,"Mfge8",1.4,0.0239
+"SPN-D2 (precursor-like)",287,"Pdgfra",0,0
+"SPN-D2 (precursor-like)",287,"Cspg4",0,0
+"SPN-D2 (precursor-like)",287,"Sox10",0,0
+"SPN-D2 (precursor-like)",287,"Fezf2",2.1,0.0357
+"SPN-D2 (precursor-like)",287,"Tle4",58.9,1.2315
+"SPN-D2 (precursor-like)",287,"Ntsr1",3.8,0.0629
+"SPN-D2 (precursor-like)",287,"Satb2",4.2,0.0795
+"SPN-D2 (precursor-like)",287,"Cux1",50.2,0.9471
+"SPN-D2 (precursor-like)",287,"Mef2c",41.1,0.867
+"SPN-D2 (precursor-like)",287,"Reln",9.4,0.1744
+"SPN-D2 (precursor-like)",287,"Trp73",1,0.0126
+"SPN-D2 (precursor-like)",287,"Ndnf",0.7,0.0135
+"SPN-D2 (precursor-like)",287,"Lhx6",0.7,0.0139
+"SPN-D2 (precursor-like)",287,"Maf",0.7,0.0126
+"SPN-D2 (precursor-like)",287,"Nxph1",8.4,0.1537
+"SPN-D2 (precursor-like)",287,"Prox1",1,0.0183
+"SPN-D2 (precursor-like)",287,"Htr3a",0,0
+"SPN-D2 (precursor-like)",287,"Nr3c2",6.6,0.1144
+"SPN-D2 (precursor-like)",287,"Lhx8",0.3,0.0051
+"SPN-D2 (precursor-like)",287,"Nkx2-1",0.7,0.0097
+"SPN-D2 (precursor-like)",287,"Cntnap5a",13.9,0.3036
+"SPN-D2 (precursor-like)",287,"Adarb2",20.2,0.4216
+"SPN-D2 (precursor-like)",287,"Nr2f2",1.4,0.0252
+"SPN-D2 (precursor-like)",287,"Meis2",99.7,3.9666
+"SPN-D2 (precursor-like)",287,"Tshz1",23.3,0.4262
+"SPN-D2 (precursor-like)",287,"Etv1",1,0.0168
+"SPN-D2 (precursor-like)",287,"Pbx3",31.7,0.751
+"SPN-D2 (precursor-like)",287,"Ebf1",7,0.1289
+"SPN-D2 (precursor-like)",287,"Isl1",5.9,0.113
+"SPN-D2 (precursor-like)",287,"Rxrg",10.5,0.1625
+"SPN-D2 (precursor-like)",287,"Npy1r",3.1,0.0458
+"SPN-D2 (precursor-like)",287,"Dchs2",37.3,0.7136
+"SPN-D2 (precursor-like)",287,"Pde8b",10.5,0.1741
+"SPN-D2 (precursor-like)",287,"Drd2",33.1,0.6326
+"SPN-D2 (precursor-like)",287,"Penk",22.6,0.4715
+"SPN-D2 (precursor-like)",287,"Adora2a",11.5,0.203
+"SPN-D2 (precursor-like)",287,"Six3",60.3,1.4037
+"SPN-D2 (precursor-like)",287,"Sox4",58.2,1.1487
+"Upper layer EN",3716,"Mki67",1.6,0.0254
+"Upper layer EN",3716,"Top2a",2.4,0.0394
+"Upper layer EN",3716,"Eomes",7.8,0.1724
+"Upper layer EN",3716,"Neurog2",7,0.1126
+"Upper layer EN",3716,"Btg2",2,0.0296
+"Upper layer EN",3716,"Dlx1",3.1,0.0467
+"Upper layer EN",3716,"Dlx2",0.8,0.0107
+"Upper layer EN",3716,"Ascl1",2.8,0.0403
+"Upper layer EN",3716,"Egfr",1.3,0.0206
+"Upper layer EN",3716,"Olig2",0.6,0.0084
+"Upper layer EN",3716,"Bcan",3.7,0.0554
+"Upper layer EN",3716,"Aqp4",0.4,0.0069
+"Upper layer EN",3716,"Aldh1l1",0.6,0.009
+"Upper layer EN",3716,"Clu",1.4,0.0193
+"Upper layer EN",3716,"Slc1a3",26.1,0.5351
+"Upper layer EN",3716,"Slco1c1",5.2,0.103
+"Upper layer EN",3716,"Mfge8",2.1,0.0312
+"Upper layer EN",3716,"Pdgfra",1.1,0.0181
+"Upper layer EN",3716,"Cspg4",0.4,0.0055
+"Upper layer EN",3716,"Sox10",0.2,0.0028
+"Upper layer EN",3716,"Fezf2",7,0.109
+"Upper layer EN",3716,"Tle4",9.7,0.1464
+"Upper layer EN",3716,"Ntsr1",16.2,0.2454
+"Upper layer EN",3716,"Satb2",85.6,2.452
+"Upper layer EN",3716,"Cux1",51.3,1.0529
+"Upper layer EN",3716,"Mef2c",65.1,1.9059
+"Upper layer EN",3716,"Reln",8.9,0.1431
+"Upper layer EN",3716,"Trp73",0.2,0.0031
+"Upper layer EN",3716,"Ndnf",1.8,0.0289
+"Upper layer EN",3716,"Lhx6",0.9,0.0141
+"Upper layer EN",3716,"Maf",1.7,0.0262
+"Upper layer EN",3716,"Nxph1",7.2,0.126
+"Upper layer EN",3716,"Prox1",2.2,0.0375
+"Upper layer EN",3716,"Htr3a",0.1,0.0021
+"Upper layer EN",3716,"Nr3c2",3.7,0.0595
+"Upper layer EN",3716,"Lhx8",0.3,0.0042
+"Upper layer EN",3716,"Nkx2-1",0.2,0.0026
+"Upper layer EN",3716,"Cntnap5a",20.3,0.3835
+"Upper layer EN",3716,"Adarb2",14.9,0.2778
+"Upper layer EN",3716,"Nr2f2",7,0.1151
+"Upper layer EN",3716,"Meis2",73.3,2.2057
+"Upper layer EN",3716,"Tshz1",3.2,0.0511
+"Upper layer EN",3716,"Etv1",3,0.046
+"Upper layer EN",3716,"Pbx3",21.1,0.4341
+"Upper layer EN",3716,"Ebf1",7.4,0.1289
+"Upper layer EN",3716,"Isl1",1.9,0.03
+"Upper layer EN",3716,"Rxrg",1.1,0.0158
+"Upper layer EN",3716,"Npy1r",7.2,0.1031
+"Upper layer EN",3716,"Dchs2",2.2,0.0336
+"Upper layer EN",3716,"Pde8b",2.1,0.0272
+"Upper layer EN",3716,"Drd2",0.5,0.008
+"Upper layer EN",3716,"Penk",0.9,0.0126
+"Upper layer EN",3716,"Adora2a",0.3,0.0039
+"Upper layer EN",3716,"Six3",1.7,0.0249
+"Upper layer EN",3716,"Sox4",63.1,1.1969
+"Ventral IPC",544,"Mki67",77,1.7272
+"Ventral IPC",544,"Top2a",73.3,1.6236
+"Ventral IPC",544,"Eomes",2.4,0.0349
+"Ventral IPC",544,"Neurog2",2.4,0.0291
+"Ventral IPC",544,"Btg2",11,0.1723
+"Ventral IPC",544,"Dlx1",77.8,1.9701
+"Ventral IPC",544,"Dlx2",39.7,0.6741
+"Ventral IPC",544,"Ascl1",34.4,0.6774
+"Ventral IPC",544,"Egfr",22.1,0.4224
+"Ventral IPC",544,"Olig2",11.8,0.1744
+"Ventral IPC",544,"Bcan",11,0.1586
+"Ventral IPC",544,"Aqp4",1.7,0.0241
+"Ventral IPC",544,"Aldh1l1",2.8,0.0317
+"Ventral IPC",544,"Clu",2.4,0.0259
+"Ventral IPC",544,"Slc1a3",38.4,0.791
+"Ventral IPC",544,"Slco1c1",5.5,0.0943
+"Ventral IPC",544,"Mfge8",19.3,0.3152
+"Ventral IPC",544,"Pdgfra",4.4,0.0686
+"Ventral IPC",544,"Cspg4",1.8,0.0207
+"Ventral IPC",544,"Sox10",0.4,0.0045
+"Ventral IPC",544,"Fezf2",4.4,0.0539
+"Ventral IPC",544,"Tle4",14.5,0.2227
+"Ventral IPC",544,"Ntsr1",0.7,0.0065
+"Ventral IPC",544,"Satb2",17.8,0.2942
+"Ventral IPC",544,"Cux1",63.4,1.2015
+"Ventral IPC",544,"Mef2c",18.8,0.3167
+"Ventral IPC",544,"Reln",13.1,0.2279
+"Ventral IPC",544,"Trp73",0.7,0.0102
+"Ventral IPC",544,"Ndnf",2,0.0236
+"Ventral IPC",544,"Lhx6",3.1,0.053
+"Ventral IPC",544,"Maf",3.7,0.0546
+"Ventral IPC",544,"Nxph1",16.9,0.2839
+"Ventral IPC",544,"Prox1",15.3,0.263
+"Ventral IPC",544,"Htr3a",0.4,0.0048
+"Ventral IPC",544,"Nr3c2",3.7,0.0626
+"Ventral IPC",544,"Lhx8",0.9,0.0123
+"Ventral IPC",544,"Nkx2-1",4.2,0.0611
+"Ventral IPC",544,"Cntnap5a",14.7,0.2346
+"Ventral IPC",544,"Adarb2",41.5,0.9641
+"Ventral IPC",544,"Nr2f2",11,0.1836
+"Ventral IPC",544,"Meis2",94.1,3.071
+"Ventral IPC",544,"Tshz1",18.9,0.2878
+"Ventral IPC",544,"Etv1",28.9,0.5284
+"Ventral IPC",544,"Pbx3",65.8,1.6265
+"Ventral IPC",544,"Ebf1",9.7,0.1924
+"Ventral IPC",544,"Isl1",5.5,0.0967
+"Ventral IPC",544,"Rxrg",2.4,0.0318
+"Ventral IPC",544,"Npy1r",1.5,0.0184
+"Ventral IPC",544,"Dchs2",9,0.1364
+"Ventral IPC",544,"Pde8b",2.2,0.0294
+"Ventral IPC",544,"Drd2",1.7,0.0262
+"Ventral IPC",544,"Penk",1.5,0.0221
+"Ventral IPC",544,"Adora2a",0.7,0.0079
+"Ventral IPC",544,"Six3",14.5,0.2461
+"Ventral IPC",544,"Sox4",65.3,1.2477

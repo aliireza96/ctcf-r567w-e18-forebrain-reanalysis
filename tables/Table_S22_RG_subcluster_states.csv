@@ -1,0 +1,20 @@
+# Subclustering of the Cycling RG class, E18.5 CTCF R567W reanalysis.
+# RNA assay, 1,147 cells, 20 PCs, res 0.2 (identical partition at res 0.15).
+# 11 choroid-plexus ambient genes excluded from the variable-gene set; Ttr was
+#   0.0% WT vs 24.3% mutant here and would have split subclusters by genotype.
+# NAMING: states are named for what they express. The LGE-leaning state is named
+#   an intermediate progenitor, not a neuroblast: 76% Mki67+ and 74% Top2a+, i.e.
+#   actively dividing. It matches the dorsal IPC on every feature except lineage TF
+#   (Ascl1/Dlx1 vs Eomes/Neurog2), which is the definition of the subpallial
+#   equivalent of an IPC.
+# norm = (mut/wt) divided by the scope-wide mutant:wt ratio 10852/8444 = 1.285.
+# p two-sided Fisher exact against scope totals; q Benjamini-Hochberg over 6 states.
+# CAVEAT: one library per genotype, nuclei are pseudoreplicates. The non-neural
+#   state is 0 WT vs 42 mutant and is descriptive only.
+state,n_wt,n_mut,n_total,norm_ratio,p,q,Eomes_pct,Ascl1_pct,Dlx1_pct,Egfr_pct,Olig2_pct,Sox10_pct,Slco1c1_pct,Mki67_pct,Top2a_pct
+Dorsal IPC,18,81,99,3.5,1.14e-07,1.71e-07,67.7,19.2,7.1,16.2,4,0,36.4,84.8,81.8
+Astrocyte-primed RG,28,144,172,4,2.35e-14,7.04e-14,0.6,9.9,5.2,14.5,10.5,0.6,65.7,84.3,86
+Ventral IPC (LGE-leaning),101,343,444,2.64,1.03e-20,6.17e-20,1.1,35.8,85.4,19.4,9.9,0,1.6,75.9,74.1
+Gliogenic (Egfr+/Olig2+),153,137,290,0.7,2.30e-03,2.76e-03,2.1,33.8,7.6,81,47.6,1.7,16.6,64.5,64.5
+Mixed / unassigned,43,57,100,1.03,9.20e-01,9.20e-01,8,28,44,34,20,2,23,82,70
+Non-neural (crest),0,42,42,NA,5.15e-11,1.03e-10,0,4.8,7.1,4.8,0,59.5,7.1,28.6,19

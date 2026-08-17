@@ -18,7 +18,7 @@ scripts/
   03_chipseq/       peak classification, annotation, motif and occupancy analysis
   04_orthogonal/    bulk RNA-seq, 4C and Hi-C at the clustered protocadherin locus
   05_figures/       figure scripts, each regenerating its panels from tables/
-tables/             supplementary tables S1-S10 and supporting result tables
+tables/             supplementary tables S1-S24, matching the manuscript's supplementary set
 docs/               methods text and a table of which script produces which output
 ```
 
@@ -35,12 +35,17 @@ panels without rerunning upstream analyses:
 python scripts/05_figures/plot_figure1D.py  . figures/
 python scripts/05_figures/plot_figure2D.py  . figures/
 python scripts/05_figures/plot_figure3.py   . figures/
-python scripts/05_figures/make_figure4.py   . figures/
 ```
 
 `plot_figure1D.py` and `plot_figure2D.py` regenerate the statistical summary panels D of their
-respective figures; `plot_figure3.py` regenerates Figure 3A-D; and `make_figure4.py` regenerates
-the table-driven Figure 4 panels. Other installed panels retain exact source-file provenance in
+respective figures, and `plot_figure3.py` regenerates the Figure 3 panels.
+
+Figure 4 and Supplementary Figure S3 were rebuilt in August 2026 after an audit of the peak-class
+properties, and their current scripts are the numbered ones in `scripts/05_figures/`: `140` and
+`141` are the audit and the peak-call-free promoter measurement, and `145` to `154` build the
+installed panels. They read from an analysis tree rather than from `tables/` alone, so they are
+provided for provenance rather than as a self-contained runner. The previous `make_figure4.py`
+built panels that the audit retracted and is kept only in `_superseded_2026-08-17/`. Other installed panels retain exact source-file provenance in
 the corresponding figure-folder README. This repository has not yet passed a clean-room,
 end-to-end execution test.
 
